@@ -423,6 +423,9 @@
     border-radius:var(--rp);
     padding:10px 12px;
     margin-bottom:14px;
+    user-select:none;
+    -webkit-user-select:none;
+    touch-action:pan-y;
   }
   .weeknav .navbtn{
     background:var(--lime);
@@ -439,23 +442,24 @@
   .weeknav .navbtn:active{transform:scale(0.92)}
   .weeknav .wlabel{text-align:center;flex:1}
   .today-btn{
-    background:var(--ink);
+    background:var(--lime);
     color:#000;
     border:none;
-    border-radius:var(--rp);
-    padding:8px 16px;
-    font-family:var(--mono);
-    font-size:11px;
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:.1em;
+    border-radius:50%;
+    width:44px;
+    height:44px;
+    padding:0;
     margin-left:8px;
-    transition:all .12s ease;
     display:none;
+    align-items:center;
+    justify-content:center;
+    transition:transform .12s ease;
+    flex-shrink:0;
   }
-  .today-btn.show{display:inline-block}
-  .today-btn:hover{background:var(--lime)}
-  .today-btn:active{transform:scale(0.96)}
+  .today-btn.show{display:flex}
+  .today-btn:hover{transform:scale(0.96)}
+  .today-btn:active{transform:scale(0.92)}
+  .today-btn svg{width:18px;height:18px;display:block}
   .weeknav .wlabel .wname{
     font-family:var(--display);
     font-weight:800;
@@ -573,11 +577,28 @@
     transition:border-color .12s ease;
   }
   .day:hover{border-color:var(--line-2)}
-  .day.today{border-color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+  /* Today's card: solid fill, black text — strong "you are here" signal */
+  .day.today{
+    background:var(--ink);
+    border-color:var(--ink);
+    box-shadow:none;
+  }
+  .day.today .day-head .dname,
+  .day.today .day-head .ddate,
+  .day.today .day-head .session{color:#000}
+  .day.today .day-head .ddate{color:rgba(0,0,0,.6)}
+  .day.today .day-head .session{color:rgba(0,0,0,.7)}
+
+  /* Color the today card by day type */
+  .day.is-hard.today{background:var(--orange);border-color:var(--orange)}
+  .day.is-z2.today{background:var(--lime);border-color:var(--lime)}
+  .day.is-rest.today{background:var(--aqua);border-color:var(--aqua)}
+
+  /* Today pill — inverted on the colored bg */
   .today-pill{
     display:inline-block;
-    background:var(--ink);
-    color:#000;
+    background:#000;
+    color:#fff;
     font-family:var(--mono);
     font-size:9px;
     font-weight:700;
@@ -588,13 +609,18 @@
     margin-left:8px;
     vertical-align:middle;
   }
-  /* When today is a hard/rest/z2 day, the TODAY pill picks up the day color */
-  .day.is-hard.today .today-pill{background:var(--orange);color:#000}
-  .day.is-z2.today .today-pill{background:var(--lime);color:#000}
-  .day.is-rest.today .today-pill{background:var(--aqua);color:#000}
-  .day.is-hard.today{border-color:var(--orange);box-shadow:inset 0 0 0 2px var(--orange)}
-  .day.is-z2.today{border-color:var(--lime);box-shadow:inset 0 0 0 2px var(--lime)}
-  .day.is-rest.today{border-color:var(--aqua);box-shadow:inset 0 0 0 2px var(--aqua)}
+  /* The mini-viz on today's card needs adjusted colors for contrast */
+  .day.today .mini-viz .mb{background:rgba(0,0,0,.25)}
+  .day.today .mini-viz .mb.work{background:#000}
+  .day.today .mini-viz .mb.warm,
+  .day.today .mini-viz .mb.cool{background:rgba(0,0,0,.4)}
+  /* The badge on today's card */
+  .day.today .badge.planned{background:rgba(0,0,0,.2);color:#000}
+  .day.today .badge.done{background:#000;color:var(--ink)}
+  .day.today .badge.partial{background:#000;color:var(--warn)}
+  .day.today .badge.skipped{background:rgba(0,0,0,.2);color:#000}
+  /* The dot on today's card */
+  .day.today .dot{background:#000 !important}
   .day-head{
     padding:14px 16px;
     display:flex;
@@ -953,7 +979,13 @@
         <div class="wname" id="wname">Week 1</div>
         <div class="wdates" id="wdates">May 4 — May 10</div>
       </div>
-      <button class="today-btn" id="today-btn" onclick="jumpToToday()">Today</button>
+      <button class="today-btn" id="today-btn" onclick="jumpToToday()" aria-label="Jump to today">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="4" x2="12" y2="15"/>
+          <polyline points="6,11 12,17 18,11"/>
+          <line x1="5" y1="20" x2="19" y2="20"/>
+        </svg>
+      </button>
       <button class="navbtn" id="nextwk">→</button>
     </div>
 
@@ -1888,6 +1920,53 @@ document.getElementById('prevwk').onclick = () => {
 document.getElementById('nextwk').onclick = () => {
   if (currentWeek < 14) { currentWeek++; renderBlocks(); renderWeek(); }
 };
+
+// Swipe handling on the week nav strip
+(function setupWeekSwipe() {
+  const weeknav = document.querySelector('.weeknav');
+  if (!weeknav) return;
+  let startX = 0, startY = 0, startTime = 0, tracking = false;
+  const MIN_DISTANCE = 50;        // min horizontal travel in px to register a swipe
+  const MAX_OFF_AXIS = 40;        // max vertical drift allowed before we treat as scroll
+  const MAX_DURATION = 600;       // ms — anything slower is treated as a hold, not a swipe
+
+  weeknav.addEventListener('touchstart', (e) => {
+    if (e.touches.length !== 1) return;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    startTime = Date.now();
+    tracking = true;
+  }, {passive:true});
+
+  weeknav.addEventListener('touchend', (e) => {
+    if (!tracking) return;
+    tracking = false;
+    const touch = e.changedTouches[0];
+    if (!touch) return;
+    const dx = touch.clientX - startX;
+    const dy = touch.clientY - startY;
+    const dt = Date.now() - startTime;
+    if (dt > MAX_DURATION) return;
+    if (Math.abs(dy) > MAX_OFF_AXIS) return;  // it was probably a scroll attempt
+    if (Math.abs(dx) < MIN_DISTANCE) return;
+    // Don't trigger if user actually tapped a button inside the nav
+    const targetEl = e.target;
+    if (targetEl && targetEl.closest('button')) return;
+    if (dx < 0 && currentWeek < 14) {
+      // swipe left → next week
+      currentWeek++;
+      renderBlocks();
+      renderWeek();
+    } else if (dx > 0 && currentWeek > 1) {
+      // swipe right → previous week
+      currentWeek--;
+      renderBlocks();
+      renderWeek();
+    }
+  }, {passive:true});
+
+  weeknav.addEventListener('touchcancel', () => { tracking = false; }, {passive:true});
+})();
 document.querySelectorAll('.tab').forEach(t => {
   t.onclick = () => {
     document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
