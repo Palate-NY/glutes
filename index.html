@@ -905,6 +905,27 @@
     text-align:center;
     font-weight:900;
   }
+  .zwo-btn{
+    margin-top:10px;
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--line-2);
+    border-radius:var(--rp);
+    padding:10px 18px;
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:all .12s ease;
+  }
+  .zwo-btn:hover{border-color:var(--lime);color:var(--lime)}
+  .zwo-btn:active{transform:scale(0.97)}
+  .zwo-btn .zwo-icon{font-size:13px;line-height:1}
 
   /* ===== TABS ===== */
   .tabs{
@@ -1616,9 +1637,72 @@ function computeTSS(durMin, npOrAvg, ftp) {
   return Math.round((durMin/60) * IF * IF * 100);
 }
 
-// Parse a SESSION LOG block (pasted from Claude's chat analysis) to extract numbers.
-// Returns { power, hr, tss, rpe } with any subset of those fields, or null if no
-// SESSION LOG block is detected.
+// Build a Zwift Workout XML (.zwo) file from a session's blocks array.
+// Wahoo ELEMNT Bolt imports ZWO via the Companion app for outdoor structured rides.
+// Power values in ZWO are expressed as fractions of FTP (e.g. 0.95 = 95% FTP).
+function buildZwoFile(sess) {
+  if (!sess.blocks || sess.blocks.length === 0) return null;
+  const name = sess.name;
+  const description = sess.prescribed || '';
+  // Map each block to a SteadyState entry. Power = fraction of FTP.
+  const steadyStates = sess.blocks.map(b => {
+    const power = (b.power / FTP).toFixed(3);
+    const cadence = b.kind === 'work' ? 90 : (b.kind === 'rec' || b.kind === 'easy' ? 85 : 90);
+    return `        <SteadyState Duration="${b.dur}" Power="${power}" Cadence="${cadence}" pace="0">
+            <textevent timeoffset="0" message="${escapeXml(b.label)}"/>
+        </SteadyState>`;
+  }).join('\n');
+
+  const totalSec = sess.blocks.reduce((sum, b) => sum + b.dur, 0);
+  const totalMin = Math.round(totalSec / 60);
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<workout_file>
+    <author>Glutes</author>
+    <name>${escapeXml(name)}</name>
+    <description>${escapeXml(description)} (${totalMin} min, FTP ${FTP}W)</description>
+    <sportType>bike</sportType>
+    <tags/>
+    <workout>
+${steadyStates}
+    </workout>
+</workout_file>`;
+}
+
+function escapeXml(s) {
+  if (s == null) return '';
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+function downloadZwo(weekN, dayIdx, sessIdx) {
+  const w = PLAN[weekN - 1];
+  const cell = w.days[dayIdx];
+  const sess = normalizeDayCell(cell)[sessIdx];
+  if (!sess) return;
+  const xml = buildZwoFile(sess);
+  if (!xml) return;
+  // Build filename from session name + date
+  const d = dateForDay(weekN, dayIdx);
+  const dateStr = d.toISOString().slice(0,10);
+  const safeName = sess.name.replace(/[^a-zA-Z0-9]+/g, '_').replace(/^_|_$/g, '');
+  const filename = `${dateStr}_${safeName}.zwo`;
+  // Trigger download
+  const blob = new Blob([xml], {type: 'application/xml'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
 function parseSessionLog(text) {
   if (!text || typeof text !== 'string') return null;
   if (!/SESSION LOG/i.test(text)) return null;
@@ -1806,6 +1890,10 @@ function renderSessionForm(weekN, dayIdx, sessIdx, sess) {
       <div>${sess.prescribed}</div>
     </div>
     ${sess.blocks && sess.blocks.length > 0 ? renderWorkoutViz(sess) : ''}
+    ${sess.blocks && sess.blocks.length > 0 ? `
+      <button class="zwo-btn" onclick="downloadZwo(${weekN}, ${dayIdx}, ${sessIdx})">
+        <span class="zwo-icon">⬇</span> Export .zwo for Wahoo
+      </button>` : ''}
     <div class="status-row" style="margin-top:14px">
       <button class="status-btn ${sessIsHard ? 'hard-done' : ''} ${status==='done'?'active done':''}" onclick="setStatus('${key}','done')">Done</button>
       <button class="status-btn ${status==='partial'?'active partial':''}" onclick="setStatus('${key}','partial')">Partial</button>
