@@ -111,7 +111,7 @@
     font-size:28px;
     font-weight:800;
     margin-top:2px;
-    letter-spacing:-.02em;
+    letter-spacing:-.04em;
     line-height:1;
     color:var(--ink);
   }
@@ -167,7 +167,7 @@
     font-size:22px;
     font-weight:800;
     text-transform:uppercase;
-    letter-spacing:-.01em;
+    letter-spacing:-.03em;
   }
   .modal-close{
     background:var(--panel-3);
@@ -280,7 +280,7 @@
     margin-top:4px;
     font-weight:800;
     text-transform:uppercase;
-    letter-spacing:-.01em;
+    letter-spacing:-.03em;
     line-height:1.05;
   }
   .block.current .b-weeks{color:#000}
@@ -358,7 +358,7 @@
     font-size:14px;
     font-weight:800;
     text-transform:uppercase;
-    letter-spacing:-.01em;
+    letter-spacing:-.03em;
     margin-bottom:6px;
   }
   .viz-tooltip .tt-row{
@@ -465,7 +465,7 @@
     font-weight:800;
     font-size:18px;
     text-transform:uppercase;
-    letter-spacing:-.01em;
+    letter-spacing:-.03em;
     line-height:1;
   }
   .weeknav .wlabel .wdates{
@@ -501,7 +501,7 @@
     font-weight:800;
     margin-top:4px;
     line-height:1;
-    letter-spacing:-.02em;
+    letter-spacing:-.04em;
   }
   .scard .vl .unit{
     font-family:var(--mono);
@@ -543,7 +543,7 @@
     font-family:var(--display);
     font-size:24px;
     font-weight:800;
-    letter-spacing:-.02em;
+    letter-spacing:-.04em;
   }
   .strain .val .planned{
     color:var(--ink-3);
@@ -583,16 +583,18 @@
     border-color:var(--ink);
     box-shadow:none;
   }
-  .day.today .day-head .dname,
-  .day.today .day-head .ddate,
-  .day.today .day-head .session{color:#000}
-  .day.today .day-head .ddate{color:rgba(0,0,0,.6)}
-  .day.today .day-head .session{color:rgba(0,0,0,.7)}
+  .day.today .dmeta .session{color:#000}
 
   /* Color the today card by day type */
   .day.is-hard.today{background:var(--orange);border-color:var(--orange)}
   .day.is-z2.today{background:var(--lime);border-color:var(--lime)}
   .day.is-rest.today{background:var(--aqua);border-color:var(--aqua)}
+
+  /* When today is highlighted, the cal-tile inverts to dark stroke/text on colored bg */
+  .day.today .cal-tile{border-color:#000;color:#000;background:transparent}
+  .day.today.is-hard .cal-tile,
+  .day.today.is-z2 .cal-tile,
+  .day.today.is-rest .cal-tile{border-color:#000;color:#000;background:transparent}
 
   /* Today pill — inverted on the colored bg */
   .today-pill{
@@ -619,8 +621,6 @@
   .day.today .badge.done{background:#000;color:var(--ink)}
   .day.today .badge.partial{background:#000;color:var(--warn)}
   .day.today .badge.skipped{background:rgba(0,0,0,.2);color:#000}
-  /* The dot on today's card */
-  .day.today .dot{background:#000 !important}
   .day-head{
     padding:14px 16px;
     display:flex;
@@ -631,48 +631,107 @@
     gap:12px;
   }
   .day-head .dleft{display:flex;align-items:center;gap:14px;min-width:0;flex:1}
+  .dmeta{min-width:0;flex:1}
+  .dmeta .session{
+    font-family:var(--display);
+    font-size:22px;
+    color:var(--ink);
+    letter-spacing:-.04em;
+    text-transform:uppercase;
+    font-weight:800;
+    line-height:1.05;
+    margin:0;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  /* Color the workout title by day type to match the tile */
+  .day.is-hard .dmeta .session{color:var(--orange)}
+  .day.is-z2 .dmeta .session{color:var(--lime)}
+  .day.is-rest .dmeta .session{color:var(--aqua)}
+  /* On today's solid-color card, the title becomes black for contrast */
+  .day.today .dmeta .session{color:#000}
+  .dmeta .tss-chip{
+    display:inline-block;
+    margin-top:8px;
+    margin-right:4px;
+    background:var(--panel-3);
+    color:var(--ink-2);
+    font-family:var(--mono);
+    font-size:10px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    padding:3px 8px;
+    border-radius:var(--rp);
+  }
+  .dmeta .tss-chip.wrk-chip{
+    background:transparent;
+    border:1px solid var(--line-2);
+    color:var(--ink-2);
+  }
+  .day.today .dmeta .tss-chip{background:rgba(0,0,0,.2);color:#000}
+  .day.today .dmeta .tss-chip.wrk-chip{background:transparent;border-color:rgba(0,0,0,.4);color:#000}
+  .dmeta .today-pill{margin-left:0;margin-top:8px;margin-right:6px;display:inline-block}
   /* Rest-day subtle aqua treatment */
   .day.is-rest{
     background:rgba(95,201,217,.10);
     border-color:rgba(95,201,217,.18);
   }
-  .day.is-rest .dot.rest{background:var(--aqua)}
 
   /* Hard-day subtle orange treatment */
   .day.is-hard{
     background:rgba(255,140,66,.10);
     border-color:rgba(255,140,66,.18);
   }
-  .day.is-hard .dot.vo2,
-  .day.is-hard .dot.thr,
-  .day.is-hard .dot.ss{background:var(--orange)}
 
   /* Z2-day subtle lime treatment */
   .day.is-z2{
     background:rgba(198,255,61,.08);
     border-color:rgba(198,255,61,.16);
   }
-  .day.is-z2 .dot.z2{background:var(--lime)}
 
-  .dot{
-    width:10px;height:10px;
-    border-radius:50%;
+  /* Calendar-style date tile — outlined treatment */
+  .cal-tile{
+    width:52px;
+    height:52px;
+    border-radius:12px;
+    background:transparent;
+    border:1.5px solid var(--ink-4);
+    color:var(--ink-2);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
     flex-shrink:0;
-    background:var(--ink-4);
+    line-height:1;
   }
-  .dot.vo2{background:var(--orange)}
-  .dot.thr{background:var(--orange)}
-  .dot.ss{background:var(--orange)}
-  .dot.z2{background:var(--lime)}
-  .dot.strength{background:#888}
-  .dot.rest{background:var(--aqua)}
+  .cal-tile .ct-dow{
+    font-family:var(--mono);
+    font-size:9px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    opacity:.85;
+    margin-bottom:2px;
+  }
+  .cal-tile .ct-day{
+    font-family:var(--display);
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:-.04em;
+  }
+  /* Type-colored tiles — outlined */
+  .day.is-hard .cal-tile{border-color:var(--orange);color:var(--orange)}
+  .day.is-z2 .cal-tile{border-color:var(--lime);color:var(--lime)}
+  .day.is-rest .cal-tile{border-color:var(--aqua);color:var(--aqua)}
 
   .day-head .dname{
     font-family:var(--display);
     font-weight:800;
     font-size:16px;
     text-transform:uppercase;
-    letter-spacing:-.01em;
+    letter-spacing:-.03em;
   }
   .day-head .ddate{
     color:var(--ink-3);
@@ -740,7 +799,7 @@
     margin-bottom:6px;
     font-size:16px;
     text-transform:uppercase;
-    letter-spacing:-.01em;
+    letter-spacing:-.03em;
   }
   .prescribed .ptitle .dur{
     font-family:var(--mono);
@@ -814,6 +873,38 @@
     letter-spacing:.01em;
     line-height:1.5;
   }
+  .parse-btn{
+    margin-top:8px;
+    background:var(--lime);
+    color:#000;
+    border:none;
+    border-radius:var(--rp);
+    padding:10px 18px;
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    transition:transform .12s ease;
+  }
+  .parse-btn:hover{transform:scale(0.98)}
+  .parse-btn:active{transform:scale(0.95)}
+  .parse-btn .parse-icon{
+    display:inline-block;
+    width:14px;
+    height:14px;
+    border-radius:50%;
+    background:#000;
+    color:var(--lime);
+    font-size:11px;
+    line-height:14px;
+    text-align:center;
+    font-weight:900;
+  }
 
   /* ===== TABS ===== */
   .tabs{
@@ -856,7 +947,7 @@
     font-size:24px;
     font-weight:800;
     text-transform:uppercase;
-    letter-spacing:-.02em;
+    letter-spacing:-.04em;
     line-height:1.05;
   }
   .blockdetail .b-purpose{
@@ -884,7 +975,7 @@
     font-size:22px;
     font-weight:800;
     margin-top:4px;
-    letter-spacing:-.02em;
+    letter-spacing:-.04em;
     line-height:1;
   }
 
@@ -928,11 +1019,13 @@
     .summary-cards{grid-template-columns:repeat(2,1fr)}
     .summary-cards .scard:nth-child(3){grid-column:1 / -1}
     .scard .vl{font-size:26px}
-    .day-head .dname{font-size:15px}
+    .dmeta .session{font-size:18px}
+    .cal-tile{width:46px;height:46px}
+    .cal-tile .ct-day{font-size:20px}
     .prescribed .ptitle{font-size:14px}
     .blockdetail h3{font-size:20px}
     .blockdetail .b-stat .vl{font-size:18px}
-    .mini-viz{width:48px;height:20px}
+    .day-head .dright .mini-viz{display:flex;width:48px;height:22px}
     .workout-viz svg{height:100px}
     .modal-title{font-size:18px}
   }
@@ -1523,6 +1616,36 @@ function computeTSS(durMin, npOrAvg, ftp) {
   return Math.round((durMin/60) * IF * IF * 100);
 }
 
+// Parse a SESSION LOG block (pasted from Claude's chat analysis) to extract numbers.
+// Returns { power, hr, tss, rpe } with any subset of those fields, or null if no
+// SESSION LOG block is detected.
+function parseSessionLog(text) {
+  if (!text || typeof text !== 'string') return null;
+  if (!/SESSION LOG/i.test(text)) return null;
+  const out = {};
+  // Power — match "Power: avg 178W" or "avg 178 W" or "avg power 178"
+  const powerMatch = text.match(/(?:avg\s*power|power[:\s]+avg|avg)[:\s]+(\d{2,4})\s*w/i);
+  if (powerMatch) out.power = parseInt(powerMatch[1]);
+  // HR — match "HR: avg 158" or "avg HR 158" or "avg 158 bpm"
+  const hrMatch = text.match(/(?:avg\s*hr|hr[:\s]+avg|avg)[:\s]+(\d{2,3})(?:\s*bpm|\s*$|\s*[·.\n])/im);
+  // Fall back to simpler HR pattern if first doesn't match
+  let hrVal = hrMatch ? parseInt(hrMatch[1]) : null;
+  if (!hrVal) {
+    const hrAlt = text.match(/hr[:\s]+(\d{2,3})/i);
+    if (hrAlt) hrVal = parseInt(hrAlt[1]);
+  }
+  if (hrVal && hrVal >= 80 && hrVal <= 220) out.hr = hrVal;
+  // TSS — match "TSS: 92" or "TSS 92"
+  const tssMatch = text.match(/tss[:\s]+(\d{1,3})/i);
+  if (tssMatch) out.tss = parseInt(tssMatch[1]);
+  // RPE — match "RPE: 7/10" or "RPE 7"
+  const rpeMatch = text.match(/rpe[:\s]+(\d{1,2})(?:\s*\/\s*10)?/i);
+  if (rpeMatch) out.rpe = parseInt(rpeMatch[1]);
+  // Return null if we found no usable fields
+  if (Object.keys(out).length === 0) return null;
+  return out;
+}
+
 // ============================================================================
 // RENDER
 // ============================================================================
@@ -1621,21 +1744,35 @@ function renderWeek() {
     if (badge === 'done' && isRestDay) badgeClass = 'done rest-done';
     else if (badge === 'done' && isHardDay) badgeClass = 'done hard-done';
     const dayClasses = [todayCls, isRestDay ? 'is-rest' : '', isHardDay ? 'is-hard' : '', isZ2Day ? 'is-z2' : ''].filter(Boolean).join(' ');
+    const dayTSS = sessions.reduce((sum, s) => sum + (s.tss || 0), 0);
+    const hasStrength = sessions.some(s => s.type === 'strength');
+
+    // Build compact one-line display string. Strength gets shown as a chip below,
+    // so we exclude it from the title to keep it short. Parens like "(Bodyweight)" stripped.
+    const bikeSessions = sessions.filter(s => s.type !== 'strength');
+    const titleSessions = bikeSessions.length > 0 ? bikeSessions : sessions;
+    const sessionLineCompact = titleSessions.map(s => {
+      return s.name.replace(/\s*\([^)]*\)\s*/g, '').trim();
+    }).join(' + ');
     return `
       <div class="day ${dayClasses}" id="day-${di}">
         <div class="day-head" onclick="toggleDay(${di})">
           <div class="dleft">
-            <div class="dot ${primarySess.type}"></div>
-            <div>
-              <span class="dname">${fmtDayName(di)}</span>
-              <span class="ddate">${fmtDate(d)}</span>
-              ${isTodayDay ? '<span class="today-pill">Today</span>' : ''}
-              <div class="session">${sessionLine}</div>
+            <div class="cal-tile">
+              <div class="ct-dow">${fmtDayName(di)}</div>
+              <div class="ct-day">${d.getDate()}</div>
+            </div>
+            <div class="dmeta">
+              <div class="session">${sessionLineCompact}</div>
+              <div>
+                ${dayTSS > 0 ? `<span class="tss-chip">${dayTSS} TSS</span>` : ''}
+                ${hasStrength ? '<span class="tss-chip wrk-chip">+ WRK</span>' : ''}
+              </div>
             </div>
           </div>
           <div class="dright">
             ${primarySess.blocks && primarySess.blocks.length > 0 ? renderMiniViz(primarySess) : ''}
-            <span class="badge ${badgeClass}">${badgeLabel}</span>
+            ${badge !== 'planned' ? `<span class="badge ${badgeClass}">${badgeLabel}</span>` : ''}
           </div>
         </div>
         <div class="day-body">
@@ -1695,7 +1832,11 @@ function renderSessionForm(weekN, dayIdx, sessIdx, sess) {
     </div>` : ''}
     <div class="form-field">
       <label>Notes</label>
-      <textarea onchange="setField('${key}','notes',this.value)" placeholder="Paste session log from chat, or note how it felt, conditions, adjustments...">${a.notes||''}</textarea>
+      <textarea id="notes-${key}" onchange="setField('${key}','notes',this.value);refreshParseButton('${key}')" oninput="refreshParseButton('${key}')" placeholder="Paste session log from chat, or note how it felt, conditions, adjustments...">${a.notes||''}</textarea>
+      ${parseSessionLog(a.notes) ? `
+        <button class="parse-btn" onclick="parseAndFill('${key}')">
+          <span class="parse-icon">↓</span> Parse log to fields
+        </button>` : ''}
     </div>`;
 }
 
@@ -1872,6 +2013,43 @@ function setStatus(key, status) {
 function setField(key, field, value) {
   if (!state.actuals[key]) state.actuals[key] = {};
   state.actuals[key][field] = value;
+  save();
+  renderWeek();
+  const dayIdx = parseInt(key.match(/D(\d+)/)[1]);
+  document.getElementById(`day-${dayIdx}`).classList.add('open');
+}
+
+// Live-update the Parse button visibility as user types in notes field,
+// without triggering a full re-render that would steal focus from the textarea.
+function refreshParseButton(key) {
+  const textarea = document.getElementById(`notes-${key}`);
+  if (!textarea) return;
+  const hasLog = !!parseSessionLog(textarea.value);
+  const existingBtn = textarea.parentElement.querySelector('.parse-btn');
+  if (hasLog && !existingBtn) {
+    const btn = document.createElement('button');
+    btn.className = 'parse-btn';
+    btn.innerHTML = '<span class="parse-icon">↓</span> Parse log to fields';
+    btn.onclick = () => parseAndFill(key);
+    textarea.parentElement.appendChild(btn);
+  } else if (!hasLog && existingBtn) {
+    existingBtn.remove();
+  }
+}
+
+function parseAndFill(key) {
+  const a = state.actuals[key] || {};
+  const parsed = parseSessionLog(a.notes);
+  if (!parsed) return;
+  if (!state.actuals[key]) state.actuals[key] = {};
+  // Only overwrite fields that the parse found AND user hasn't already typed in.
+  // Actually: parse always overwrites, since user explicitly tapped Parse.
+  if (parsed.power != null) state.actuals[key].power = parsed.power;
+  if (parsed.hr != null) state.actuals[key].hr = parsed.hr;
+  if (parsed.tss != null) state.actuals[key].tss = parsed.tss;
+  if (parsed.rpe != null) state.actuals[key].rpe = parsed.rpe;
+  // Auto-mark as done if not already set
+  if (!state.actuals[key].status) state.actuals[key].status = 'done';
   save();
   renderWeek();
   const dayIdx = parseInt(key.match(/D(\d+)/)[1]);
