@@ -44,7 +44,7 @@
 
     --r:18px;
     --rs:14px;
-    --rp:999px;
+    --rp:12px;
 
     /* Type stacks */
     --display: 'Helvetica Neue', Helvetica, 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -71,19 +71,11 @@
   input,select,textarea{font-family:var(--mono);color:inherit}
 
   /* ===== HEADER (stat tiles) ===== */
-  header{
-    position:sticky;top:0;z-index:50;
-    background:rgba(10,10,10,.96);
-    backdrop-filter:blur(20px);
-    border-bottom:1px solid var(--line);
-    padding:14px 14px;
-  }
   .stats-row{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:6px;
-    max-width:880px;
-    margin:0 auto;
+    margin:0 0 14px;
   }
   .stat-tile{
     background:var(--panel);
@@ -233,7 +225,7 @@
     margin-bottom:8px;
     display:block;
   }
-  .container{max-width:880px;margin:0 auto;padding:16px 14px 80px}
+  .container{max-width:880px;margin:0 auto;padding:24px 14px 80px}
 
   /* ===== BLOCK CARDS (now at bottom — smaller, secondary) ===== */
   .block-section-label{
@@ -428,37 +420,39 @@
     touch-action:pan-y;
   }
   .weeknav .navbtn{
-    background:var(--lime);
-    color:#000;
-    border:none;
-    border-radius:50%;
-    width:44px;height:44px;
-    font-size:20px;
+    background:transparent;
+    color:var(--ink-2);
+    border:1.5px solid var(--ink-4);
+    border-radius:12px;
+    width:44px;
+    height:44px;
+    font-size:18px;
     font-weight:700;
     display:flex;align-items:center;justify-content:center;
-    transition:transform .12s ease;
+    transition:all .12s ease;
+    flex-shrink:0;
   }
-  .weeknav .navbtn:hover{transform:scale(0.96)}
-  .weeknav .navbtn:active{transform:scale(0.92)}
+  .weeknav .navbtn:hover{border-color:var(--ink-2);color:var(--ink)}
+  .weeknav .navbtn:active{transform:scale(0.96)}
   .weeknav .wlabel{text-align:center;flex:1}
   .today-btn{
-    background:var(--lime);
-    color:#000;
-    border:none;
-    border-radius:50%;
+    background:transparent;
+    color:var(--lime);
+    border:1.5px solid var(--lime);
+    border-radius:12px;
     width:44px;
     height:44px;
     padding:0;
-    margin-left:8px;
+    margin-left:6px;
     display:none;
     align-items:center;
     justify-content:center;
-    transition:transform .12s ease;
+    transition:all .12s ease;
     flex-shrink:0;
   }
   .today-btn.show{display:flex}
-  .today-btn:hover{transform:scale(0.96)}
-  .today-btn:active{transform:scale(0.92)}
+  .today-btn:hover{background:var(--lime);color:#000}
+  .today-btn:active{transform:scale(0.96)}
   .today-btn svg{width:18px;height:18px;display:block}
   .weeknav .wlabel .wname{
     font-family:var(--display);
@@ -1053,22 +1047,7 @@
 </style>
 </head>
 <body>
-<header>
-  <div class="stats-row" id="stats-row">
-    <div class="stat-tile" data-stat="ftp" onclick="showStatTrend('ftp')">
-      <div class="st-lbl">FTP</div>
-      <div class="st-vl" id="stat-ftp">275<span class="st-unit">W</span></div>
-    </div>
-    <div class="stat-tile" data-stat="hrmax" onclick="showStatTrend('hrmax')">
-      <div class="st-lbl">HR Max</div>
-      <div class="st-vl" id="stat-hrmax">194<span class="st-unit">bpm</span></div>
-    </div>
-    <div class="stat-tile" data-stat="lthr" onclick="showStatTrend('lthr')">
-      <div class="st-lbl">LTHR</div>
-      <div class="st-vl" id="stat-lthr">172<span class="st-unit">bpm</span></div>
-    </div>
-  </div>
-</header>
+
 
 <!-- Modal for stat trend -->
 <div class="modal-backdrop" id="stat-modal" onclick="closeStatModal(event)">
@@ -1087,30 +1066,28 @@
     <button class="tab" data-tab="upcoming" id="tab-upcoming">Upcoming</button>
   </div>
   <div id="weekview">
-    <div class="weeknav">
-      <button class="navbtn" id="prevwk">←</button>
-      <div class="wlabel">
-        <div class="wname" id="wname">Week 1</div>
-        <div class="wdates" id="wdates">May 4 — May 10</div>
-      </div>
-      <button class="today-btn" id="today-btn" onclick="jumpToToday()" aria-label="Jump to today">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="12" y1="4" x2="12" y2="15"/>
-          <polyline points="6,11 12,17 18,11"/>
-          <line x1="5" y1="20" x2="19" y2="20"/>
-        </svg>
-      </button>
-      <button class="navbtn" id="nextwk">→</button>
-    </div>
-
-    <!-- Weekly summary cards removed; jump straight to strain + calendar -->
-
     <div class="strain">
       <div class="row">
         <span class="label">Week Load (TSS)</span>
         <span class="val"><span id="actual-tss">0</span><span class="planned"> / <span id="planned-tss">0</span> planned</span></span>
       </div>
       <div class="bar"><div class="fill" id="strain-bar" style="width:0%"></div></div>
+    </div>
+
+    <div class="weeknav">
+      <button class="navbtn" id="prevwk">←</button>
+      <button class="today-btn" id="today-btn" onclick="jumpToToday()" aria-label="Jump to today">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="3" x2="12" y2="12"/>
+          <polyline points="7,8 12,13 17,8"/>
+          <circle cx="12" cy="18.5" r="3"/>
+        </svg>
+      </button>
+      <div class="wlabel">
+        <div class="wname" id="wname">Week 1</div>
+        <div class="wdates" id="wdates">May 4 — May 10</div>
+      </div>
+      <button class="navbtn" id="nextwk">→</button>
     </div>
 
     <div class="days" id="days"></div>
@@ -1120,6 +1097,23 @@
 
   <div id="upcomingview" style="display:none">
     <div id="upcoming-list"></div>
+  </div>
+
+  <!-- Stats row — reference values, click for trend -->
+  <div class="block-section-label">Performance Stats</div>
+  <div class="stats-row" id="stats-row">
+    <div class="stat-tile" data-stat="ftp" onclick="showStatTrend('ftp')">
+      <div class="st-lbl">FTP</div>
+      <div class="st-vl" id="stat-ftp">275<span class="st-unit">W</span></div>
+    </div>
+    <div class="stat-tile" data-stat="hrmax" onclick="showStatTrend('hrmax')">
+      <div class="st-lbl">HR Max</div>
+      <div class="st-vl" id="stat-hrmax">194<span class="st-unit">bpm</span></div>
+    </div>
+    <div class="stat-tile" data-stat="lthr" onclick="showStatTrend('lthr')">
+      <div class="st-lbl">LTHR</div>
+      <div class="st-vl" id="stat-lthr">172<span class="st-unit">bpm</span></div>
+    </div>
   </div>
 
   <!-- Block overview moved to bottom -->
@@ -1637,62 +1631,62 @@ function computeTSS(durMin, npOrAvg, ftp) {
   return Math.round((durMin/60) * IF * IF * 100);
 }
 
-// Build a Zwift Workout XML (.zwo) file from a session's blocks array.
-// Wahoo ELEMNT Bolt imports ZWO via the Companion app for outdoor structured rides.
-// Power values in ZWO are expressed as fractions of FTP (e.g. 0.95 = 95% FTP).
-function buildZwoFile(sess) {
+// Build a Wahoo-compatible .mrc workout file from a session's blocks array.
+// MRC is a text format with time/power pairs (power expressed as % of FTP).
+// Wahoo Companion app imports .mrc and converts to .plan format for the Bolt/ROAM.
+// Format reference: [COURSE HEADER] block + [COURSE DATA] block with vertices
+// at each transition. Each interval needs two vertices: start and end of the step.
+function buildMrcFile(sess) {
   if (!sess.blocks || sess.blocks.length === 0) return null;
-  const name = sess.name;
-  const description = sess.prescribed || '';
-  // Map each block to a SteadyState entry. Power = fraction of FTP.
-  const steadyStates = sess.blocks.map(b => {
-    const power = (b.power / FTP).toFixed(3);
-    const cadence = b.kind === 'work' ? 90 : (b.kind === 'rec' || b.kind === 'easy' ? 85 : 90);
-    return `        <SteadyState Duration="${b.dur}" Power="${power}" Cadence="${cadence}" pace="0">
-            <textevent timeoffset="0" message="${escapeXml(b.label)}"/>
-        </SteadyState>`;
-  }).join('\n');
+  const lines = [];
+  lines.push('[COURSE HEADER]');
+  lines.push('VERSION = 2');
+  lines.push('UNITS = ENGLISH');
+  lines.push(`DESCRIPTION = ${sess.name} - ${sess.prescribed || ''} (FTP ${FTP}W)`);
+  lines.push(`FILE NAME = ${sess.name.replace(/[^a-zA-Z0-9]+/g,'_')}`);
+  lines.push('MINUTES PERCENT');
+  lines.push('[END COURSE HEADER]');
+  lines.push('[COURSE DATA]');
 
-  const totalSec = sess.blocks.reduce((sum, b) => sum + b.dur, 0);
-  const totalMin = Math.round(totalSec / 60);
+  let timeMin = 0;
+  sess.blocks.forEach((b, idx) => {
+    const pct = Math.round((b.power / FTP) * 100);
+    const durMin = b.dur / 60;
+    // Step start: power kicks in at current time
+    lines.push(`${timeMin.toFixed(2)}\t${pct}`);
+    // Step end: same power held until end of duration
+    timeMin += durMin;
+    lines.push(`${timeMin.toFixed(2)}\t${pct}`);
+  });
 
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<workout_file>
-    <author>Glutes</author>
-    <name>${escapeXml(name)}</name>
-    <description>${escapeXml(description)} (${totalMin} min, FTP ${FTP}W)</description>
-    <sportType>bike</sportType>
-    <tags/>
-    <workout>
-${steadyStates}
-    </workout>
-</workout_file>`;
+  lines.push('[END COURSE DATA]');
+
+  // Optional text events block — shows interval labels on the Bolt screen
+  lines.push('[COURSE TEXT]');
+  let evtTime = 0;
+  sess.blocks.forEach(b => {
+    const durMin = b.dur / 60;
+    // Show the label briefly at the start of each block (10 sec)
+    lines.push(`${evtTime.toFixed(2)}\t${b.label}\t10`);
+    evtTime += durMin;
+  });
+  lines.push('[END COURSE TEXT]');
+
+  return lines.join('\n');
 }
 
-function escapeXml(s) {
-  if (s == null) return '';
-  return String(s)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;');
-}
-
-function downloadZwo(weekN, dayIdx, sessIdx) {
+function downloadMrc(weekN, dayIdx, sessIdx) {
   const w = PLAN[weekN - 1];
   const cell = w.days[dayIdx];
   const sess = normalizeDayCell(cell)[sessIdx];
   if (!sess) return;
-  const xml = buildZwoFile(sess);
-  if (!xml) return;
-  // Build filename from session name + date
+  const mrc = buildMrcFile(sess);
+  if (!mrc) return;
   const d = dateForDay(weekN, dayIdx);
   const dateStr = d.toISOString().slice(0,10);
   const safeName = sess.name.replace(/[^a-zA-Z0-9]+/g, '_').replace(/^_|_$/g, '');
-  const filename = `${dateStr}_${safeName}.zwo`;
-  // Trigger download
-  const blob = new Blob([xml], {type: 'application/xml'});
+  const filename = `${dateStr}_${safeName}.mrc`;
+  const blob = new Blob([mrc], {type: 'text/plain'});
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
@@ -1891,8 +1885,8 @@ function renderSessionForm(weekN, dayIdx, sessIdx, sess) {
     </div>
     ${sess.blocks && sess.blocks.length > 0 ? renderWorkoutViz(sess) : ''}
     ${sess.blocks && sess.blocks.length > 0 ? `
-      <button class="zwo-btn" onclick="downloadZwo(${weekN}, ${dayIdx}, ${sessIdx})">
-        <span class="zwo-icon">⬇</span> Export .zwo for Wahoo
+      <button class="zwo-btn" onclick="downloadMrc(${weekN}, ${dayIdx}, ${sessIdx})">
+        <span class="zwo-icon">⬇</span> Export .mrc for Wahoo
       </button>` : ''}
     <div class="status-row" style="margin-top:14px">
       <button class="status-btn ${sessIsHard ? 'hard-done' : ''} ${status==='done'?'active done':''}" onclick="setStatus('${key}','done')">Done</button>
@@ -2453,6 +2447,25 @@ function closeStatModal(event) {
 // ============================================================================
 // INIT
 // ============================================================================
+let lastSeenDate = null;
+
+function checkDateChanged() {
+  const today = new Date().toDateString();
+  if (lastSeenDate && lastSeenDate !== today) {
+    // The date rolled over while the app was backgrounded.
+    // Jump to today's week and let render show the new date.
+    lastSeenDate = today;
+    const todayWeek = detectCurrentWeek();
+    if (currentWeek !== todayWeek) {
+      currentWeek = todayWeek;
+      renderBlocks();
+    }
+    // Always re-render the week so today's card gets the highlight on the new day
+    renderWeek();
+  }
+  lastSeenDate = today;
+}
+
 (function init(){
   load();
   // If state has stat history values, override the planning defaults
@@ -2461,9 +2474,18 @@ function closeStatModal(event) {
   if (histFTP) FTP = histFTP;
   if (histHRMAX) HRMAX = histHRMAX;
   currentWeek = detectCurrentWeek();
+  lastSeenDate = new Date().toDateString();
   renderStatTiles();
   renderBlocks();
   renderWeek();
+
+  // Re-check on tab visibility and focus changes — handles the case where the
+  // app stays open overnight or is restored from background after the date rolls over.
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') checkDateChanged();
+  });
+  window.addEventListener('focus', checkDateChanged);
+  window.addEventListener('pageshow', checkDateChanged);
 })();
 </script>
 </body>
