@@ -9,12 +9,14 @@
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="Glutes"/>
-<meta name="theme-color" content="#0a0a0a"/>
+<meta name="theme-color" content="#17241b"/>
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"/>
+<link rel="apple-touch-icon" sizes="192x192" href="icon-192.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png"/>
 <meta name="mobile-web-app-capable" content="yes"/>
 
 <!-- App icon (inline SVG → data URL, no extra files needed) -->
-<link rel="apple-touch-icon" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180"><rect width="180" height="180" fill="%230a0a0a"/><rect x="14" y="14" width="152" height="152" rx="32" fill="%23c6ff3d"/><text x="90" y="112" font-family="Helvetica Neue,Helvetica,sans-serif" font-weight="900" font-size="44" fill="%230a0a0a" text-anchor="middle" letter-spacing="-2">GLUTES</text></svg>'/>
-<link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180"><rect width="180" height="180" fill="%230a0a0a"/><rect x="14" y="14" width="152" height="152" rx="32" fill="%23c6ff3d"/><text x="90" y="112" font-family="Helvetica Neue,Helvetica,sans-serif" font-weight="900" font-size="44" fill="%230a0a0a" text-anchor="middle" letter-spacing="-2">GLUTES</text></svg>'/>
 <style>
   /* ==================================================================
      UTILITARIAN — lime/black, condensed display, monospace data
@@ -1654,11 +1656,21 @@ function buildZwoFile(sess) {
   const totalSec = sess.blocks.reduce((sum, b) => sum + b.dur, 0);
   const totalMin = Math.round(totalSec / 60);
 
-  // Map each block to a SteadyState entry. Power = fraction of FTP.
+  // Use ABSOLUTE WATTS via PowerLow/PowerHigh (not FTP fractions).
+  // FTP fractions get re-scaled by whatever FTP value the downstream tool
+  // (TrainingPeaks, Wahoo) has configured at import time, which silently
+  // shifts targets if FTP settings don't match. Absolute watts bypass that
+  // entirely — the file says "270W" and every tool downstream shows 270W.
   const steadyStates = sess.blocks.map(b => {
-    const power = (b.power / FTP).toFixed(3);
     const cadence = b.kind === 'work' ? 90 : (b.kind === 'rec' || b.kind === 'easy' ? 85 : 90);
-    return `        <SteadyState Duration="${b.dur}" Power="${power}" Cadence="${cadence}" pace="0">
+    // Target band: work blocks tight (±2%), recovery/warm/cool wider
+    const lowW = b.kind === 'work'
+      ? Math.round(b.power * 0.98)
+      : Math.max(50, Math.round(b.power * 0.90));
+    const highW = b.kind === 'work'
+      ? Math.round(b.power * 1.02)
+      : Math.round(b.power * 1.10);
+    return `        <SteadyState Duration="${b.dur}" PowerLow="${lowW}" PowerHigh="${highW}" Cadence="${cadence}" pace="0">
             <textevent timeoffset="0" message="${escapeXml(b.label)}"/>
         </SteadyState>`;
   }).join('\n');
@@ -1667,7 +1679,7 @@ function buildZwoFile(sess) {
 <workout_file>
     <author>Glutes</author>
     <name>${escapeXml(sess.name)}</name>
-    <description>${escapeXml(sess.prescribed || '')} (${totalMin} min, FTP ${FTP}W)</description>
+    <description>${escapeXml(sess.prescribed || '')} (${totalMin} min, calibrated to FTP ${FTP}W)</description>
     <sportType>bike</sportType>
     <tags/>
     <workout>
