@@ -1332,6 +1332,50 @@ const HALF_MONTY = session('Half Monty retest','vo2',50,
    work(4*60, 290, '4min test'),
    cd(8*60)]);
 
+// ============================================================================
+// CANNES TRAINING CAMP (W8) — June 22-26, 2026
+// Five custom sessions tied to specific climbs and routes in the Côte d'Azur.
+// ============================================================================
+const CANNES_SHAKEOUT = session('Cannes Shakeout', 'z2', 60,
+  'Sunday post-flight shakeout. Cannes seafront promenade, flat, cap 150W, HR ≤135. Light effort to wake the legs after travel.',
+  35, 145,
+  [wu(10*60),
+   work(40*60, 145, 'Flat Z2'),
+   cd(10*60)]);
+
+const CANNES_Z2_LOCAL = session('Cannes Local Z2', 'z2', 120,
+  '2 hours easy aerobic, scout local roads. Z2 base (145-180W), cadence 88+, HR ≤140. Recovery between Mon climb and Thu big day.',
+  90, 165,
+  [wu(15*60),
+   work(90*60, 165, 'Z2 cruise + scout'),
+   cd(15*60)]);
+
+const CANNES_VENCE = session('Col de Vence SS', 'ss', 180,
+  'Drive to Vence base. 3 × 15min @ 240-260W on the climb (sweet spot, 88-95% FTP). Roll back down between intervals.',
+  175, 250,
+  [wu(45*60),
+   work(15*60, 250, 'Vence #1'),
+   rec(8*60),
+   work(15*60, 250, 'Vence #2'),
+   rec(8*60),
+   work(15*60, 250, 'Vence #3'),
+   cd(45*60)]);
+
+const CANNES_ESTEREL = session('Esterel Long', 'z2', 270,
+  '4-5 hour endurance: Cannes → coast west → Théoule → Esterel red rocks → back. Z2 base (165-180W), climbs drift to Z3/threshold briefly. Fuel like a race: 60g carbs/hr.',
+  240, 175,
+  [wu(30*60),
+   work(210*60, 175, 'Z2 + terrain'),
+   cd(30*60)]);
+
+const CANNES_MADONE = session('Col de la Madone', 'thr', 150,
+  '🎯 A-effort: 1 × ~45min all-out ascent at 275-285W (threshold). Race-day simulation. Drive to Menton. Cadence 80-85.',
+  140, 280,
+  [wu(25*60),
+   opener(), openerRec(), opener(), openerRec(), opener(), openerRec(),
+   work(48*60, 280, 'Madone climb'),
+   cd(60*60)]);
+
 const PLAN = [
   { week:1, label:'W1 Base', blockId:1, days:[REST, EASY45, Z2_60, SS_2x15, REST, LONG_Z2, EASY45]},
   { week:2, label:'W2 Base', blockId:1, days:[REST, SS_2x15, Z2_60, THR_2x12, REST, LONG_Z2, EASY45]},
@@ -1339,11 +1383,11 @@ const PLAN = [
   { week:4, label:'W4 Recovery', blockId:1, days:[[SS_3x8, STR_BW], Z2_60, [THR_2x10, STR_BW], REST, EASY45, HALF_MONTY, REST]},
   { week:5, label:'W5 VO2 Intro', blockId:2, days:[[VO2_5x3, STR_BW], Z2_60, [THR_2x10, STR_BW], REST, LONG_Z2, REST, EASY45]},
   { week:6, label:'W6 VO2 Build', blockId:2, days:[[VO2_4x4, STR_BW], Z2_60, [OU_3x10, STR_GYM], REST, LONG_Z2, REST, EASY45]},
-  { week:7, label:'W7 VO2 Peak', blockId:2, days:[[VO2_5x3, STR_BW], Z2_60, [OU_4x8, STR_GYM], REST, LONG_VO2, REST, EASY45]},
-  { week:8, label:'W8 Recovery', blockId:2, days:[[VO2_4x4, STR_BW], Z2_60, EASY45, REST, EASY45, HALF_MONTY, REST]},
-  { week:9, label:'W9 Specific', blockId:3, days:[[CLIMB_2x12, STR_BW], Z2_60, [RACE_3x6, STR_GYM], REST, LONG_Z2_LONG, REST, EASY45]},
-  { week:10, label:'W10 Specific', blockId:3, days:[[VO2_6x3, STR_BW], Z2_60, [CLIMB_3x10, STR_GYM], REST, LONG_VO2, REST, EASY45]},
-  { week:11, label:'W11 Specific Peak', blockId:3, days:[[RACE_3x6, STR_BW], Z2_60, [CLIMB_2x12, STR_GYM], REST, LONG_VO2, REST, EASY45]},
+  { week:7, label:'W7 VO2 Peak', blockId:2, days:[[VO2_5x3, STR_BW], Z2_60, [OU_4x8, STR_GYM], REST, LONG_VO2, REST, CANNES_SHAKEOUT]},
+  { week:8, label:'W8 Cannes Camp', blockId:2, days:[CANNES_VENCE, CANNES_Z2_LOCAL, REST, CANNES_ESTEREL, CANNES_MADONE, EASY45, REST]},
+  { week:9, label:'W9 Taper + Retest', blockId:2, days:[REST, EASY45, Z2_60, OPENERS, HALF_MONTY, REST, EASY45]},
+  { week:10, label:'W10 Specific', blockId:3, days:[[CLIMB_2x12, STR_BW], Z2_60, [RACE_3x6, STR_GYM], REST, LONG_Z2_LONG, REST, EASY45]},
+  { week:11, label:'W11 Specific Peak', blockId:3, days:[[VO2_6x3, STR_BW], Z2_60, [CLIMB_3x10, STR_GYM], REST, LONG_VO2, REST, EASY45]},
   { week:12, label:'W12 Recovery', blockId:3, days:[[RACE_3x5, STR_BW], Z2_60, EASY45, REST, EASY45, LONG_Z2, REST]},
   { week:13, label:'W13 Sharpen', blockId:4, days:[[SHARP_5x2, STR_BW], EASY45, [RACE_3x5, STR_BW], REST, EASY45, Z2_60, REST]},
   { week:14, label:'W14 PR Week', blockId:4, days:[SHARP_5x2, EASY30, TEST_5MIN, REST, OPENERS, PR_DAY, REST]}
@@ -1656,21 +1700,17 @@ function buildZwoFile(sess) {
   const totalSec = sess.blocks.reduce((sum, b) => sum + b.dur, 0);
   const totalMin = Math.round(totalSec / 60);
 
-  // Use ABSOLUTE WATTS via PowerLow/PowerHigh (not FTP fractions).
-  // FTP fractions get re-scaled by whatever FTP value the downstream tool
-  // (TrainingPeaks, Wahoo) has configured at import time, which silently
-  // shifts targets if FTP settings don't match. Absolute watts bypass that
-  // entirely — the file says "270W" and every tool downstream shows 270W.
+  // Use FTP FRACTIONS — TrainingPeaks always multiplies the Power value by its
+  // own FTP setting, regardless of which attribute we use (Power, PowerLow,
+  // PowerHigh). Absolute watts would get multiplied AGAIN, producing absurd
+  // 70,000W targets. The only correct format is fractions.
+  // 
+  // CRITICAL: For this to render correctly downstream, the user's TP FTP
+  // setting MUST match the FTP value in Glutes. Verify both before importing.
   const steadyStates = sess.blocks.map(b => {
+    const power = (b.power / FTP).toFixed(3);
     const cadence = b.kind === 'work' ? 90 : (b.kind === 'rec' || b.kind === 'easy' ? 85 : 90);
-    // Target band: work blocks tight (±2%), recovery/warm/cool wider
-    const lowW = b.kind === 'work'
-      ? Math.round(b.power * 0.98)
-      : Math.max(50, Math.round(b.power * 0.90));
-    const highW = b.kind === 'work'
-      ? Math.round(b.power * 1.02)
-      : Math.round(b.power * 1.10);
-    return `        <SteadyState Duration="${b.dur}" PowerLow="${lowW}" PowerHigh="${highW}" Cadence="${cadence}" pace="0">
+    return `        <SteadyState Duration="${b.dur}" Power="${power}" Cadence="${cadence}" pace="0">
             <textevent timeoffset="0" message="${escapeXml(b.label)}"/>
         </SteadyState>`;
   }).join('\n');
@@ -1679,7 +1719,7 @@ function buildZwoFile(sess) {
 <workout_file>
     <author>Glutes</author>
     <name>${escapeXml(sess.name)}</name>
-    <description>${escapeXml(sess.prescribed || '')} (${totalMin} min, calibrated to FTP ${FTP}W)</description>
+    <description>${escapeXml(sess.prescribed || '')} (${totalMin} min, calibrated to FTP ${FTP}W — verify your TP FTP matches)</description>
     <sportType>bike</sportType>
     <tags/>
     <workout>
