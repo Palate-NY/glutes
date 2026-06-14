@@ -1242,6 +1242,24 @@ const VO2_6x3 = session('VO2max 6×3', 'vo2', 70,
    ...repeat(6, work(3*60, 310, 'VO2max'), rec(2*60)),
    cd(10*60)]);
 
+// Rønnestad 30/15 protocol — 3 blocks of 13 × (30s @ 120% FTP / 15s @ 55% FTP).
+// Designed to maximize time at VO2max via short recovery valleys that don't
+// allow HR/lactate to fully clear. Indoor or flat road only — terrain breaks
+// the rhythm. Each block is ~10 min; 3 blocks = 30 min total VO2 work.
+const VO2_30_15 = session('VO2 30/15 × 13', 'vo2', 70,
+  '3 blocks of 13 × (30s @ 330W / 15s @ 150W), 4min recovery between blocks. Trainer or flat road only.',
+  110, 330,
+  [wu(15*60), opener(), openerRec(), opener(), openerRec(),
+   // Block 1: 13 reps of 30s on / 15s off
+   ...repeat(13, work(30, 330, '30s ON'), work(15, 150, '15s off')),
+   rec(4*60),
+   // Block 2
+   ...repeat(13, work(30, 330, '30s ON'), work(15, 150, '15s off')),
+   rec(4*60),
+   // Block 3
+   ...repeat(13, work(30, 330, '30s ON'), work(15, 150, '15s off')),
+   cd(8*60)]);
+
 // Over-unders: 1 min over (290W), 1 min under (250W) × 5 per block
 const OU_3x10 = session('Over-Unders 3×10', 'thr', 70,
   '3 × 10min OU: 1min @ 290W / 1min @ 250W × 5', 95, 270,
@@ -1387,7 +1405,7 @@ const PLAN = [
   { week:8, label:'W8 Cannes Camp', blockId:2, days:[CANNES_VENCE, CANNES_Z2_LOCAL, REST, CANNES_ESTEREL, CANNES_MADONE, EASY45, REST]},
   { week:9, label:'W9 Taper + Retest', blockId:2, days:[REST, EASY45, Z2_60, OPENERS, HALF_MONTY, REST, EASY45]},
   { week:10, label:'W10 Specific', blockId:3, days:[[CLIMB_2x12, STR_BW], Z2_60, [RACE_3x6, STR_GYM], REST, LONG_Z2_LONG, REST, EASY45]},
-  { week:11, label:'W11 Specific Peak', blockId:3, days:[[VO2_6x3, STR_BW], Z2_60, [CLIMB_3x10, STR_GYM], REST, LONG_VO2, REST, EASY45]},
+  { week:11, label:'W11 Specific Peak', blockId:3, days:[[VO2_30_15, STR_BW], Z2_60, [CLIMB_3x10, STR_GYM], REST, LONG_VO2, REST, EASY45]},
   { week:12, label:'W12 Recovery', blockId:3, days:[[RACE_3x5, STR_BW], Z2_60, EASY45, REST, EASY45, LONG_Z2, REST]},
   { week:13, label:'W13 Sharpen', blockId:4, days:[[SHARP_5x2, STR_BW], EASY45, [RACE_3x5, STR_BW], REST, EASY45, Z2_60, REST]},
   { week:14, label:'W14 PR Week', blockId:4, days:[SHARP_5x2, EASY30, TEST_5MIN, REST, OPENERS, PR_DAY, REST]}
