@@ -1394,6 +1394,17 @@ const CANNES_TANNERON_AE = session('Col du Tanneron A-effort', 'thr', 120,
    work(38*60, 280, 'Tanneron A-effort'),
    cd(40*60)]);
 
+const CANNES_VENCE_SS = session('Col de Vence SS', 'ss', 300,
+  'Ride to Vence base (~35km easy Z2). 3 × 15min @ 240-260W (sweet spot) on the climb, easy roll back between. Ride back to La Bocca. Fuel 60g carbs/hr.',
+  240, 250,
+  [wu(90*60),
+   work(15*60, 250, 'Vence #1'),
+   rec(8*60),
+   work(15*60, 250, 'Vence #2'),
+   rec(8*60),
+   work(15*60, 250, 'Vence #3'),
+   cd(120*60)]);
+
 const CANNES_ESTEREL = session('Esterel Long', 'z2', 270,
   '4-5 hour endurance: Cannes → coast west → Théoule → Esterel red rocks → back. Z2 base (165-180W), climbs drift to Z3/threshold briefly. Fuel like a race: 60g carbs/hr.',
   240, 175,
@@ -1409,7 +1420,7 @@ const PLAN = [
   { week:5, label:'W5 VO2 Intro', blockId:2, days:[[VO2_5x3, STR_BW], Z2_60, [THR_2x10, STR_BW], REST, LONG_Z2, REST, EASY45]},
   { week:6, label:'W6 VO2 Build', blockId:2, days:[[VO2_4x4, STR_BW], Z2_60, [OU_3x10, STR_GYM], REST, LONG_Z2, REST, EASY45]},
   { week:7, label:'W7 VO2 Peak', blockId:2, days:[[VO2_5x3, STR_BW], Z2_60, [OU_4x8, STR_GYM], REST, LONG_VO2, CANNES_SHAKEOUT, CANNES_SUN_AM]},
-  { week:8, label:'W8 Cannes Camp', blockId:2, days:[CANNES_TANNERON_SS, CANNES_Z2_LOCAL, REST, CANNES_ESTEREL, CANNES_TANNERON_AE, EASY45, REST]},
+  { week:8, label:'W8 Cannes Camp', blockId:2, days:[CANNES_VENCE_SS, CANNES_Z2_LOCAL, REST, CANNES_ESTEREL, CANNES_TANNERON_AE, REST, REST]},
   { week:9, label:'W9 Taper + Retest', blockId:2, days:[REST, EASY45, Z2_60, OPENERS, HALF_MONTY, REST, EASY45]},
   { week:10, label:'W10 Specific', blockId:3, days:[[CLIMB_2x12, STR_BW], Z2_60, [RACE_3x6, STR_GYM], REST, LONG_Z2_LONG, REST, EASY45]},
   { week:11, label:'W11 Specific Peak', blockId:3, days:[[VO2_30_15, STR_BW], Z2_60, [CLIMB_3x10, STR_GYM], REST, LONG_VO2, REST, EASY45]},
