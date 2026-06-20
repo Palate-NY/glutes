@@ -1361,23 +1361,38 @@ const CANNES_SHAKEOUT = session('Cannes Shakeout', 'z2', 60,
    work(40*60, 145, 'Flat Z2'),
    cd(10*60)]);
 
+const CANNES_SUN_AM = session('Cannes Sun AM Z2', 'z2', 90,
+  '90min Z2 early ride (back by 11am). La Bocca → coast → Cap d\'Antibes loop. Z2 (145-180W), cadence 88+, HR ≤140.',
+  55, 165,
+  [wu(15*60),
+   work(60*60, 165, 'Z2 cruise'),
+   cd(15*60)]);
+
 const CANNES_Z2_LOCAL = session('Cannes Local Z2', 'z2', 120,
-  '2 hours easy aerobic, scout local roads. Z2 base (145-180W), cadence 88+, HR ≤140. Recovery between Mon climb and Thu big day.',
+  '2 hours easy aerobic from La Bocca, scout local roads. Esterel coastal road or Mougins backroads. Z2 (145-180W), cadence 88+, HR ≤140. Sets up Tue Tanneron SS.',
   90, 165,
   [wu(15*60),
    work(90*60, 165, 'Z2 cruise + scout'),
    cd(15*60)]);
 
-const CANNES_VENCE = session('Col de Vence SS', 'ss', 180,
-  'Drive to Vence base. 3 × 15min @ 240-260W on the climb (sweet spot, 88-95% FTP). Roll back down between intervals.',
-  175, 250,
-  [wu(45*60),
-   work(15*60, 250, 'Vence #1'),
+const CANNES_TANNERON_SS = session('Col du Tanneron SS', 'ss', 180,
+  '5km warmup ride to Mandelieu base. 3 × 15min @ 240-260W (sweet spot) on the climb, easy roll back between. Cool-down ride home.',
+  170, 250,
+  [wu(20*60),
+   work(15*60, 250, 'Tanneron #1'),
    rec(8*60),
-   work(15*60, 250, 'Vence #2'),
+   work(15*60, 250, 'Tanneron #2'),
    rec(8*60),
-   work(15*60, 250, 'Vence #3'),
+   work(15*60, 250, 'Tanneron #3'),
    cd(45*60)]);
+
+const CANNES_TANNERON_AE = session('Col du Tanneron A-effort', 'thr', 120,
+  '🎯 Race-pace climb test. 1 × ~35-40min all-out ascent at 275-285W threshold. Same climb as Tuesday — direct A/B comparison.',
+  130, 280,
+  [wu(20*60),
+   opener(), openerRec(), opener(), openerRec(), opener(), openerRec(),
+   work(38*60, 280, 'Tanneron A-effort'),
+   cd(40*60)]);
 
 const CANNES_ESTEREL = session('Esterel Long', 'z2', 270,
   '4-5 hour endurance: Cannes → coast west → Théoule → Esterel red rocks → back. Z2 base (165-180W), climbs drift to Z3/threshold briefly. Fuel like a race: 60g carbs/hr.',
@@ -1386,14 +1401,6 @@ const CANNES_ESTEREL = session('Esterel Long', 'z2', 270,
    work(210*60, 175, 'Z2 + terrain'),
    cd(30*60)]);
 
-const CANNES_MADONE = session('Col de la Madone', 'thr', 150,
-  '🎯 A-effort: 1 × ~45min all-out ascent at 275-285W (threshold). Race-day simulation. Drive to Menton. Cadence 80-85.',
-  140, 280,
-  [wu(25*60),
-   opener(), openerRec(), opener(), openerRec(), opener(), openerRec(),
-   work(48*60, 280, 'Madone climb'),
-   cd(60*60)]);
-
 const PLAN = [
   { week:1, label:'W1 Base', blockId:1, days:[REST, EASY45, Z2_60, SS_2x15, REST, LONG_Z2, EASY45]},
   { week:2, label:'W2 Base', blockId:1, days:[REST, SS_2x15, Z2_60, THR_2x12, REST, LONG_Z2, EASY45]},
@@ -1401,8 +1408,8 @@ const PLAN = [
   { week:4, label:'W4 Recovery', blockId:1, days:[[SS_3x8, STR_BW], Z2_60, [THR_2x10, STR_BW], REST, EASY45, HALF_MONTY, REST]},
   { week:5, label:'W5 VO2 Intro', blockId:2, days:[[VO2_5x3, STR_BW], Z2_60, [THR_2x10, STR_BW], REST, LONG_Z2, REST, EASY45]},
   { week:6, label:'W6 VO2 Build', blockId:2, days:[[VO2_4x4, STR_BW], Z2_60, [OU_3x10, STR_GYM], REST, LONG_Z2, REST, EASY45]},
-  { week:7, label:'W7 VO2 Peak', blockId:2, days:[[VO2_5x3, STR_BW], Z2_60, [OU_4x8, STR_GYM], REST, LONG_VO2, REST, CANNES_SHAKEOUT]},
-  { week:8, label:'W8 Cannes Camp', blockId:2, days:[CANNES_VENCE, CANNES_Z2_LOCAL, REST, CANNES_ESTEREL, CANNES_MADONE, EASY45, REST]},
+  { week:7, label:'W7 VO2 Peak', blockId:2, days:[[VO2_5x3, STR_BW], Z2_60, [OU_4x8, STR_GYM], REST, LONG_VO2, CANNES_SHAKEOUT, CANNES_SUN_AM]},
+  { week:8, label:'W8 Cannes Camp', blockId:2, days:[CANNES_TANNERON_SS, CANNES_Z2_LOCAL, REST, CANNES_ESTEREL, CANNES_TANNERON_AE, EASY45, REST]},
   { week:9, label:'W9 Taper + Retest', blockId:2, days:[REST, EASY45, Z2_60, OPENERS, HALF_MONTY, REST, EASY45]},
   { week:10, label:'W10 Specific', blockId:3, days:[[CLIMB_2x12, STR_BW], Z2_60, [RACE_3x6, STR_GYM], REST, LONG_Z2_LONG, REST, EASY45]},
   { week:11, label:'W11 Specific Peak', blockId:3, days:[[VO2_30_15, STR_BW], Z2_60, [CLIMB_3x10, STR_GYM], REST, LONG_VO2, REST, EASY45]},
