@@ -1319,6 +1319,28 @@ const RACE_3x5 = session('Race-Pace 3×5', 'vo2', 60,
    ...repeat(3, work(5*60, 295, 'Race pace'), rec(5*60)),
    cd(8*60)]);
 
+// Direct race simulation: 2 × 8min at climb-day power (300-315W).
+// Matches the August goal of 8-10 min at 320W. Trains VO2 durability at
+// the specific duration/intensity you'll deliver on race day.
+const RACE_2x8 = session('Race Sim 2×8', 'vo2', 75,
+  '🎯 Climb simulation: 2 × 8min @ 300-315W (target race power), 8min recovery. Pace evenly.',
+  95, 305,
+  [wu(15*60), opener(), openerRec(), opener(), openerRec(),
+   work(8*60, 305, 'Race sim #1'),
+   rec(8*60),
+   work(8*60, 305, 'Race sim #2'),
+   cd(8*60)]);
+
+// Z2 endurance + short neural sprints at the end. Sprints tacked onto Z2
+// maintain sprint capacity without stealing recovery from VO2/threshold days.
+const Z2_60_SPRINT = session('Z2 + Sprints', 'z2', 60,
+  '45min Z2 (145-180W, cad 88+) then 5 × 15sec ALL-OUT sprints in the last 15min. Rolling start, 3-4min full recovery between sprints.',
+  55, 165,
+  [wu(10*60),
+   work(35*60, 165, 'Z2 base'),
+   ...repeat(5, work(15, 500, 'SPRINT'), rec(3*60+45)),
+   cd(3*60)]);
+
 const TEST_5MIN = session('5min Power Test', 'vo2', 50,
   '20min build + 5min ALL-OUT (pace evenly)', 65, 305,
   [{ dur: 20*60, power: 175, label:'Build', kind:'warm' },
@@ -1338,9 +1360,10 @@ const PR_DAY = session('PR ATTEMPT', 'vo2', 0,
   '🎯 Climb day in France', 0, 290, []);
 
 const STR_BW = session('Strength (bodyweight)', 'strength', 20,
-  'Goblet sq, RDL, Bulgarian split sq, calf raises, side plank', 0, null, []);
-const STR_GYM = session('Strength (gym)', 'strength', 30,
-  'Add leg press, light load on goblet/RDL', 0, null, []);
+  'Goblet sq 3×12, single-leg RDL 3×10, Bulgarian split sq 3×8, calf raises 3×15, side plank 3×30s', 0, null, []);
+const STR_GYM = session('Strength (heavy)', 'strength', 45,
+  'Sprint-prep: Back sq 4×4 @ 80-85% 1RM (2-3min rest), Bulgarian split sq w/ DB 3×6/side heavy, Barbell hip thrust 3×5 heavy, Explosive step-ups 3×5/side (fast), Plank 3×45s. Full recovery between sets.',
+  0, null, []);
 const HALF_MONTY = session('Half Monty retest','vo2',50,
   'Ramp test, morning, fresh',60, null,
   [wu(10*60),
@@ -1422,9 +1445,9 @@ const PLAN = [
   { week:7, label:'W7 VO2 Peak', blockId:2, days:[[VO2_5x3, STR_BW], Z2_60, [OU_4x8, STR_GYM], REST, LONG_VO2, CANNES_SHAKEOUT, CANNES_SUN_AM]},
   { week:8, label:'W8 Cannes Camp', blockId:2, days:[CANNES_VENCE_SS, CANNES_Z2_LOCAL, REST, CANNES_ESTEREL, CANNES_TANNERON_AE, REST, REST]},
   { week:9, label:'W9 Taper + Retest', blockId:2, days:[REST, EASY45, Z2_60, OPENERS, HALF_MONTY, REST, EASY45]},
-  { week:10, label:'W10 Specific', blockId:3, days:[[CLIMB_2x12, STR_BW], Z2_60, [RACE_3x6, STR_GYM], REST, LONG_Z2_LONG, REST, EASY45]},
-  { week:11, label:'W11 Specific Peak', blockId:3, days:[[VO2_30_15, STR_BW], Z2_60, [CLIMB_3x10, STR_GYM], REST, LONG_VO2, REST, EASY45]},
-  { week:12, label:'W12 Recovery', blockId:3, days:[[RACE_3x5, STR_BW], Z2_60, EASY45, REST, EASY45, LONG_Z2, REST]},
+  { week:10, label:'W10 Specific', blockId:3, days:[[CLIMB_2x12, STR_GYM], Z2_60_SPRINT, [RACE_3x6, STR_BW], REST, LONG_Z2_LONG, REST, EASY45]},
+  { week:11, label:'W11 Specific Peak', blockId:3, days:[[VO2_30_15, STR_GYM], Z2_60_SPRINT, [CLIMB_3x10, STR_BW], REST, LONG_VO2, REST, EASY45]},
+  { week:12, label:'W12 Recovery + Race Sim', blockId:3, days:[[RACE_2x8, STR_BW], Z2_60, EASY45, REST, EASY45, LONG_Z2, REST]},
   { week:13, label:'W13 Sharpen', blockId:4, days:[[SHARP_5x2, STR_BW], EASY45, [RACE_3x5, STR_BW], REST, EASY45, Z2_60, REST]},
   { week:14, label:'W14 PR Week', blockId:4, days:[SHARP_5x2, EASY30, TEST_5MIN, REST, OPENERS, PR_DAY, REST]}
 ];
