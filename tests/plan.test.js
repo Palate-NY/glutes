@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import golden47 from './fixtures/golden-v47.json';
-import golden26 from './fixtures/golden-2026-june.json';
+import golden26 from './fixtures/golden-2026-deployed.json';
 import { RAW_PLANS, PLANS, planById, planForDate, detectCurrentWeek, dateForDay, validatePlan, loadPlan } from '../src/lib/plan.js';
 import { toISODate } from '../src/lib/dates.js';
 
@@ -16,7 +16,7 @@ describe('plan JSON', () => {
     expect(idsOf(planById('2027-season'))).toEqual(goldenIds(golden47));
   });
 
-  it('2026 climb PR matches the pre-2027 PLAN array', () => {
+  it('2026 climb PR matches the PLAN array of the deployed single-file app (what the 2026 log was made against)', () => {
     expect(idsOf(planById('2026-climb-pr'))).toEqual(goldenIds(golden26));
   });
 

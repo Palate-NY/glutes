@@ -2724,6 +2724,158 @@
     }
    ]
   },
+  "RACE_2x8": {
+   "name": "Race Sim 2×8",
+   "type": "vo2",
+   "dur": 75,
+   "prescribed": "🎯 Climb simulation: 2 × 8min @ 300-315W (target race power), 8min recovery. Pace evenly.",
+   "tss": 95,
+   "targetPower": 305,
+   "blocks": [
+    {
+     "dur": 900,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 480,
+     "power": 305,
+     "label": "Race sim #1",
+     "kind": "work"
+    },
+    {
+     "dur": 480,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 480,
+     "power": 305,
+     "label": "Race sim #2",
+     "kind": "work"
+    },
+    {
+     "dur": 480,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "Z2_60_SPRINT": {
+   "name": "Z2 + Sprints",
+   "type": "z2",
+   "dur": 60,
+   "prescribed": "45min Z2 (145-180W, cad 88+) then 5 × 15sec ALL-OUT sprints in the last 15min. Rolling start, 3-4min full recovery between sprints.",
+   "tss": 55,
+   "targetPower": 165,
+   "blocks": [
+    {
+     "dur": 600,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 2100,
+     "power": 165,
+     "label": "Z2 base",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 500,
+     "label": "SPRINT",
+     "kind": "work"
+    },
+    {
+     "dur": 225,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 15,
+     "power": 500,
+     "label": "SPRINT",
+     "kind": "work"
+    },
+    {
+     "dur": 225,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 15,
+     "power": 500,
+     "label": "SPRINT",
+     "kind": "work"
+    },
+    {
+     "dur": 225,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 15,
+     "power": 500,
+     "label": "SPRINT",
+     "kind": "work"
+    },
+    {
+     "dur": 225,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 15,
+     "power": 500,
+     "label": "SPRINT",
+     "kind": "work"
+    },
+    {
+     "dur": 225,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 180,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
   "TEST_5MIN": {
    "name": "5min Power Test",
    "type": "vo2",
@@ -2841,16 +2993,16 @@
    "name": "Strength (bodyweight)",
    "type": "strength",
    "dur": 20,
-   "prescribed": "Goblet sq, RDL, Bulgarian split sq, calf raises, side plank",
+   "prescribed": "Goblet sq 3×12, single-leg RDL 3×10, Bulgarian split sq 3×8, calf raises 3×15, side plank 3×30s",
    "tss": 0,
    "targetPower": null,
    "blocks": []
   },
   "STR_GYM": {
-   "name": "Strength (gym)",
+   "name": "Strength (heavy)",
    "type": "strength",
-   "dur": 30,
-   "prescribed": "Add leg press, light load on goblet/RDL",
+   "dur": 45,
+   "prescribed": "Sprint-prep: Back sq 4×4 @ 80-85% 1RM (2-3min rest), Bulgarian split sq w/ DB 3×6/side heavy, Barbell hip thrust 3×5 heavy, Explosive step-ups 3×5/side (fast), Plank 3×45s. Full recovery between sets.",
    "tss": 0,
    "targetPower": null,
    "blocks": []
@@ -3530,14 +3682,14 @@
    "days": [
     [
      "CLIMB_2x12",
-     "STR_BW"
+     "STR_GYM"
     ],
     [
-     "Z2_60"
+     "Z2_60_SPRINT"
     ],
     [
      "RACE_3x6",
-     "STR_GYM"
+     "STR_BW"
     ],
     [
      "REST"
@@ -3560,14 +3712,14 @@
    "days": [
     [
      "VO2_30_15",
-     "STR_BW"
+     "STR_GYM"
     ],
     [
-     "Z2_60"
+     "Z2_60_SPRINT"
     ],
     [
      "CLIMB_3x10",
-     "STR_GYM"
+     "STR_BW"
     ],
     [
      "REST"
@@ -3585,11 +3737,11 @@
   },
   {
    "week": 12,
-   "label": "W12 Recovery",
+   "label": "W12 Recovery + Race Sim",
    "blockId": 3,
    "days": [
     [
-     "RACE_3x5",
+     "RACE_2x8",
      "STR_BW"
     ],
     [
@@ -3696,6 +3848,8 @@
   "RACE_3x6": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Race-Pace 3×6</name>\n    <description>3 × 6min @ 290-300W (race target), 6min recovery (62 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"900\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"360\" Power=\"1.073\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Race pace\"/>\n        </SteadyState>\n        <SteadyState Duration=\"360\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"360\" Power=\"1.073\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Race pace\"/>\n        </SteadyState>\n        <SteadyState Duration=\"360\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"360\" Power=\"1.073\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Race pace\"/>\n        </SteadyState>\n        <SteadyState Duration=\"360\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
   "SHARP_5x2": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Sharpener 5×2</name>\n    <description>5 × 2min @ 315-330W, 3min recovery (46 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"720\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"120\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Sharpener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"120\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Sharpener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"120\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Sharpener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"120\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Sharpener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"120\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Sharpener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"360\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
   "RACE_3x5": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Race-Pace 3×5</name>\n    <description>3 × 5min @ 290-300W, 5min recovery (53 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"720\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"1.073\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Race pace\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"1.073\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Race pace\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"1.073\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Race pace\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "RACE_2x8": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Race Sim 2×8</name>\n    <description>🎯 Climb simulation: 2 × 8min @ 300-315W (target race power), 8min recovery. Pace evenly. (50 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"900\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Race sim #1\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Race sim #2\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "Z2_60_SPRINT": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Z2 + Sprints</name>\n    <description>45min Z2 (145-180W, cad 88+) then 5 × 15sec ALL-OUT sprints in the last 15min. Rolling start, 3-4min full recovery between sprints. (68 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"600\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"2100\" Power=\"0.600\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Z2 base\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"1.818\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"SPRINT\"/>\n        </SteadyState>\n        <SteadyState Duration=\"225\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"1.818\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"SPRINT\"/>\n        </SteadyState>\n        <SteadyState Duration=\"225\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"1.818\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"SPRINT\"/>\n        </SteadyState>\n        <SteadyState Duration=\"225\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"1.818\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"SPRINT\"/>\n        </SteadyState>\n        <SteadyState Duration=\"225\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"1.818\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"SPRINT\"/>\n        </SteadyState>\n        <SteadyState Duration=\"225\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
   "TEST_5MIN": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>5min Power Test</name>\n    <description>20min build + 5min ALL-OUT (pace evenly) (43 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"1200\" Power=\"0.636\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Build\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"ALL-OUT\"/>\n        </SteadyState>\n        <SteadyState Duration=\"900\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
   "OPENERS": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Pre-Race Openers</name>\n    <description>30min easy + 3×90s @ 280W, 3min recovery (44 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"1800\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"1.018\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"1.018\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"1.018\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
   "PR_DAY": null,
