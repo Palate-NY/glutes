@@ -1,0 +1,74 @@
+import { describe, it, expect } from 'vitest';
+import golden47 from './fixtures/golden-v47.json';
+import golden26 from './fixtures/golden-2026-june.json';
+import { RAW_PLANS, PLANS, planById, planForDate, detectCurrentWeek, dateForDay, validatePlan, loadPlan } from '../src/lib/plan.js';
+import { toISODate } from '../src/lib/dates.js';
+
+const idsOf = (plan) => plan.weeks.map((w) => ({ week: w.week, label: w.label, blockId: w.blockId, days: w.days.map((d) => d.map((s) => s.id)) }));
+const goldenIds = (g) => g.plan.map((w) => ({ week: w.week, label: w.label, blockId: w.blockId, days: w.days }));
+
+describe('plan JSON', () => {
+  it('all plans validate', () => {
+    for (const raw of RAW_PLANS) expect(validatePlan(raw), raw.id).toEqual([]);
+  });
+
+  it('2027 season matches the v47 PLAN array', () => {
+    expect(idsOf(planById('2027-season'))).toEqual(goldenIds(golden47));
+  });
+
+  it('2026 climb PR matches the pre-2027 PLAN array', () => {
+    expect(idsOf(planById('2026-climb-pr'))).toEqual(goldenIds(golden26));
+  });
+
+  it('2026 block ranges are computed from the plan data', () => {
+    // The old hand-written tiles said Block 2 = W5–W8 / Block 3 = W9–W12, but the
+    // PLAN array tagged W9 (Taper + Retest) as block 2. The data wins.
+    const p = planById('2026-climb-pr');
+    expect(p.blocks.map((b) => [b.weeks, b.dateRange])).toEqual([
+      ['W1–W4', 'May 4 – May 31'],
+      ['W5–W9', 'Jun 1 – Jul 5'],
+      ['W10–W12', 'Jul 6 – Jul 26'],
+      ['W13–W14', 'Jul 27 – Aug 9'],
+    ]);
+    expect(golden26.BLOCKS[0].dateRange).toBe('May 4 – May 31');
+  });
+
+  it('2027 season starts Mon Sep 7 2026 and ends after 16 weeks', () => {
+    const p = planById('2027-season');
+    expect(toISODate(p.start)).toBe('2026-09-07');
+    expect(p.weeks).toHaveLength(16);
+    expect(toISODate(dateForDay(p, 16, 6))).toBe('2026-12-27');
+    expect(p.blocks.map((b) => b.weeks)).toEqual(['W1–W3', 'W4–W16']);
+  });
+});
+
+describe('plan selection and week detection', () => {
+  it('picks the plan covering today, else the most recent', () => {
+    expect(planForDate(new Date(2026, 5, 15)).id).toBe('2026-climb-pr');
+    expect(planForDate(new Date(2026, 8, 6)).id).toBe('2026-climb-pr'); // Sep 6: gap between plans
+    expect(planForDate(new Date(2026, 8, 7)).id).toBe('2027-season');
+    expect(planForDate(new Date(2028, 0, 1)).id).toBe('2027-season');
+    expect(planForDate(new Date(2020, 0, 1)).id).toBe('2026-climb-pr');
+  });
+
+  it('detectCurrentWeek clamps to the plan length (not a hardcoded 14)', () => {
+    const p = planById('2027-season');
+    expect(detectCurrentWeek(p, new Date(2026, 8, 1))).toBe(1);
+    expect(detectCurrentWeek(p, new Date(2026, 8, 13, 23))).toBe(1);
+    expect(detectCurrentWeek(p, new Date(2026, 8, 14))).toBe(2);
+    expect(detectCurrentWeek(p, new Date(2026, 11, 27))).toBe(16);
+    expect(detectCurrentWeek(p, new Date(2027, 2, 1))).toBe(16);
+  });
+});
+
+describe('validatePlan', () => {
+  const base = { id: 'p', name: 'P', start: '2026-09-07', blocks: [{ id: 1, name: 'B', focus: 'F', purpose: 'P' }], weeks: [{ week: 1, label: 'W1', block: 1, days: ['REST', 'REST', 'REST', 'REST', 'REST', 'REST', 'REST'] }] };
+  it('accepts a minimal plan', () => expect(validatePlan(base)).toEqual([]));
+  it('rejects unknown sessions, non-Monday starts, bad week numbers, short weeks', () => {
+    expect(validatePlan({ ...base, weeks: [{ ...base.weeks[0], days: ['REST', 'NOPE', 'REST', 'REST', 'REST', 'REST', 'REST'] }] })).toHaveLength(1);
+    expect(validatePlan({ ...base, start: '2026-09-08' })).toHaveLength(1);
+    expect(validatePlan({ ...base, weeks: [{ ...base.weeks[0], week: 2 }] })).toHaveLength(1);
+    expect(validatePlan({ ...base, weeks: [{ ...base.weeks[0], days: ['REST'] }] })).toHaveLength(1);
+    expect(() => loadPlan({ ...base, start: 'nope' })).toThrow();
+  });
+});
