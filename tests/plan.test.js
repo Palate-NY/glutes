@@ -45,7 +45,8 @@ describe('plan JSON', () => {
 describe('plan selection and week detection', () => {
   it('picks the plan covering today, else the most recent', () => {
     expect(planForDate(new Date(2026, 5, 15)).id).toBe('2026-climb-pr');
-    expect(planForDate(new Date(2026, 8, 6)).id).toBe('2026-climb-pr'); // Sep 6: gap between plans
+    expect(planForDate(new Date(2026, 7, 10)).id).toBe('2026-climb-pr'); // Aug 10: gap, next plan is 4 weeks out
+    expect(planForDate(new Date(2026, 8, 6)).id).toBe('2027-season');   // Sep 6: gap, next plan starts tomorrow
     expect(planForDate(new Date(2026, 8, 7)).id).toBe('2027-season');
     expect(planForDate(new Date(2028, 0, 1)).id).toBe('2027-season');
     expect(planForDate(new Date(2020, 0, 1)).id).toBe('2026-climb-pr');

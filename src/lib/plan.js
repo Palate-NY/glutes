@@ -88,13 +88,19 @@ export function planById(id) {
   return PLANS.find((p) => p.id === id) || null;
 }
 
-/** The plan that covers `now`; otherwise the most recently started one. */
+/**
+ * The plan that covers `now`. In a gap between plans: the next plan if it
+ * starts within two weeks, otherwise the most recently started one.
+ */
 export function planForDate(now = new Date(), plans = PLANS) {
   const covering = plans.find((p) => now >= p.start && now < p.end);
   if (covering) return covering;
-  const started = plans.filter((p) => p.start <= now).sort((a, b) => b.start - a.start);
-  if (started.length) return started[0];
-  return plans.slice().sort((a, b) => a.start - b.start)[0];
+  const byStart = plans.slice().sort((a, b) => a.start - b.start);
+  const next = byStart.find((p) => p.start > now);
+  if (next && next.start <= addDays(now, 14)) return next;
+  const started = byStart.filter((p) => p.start <= now);
+  if (started.length) return started[started.length - 1];
+  return byStart[0];
 }
 
 export function detectCurrentWeek(plan, now = new Date()) {
