@@ -1,0 +1,12 @@
+[
+  {
+    "id": "REST",
+    "name": "Rest",
+    "type": "rest",
+    "duration_min": 0,
+    "description": "Full rest. Walk, hydrate, sleep. Recovery IS training.",
+    "tss": 0,
+    "avg_power": null,
+    "blocks": []
+  }
+]

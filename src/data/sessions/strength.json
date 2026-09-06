@@ -1,0 +1,22 @@
+[
+  {
+    "id": "STR_BW",
+    "name": "Strength (bodyweight)",
+    "type": "strength",
+    "duration_min": 20,
+    "description": "Goblet sq 3×12, single-leg RDL 3×10, Bulgarian split sq 3×8, calf raises 3×15, side plank 3×30s",
+    "tss": 0,
+    "avg_power": null,
+    "blocks": []
+  },
+  {
+    "id": "STR_GYM",
+    "name": "Strength (heavy)",
+    "type": "strength",
+    "duration_min": 45,
+    "description": "Sprint-prep: Back sq 4×4 @ 80-85% 1RM (2-3min rest), Bulgarian split sq w/ DB 3×6/side heavy, Barbell hip thrust 3×5 heavy, Explosive step-ups 3×5/side (fast), Plank 3×45s. Full recovery between sets.",
+    "tss": 0,
+    "avg_power": null,
+    "blocks": []
+  }
+]

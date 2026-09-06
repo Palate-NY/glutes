@@ -1,0 +1,131 @@
+[
+  {
+    "id": "EASY30",
+    "name": "Easy spin",
+    "type": "z2",
+    "duration_min": 30,
+    "description": "Z1 recovery, <140 bpm, cadence 90+",
+    "tss": 20,
+    "avg_power": 145,
+    "blocks": [
+      { "dur": 1800, "power": 145, "label": "Easy spin", "kind": "easy" }
+    ]
+  },
+  {
+    "id": "EASY45",
+    "name": "Easy spin",
+    "type": "z2",
+    "duration_min": 45,
+    "description": "Z1-Z2 recovery, <140 bpm, cadence 90+",
+    "tss": 30,
+    "avg_power": 160,
+    "blocks": [
+      { "dur": 2700, "power": 160, "label": "Easy spin", "kind": "easy" }
+    ]
+  },
+  {
+    "id": "Z2_60",
+    "name": "Z2 endurance",
+    "type": "z2",
+    "duration_min": 60,
+    "description": "165-200W avg, HR <150, cadence 90+",
+    "tss": 55,
+    "avg_power": 180,
+    "blocks": [
+      { "dur": 300, "power": 145, "label": "Warm-up", "kind": "warm" },
+      { "dur": 3000, "power": 180, "label": "Steady Z2", "kind": "easy" },
+      { "dur": 300, "power": 135, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "Z2_90",
+    "name": "Z2 endurance 90",
+    "type": "z2",
+    "duration_min": 90,
+    "description": "90 min steady Z2, 155-180W, HR <145, cadence 88+",
+    "tss": 75,
+    "avg_power": 165,
+    "blocks": [
+      { "dur": 600, "power": 145, "label": "Warm-up", "kind": "warm" },
+      { "dur": 4500, "power": 168, "label": "Steady Z2", "kind": "easy" },
+      { "dur": 300, "power": 135, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "LONG_Z2",
+    "name": "Long Z2",
+    "type": "z2",
+    "duration_min": 120,
+    "description": "2 hr steady Z2, 165-185W, HR <150",
+    "tss": 110,
+    "avg_power": 175,
+    "blocks": [
+      { "dur": 300, "power": 145, "label": "Warm-up", "kind": "warm" },
+      { "dur": 6600, "power": 175, "label": "Steady Z2", "kind": "easy" },
+      { "dur": 300, "power": 135, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "LONG_Z2_LONG",
+    "name": "Long Z2",
+    "type": "z2",
+    "duration_min": 150,
+    "description": "2.5 hr Z2, 165-185W, HR <150, fuel 60-80g/hr",
+    "tss": 140,
+    "avg_power": 175,
+    "blocks": [
+      { "dur": 300, "power": 145, "label": "Warm-up", "kind": "warm" },
+      { "dur": 8400, "power": 175, "label": "Steady Z2", "kind": "easy" },
+      { "dur": 300, "power": 135, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "LONG_Z2_3H",
+    "name": "Long Z2 3hr",
+    "type": "z2",
+    "duration_min": 180,
+    "description": "3hr steady Z2, 155-180W, HR <148. Fuel 60-80g/hr. Foundation-builder.",
+    "tss": 170,
+    "avg_power": 168,
+    "blocks": [
+      { "dur": 600, "power": 145, "label": "Warm-up", "kind": "warm" },
+      { "dur": 9900, "power": 168, "label": "Steady Z2", "kind": "easy" },
+      { "dur": 300, "power": 135, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "LONG_VO2",
+    "name": "Long + VO2",
+    "type": "z2",
+    "duration_min": 150,
+    "description": "2.5 hr Z2 with 4×4min VO2 in middle",
+    "tss": 160,
+    "avg_power": 190,
+    "blocks": [
+      { "dur": 3600, "power": 175, "label": "Z2", "kind": "easy" },
+      { "repeat": 4, "blocks": [
+        { "dur": 240, "power": 300, "label": "VO2max", "kind": "work" },
+        { "dur": 240, "power": 145, "label": "Recovery", "kind": "rec" }
+      ] },
+      { "dur": 3480, "power": 175, "label": "Z2", "kind": "easy" }
+    ]
+  },
+  {
+    "id": "OPENERS",
+    "name": "Pre-Race Openers",
+    "type": "z2",
+    "duration_min": 45,
+    "description": "30min easy + 3×90s @ 280W, 3min recovery",
+    "tss": 30,
+    "avg_power": 165,
+    "blocks": [
+      { "dur": 1800, "power": 145, "label": "Easy", "kind": "easy" },
+      { "dur": 90, "power": 280, "label": "Opener", "kind": "work" },
+      { "dur": 180, "power": 145, "label": "Recovery", "kind": "rec" },
+      { "dur": 90, "power": 280, "label": "Opener", "kind": "work" },
+      { "dur": 180, "power": 145, "label": "Recovery", "kind": "rec" },
+      { "dur": 90, "power": 280, "label": "Opener", "kind": "work" },
+      { "dur": 180, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "id": "CANNES_SHAKEOUT",
+    "name": "Cannes Shakeout",
+    "type": "z2",
+    "duration_min": 60,
+    "description": "Sunday post-flight shakeout. Cannes seafront promenade, flat, cap 150W, HR ≤135. Light effort to wake the legs after travel.",
+    "tss": 35,
+    "avg_power": 145,
+    "blocks": [
+      { "dur": 600, "power": 160, "label": "Warm-up", "kind": "warm" },
+      { "dur": 2400, "power": 145, "label": "Flat Z2", "kind": "work" },
+      { "dur": 600, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "CANNES_SUN_AM",
+    "name": "Cannes Sun AM Z2",
+    "type": "z2",
+    "duration_min": 90,
+    "description": "90min Z2 early ride (back by 11am). La Bocca → coast → Cap d'Antibes loop. Z2 (145-180W), cadence 88+, HR ≤140.",
+    "tss": 55,
+    "avg_power": 165,
+    "blocks": [
+      { "dur": 900, "power": 160, "label": "Warm-up", "kind": "warm" },
+      { "dur": 3600, "power": 165, "label": "Z2 cruise", "kind": "work" },
+      { "dur": 900, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "CANNES_Z2_LOCAL",
+    "name": "Cannes Local Z2",
+    "type": "z2",
+    "duration_min": 120,
+    "description": "2 hours easy aerobic from La Bocca, scout local roads. Esterel coastal road or Mougins backroads. Z2 (145-180W), cadence 88+, HR ≤140. Sets up Tue Tanneron SS.",
+    "tss": 90,
+    "avg_power": 165,
+    "blocks": [
+      { "dur": 900, "power": 160, "label": "Warm-up", "kind": "warm" },
+      { "dur": 5400, "power": 165, "label": "Z2 cruise + scout", "kind": "work" },
+      { "dur": 900, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "CANNES_TANNERON_SS",
+    "name": "Col du Tanneron SS",
+    "type": "ss",
+    "duration_min": 180,
+    "description": "5km warmup ride to Mandelieu base. 3 × 15min @ 240-260W (sweet spot) on the climb, easy roll back between. Cool-down ride home.",
+    "tss": 170,
+    "avg_power": 250,
+    "blocks": [
+      { "dur": 1200, "power": 160, "label": "Warm-up", "kind": "warm" },
+      { "dur": 900, "power": 250, "label": "Tanneron #1", "kind": "work" },
+      { "dur": 480, "power": 145, "label": "Recovery", "kind": "rec" },
+      { "dur": 900, "power": 250, "label": "Tanneron #2", "kind": "work" },
+      { "dur": 480, "power": 145, "label": "Recovery", "kind": "rec" },
+      { "dur": 900, "power": 250, "label": "Tanneron #3", "kind": "work" },
+      { "dur": 2700, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "CANNES_TANNERON_AE",
+    "name": "Col du Tanneron A-effort",
+    "type": "thr",
+    "duration_min": 120,
+    "description": "🎯 Race-pace climb test. 1 × ~35-40min all-out ascent at 275-285W threshold. Same climb as Tuesday — direct A/B comparison.",
+    "tss": 130,
+    "avg_power": 280,
+    "blocks": [
+      { "dur": 1200, "power": 160, "label": "Warm-up", "kind": "warm" },
+      { "repeat": 3, "blocks": [
+        { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+        { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" }
+      ] },
+      { "dur": 2280, "power": 280, "label": "Tanneron A-effort", "kind": "work" },
+      { "dur": 2400, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "CANNES_VENCE_SS",
+    "name": "Col de Vence SS",
+    "type": "ss",
+    "duration_min": 300,
+    "description": "Ride to Vence base (~35km easy Z2). 3 × 15min @ 240-260W (sweet spot) on the climb, easy roll back between. Ride back to La Bocca. Fuel 60g carbs/hr.",
+    "tss": 240,
+    "avg_power": 250,
+    "blocks": [
+      { "dur": 5400, "power": 160, "label": "Warm-up", "kind": "warm" },
+      { "dur": 900, "power": 250, "label": "Vence #1", "kind": "work" },
+      { "dur": 480, "power": 145, "label": "Recovery", "kind": "rec" },
+      { "dur": 900, "power": 250, "label": "Vence #2", "kind": "work" },
+      { "dur": 480, "power": 145, "label": "Recovery", "kind": "rec" },
+      { "dur": 900, "power": 250, "label": "Vence #3", "kind": "work" },
+      { "dur": 7200, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "CANNES_ESTEREL",
+    "name": "Esterel Long",
+    "type": "z2",
+    "duration_min": 270,
+    "description": "4-5 hour endurance: Cannes → coast west → Théoule → Esterel red rocks → back. Z2 base (165-180W), climbs drift to Z3/threshold briefly. Fuel like a race: 60g carbs/hr.",
+    "tss": 240,
+    "avg_power": 175,
+    "blocks": [
+      { "dur": 1800, "power": 160, "label": "Warm-up", "kind": "warm" },
+      { "dur": 12600, "power": 175, "label": "Z2 + terrain", "kind": "work" },
+      { "dur": 1800, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  }
+]

@@ -1,0 +1,3713 @@
+{
+ "FTP": 275,
+ "HRMAX": 194,
+ "START": "2026-05-04T04:00:00.000Z",
+ "BLOCKS": [
+  {
+   "id": 1,
+   "name": "Block 1",
+   "focus": "Base & Threshold",
+   "weeks": "W1–W4",
+   "dateRange": "May 4 – May 31",
+   "purpose": "Build aerobic base, raise FTP floor with sweet spot and threshold work. Establish strength routine and cadence pattern."
+  },
+  {
+   "id": 2,
+   "name": "Block 2",
+   "focus": "VO2max Build",
+   "weeks": "W5–W8",
+   "dateRange": "Jun 1 – Jun 28",
+   "purpose": "Raise the 5-min power ceiling — the direct limiter for your climb PR. VO2 intervals, over-unders, climb sims."
+  },
+  {
+   "id": 3,
+   "name": "Block 3",
+   "focus": "Specificity",
+   "weeks": "W9–W12",
+   "dateRange": "Jun 29 – Jul 26",
+   "purpose": "Climb-specific variable efforts and race-pace work. Train the exact surge-recovery pattern of a mixed climb."
+  },
+  {
+   "id": 4,
+   "name": "Block 4",
+   "focus": "Peak & Taper",
+   "weeks": "W13–W14",
+   "dateRange": "Jul 27 – Aug 9",
+   "purpose": "Sharpen with short high-quality intervals, reduce volume, then PR attempt in France."
+  }
+ ],
+ "sessions": {
+  "REST": {
+   "name": "Rest",
+   "type": "rest",
+   "dur": 0,
+   "prescribed": "Full rest. Walk, hydrate, sleep. Recovery IS training.",
+   "tss": 0,
+   "targetPower": null,
+   "blocks": []
+  },
+  "EASY30": {
+   "name": "Easy spin",
+   "type": "z2",
+   "dur": 30,
+   "prescribed": "Z1 recovery, <140 bpm, cadence 90+",
+   "tss": 20,
+   "targetPower": 145,
+   "blocks": [
+    {
+     "dur": 1800,
+     "power": 145,
+     "label": "Easy spin",
+     "kind": "easy"
+    }
+   ]
+  },
+  "EASY45": {
+   "name": "Easy spin",
+   "type": "z2",
+   "dur": 45,
+   "prescribed": "Z1-Z2 recovery, <140 bpm, cadence 90+",
+   "tss": 30,
+   "targetPower": 160,
+   "blocks": [
+    {
+     "dur": 2700,
+     "power": 160,
+     "label": "Easy spin",
+     "kind": "easy"
+    }
+   ]
+  },
+  "Z2_60": {
+   "name": "Z2 endurance",
+   "type": "z2",
+   "dur": 60,
+   "prescribed": "165-200W avg, HR <150, cadence 90+",
+   "tss": 55,
+   "targetPower": 180,
+   "blocks": [
+    {
+     "dur": 300,
+     "power": 145,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 3000,
+     "power": 180,
+     "label": "Steady Z2",
+     "kind": "easy"
+    },
+    {
+     "dur": 300,
+     "power": 135,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "SS_2x15": {
+   "name": "Sweet Spot 2×15",
+   "type": "ss",
+   "dur": 60,
+   "prescribed": "2 × 15min @ 240-258W (SS), 5min recovery",
+   "tss": 75,
+   "targetPower": 248,
+   "blocks": [
+    {
+     "dur": 900,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 900,
+     "power": 248,
+     "label": "Sweet Spot",
+     "kind": "work"
+    },
+    {
+     "dur": 300,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 900,
+     "power": 248,
+     "label": "Sweet Spot",
+     "kind": "work"
+    },
+    {
+     "dur": 480,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "SS_3x10": {
+   "name": "Sweet Spot 3×10",
+   "type": "ss",
+   "dur": 60,
+   "prescribed": "3 × 10min @ 240-258W (SS), 5min recovery",
+   "tss": 75,
+   "targetPower": 248,
+   "blocks": [
+    {
+     "dur": 900,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 600,
+     "power": 248,
+     "label": "Sweet Spot",
+     "kind": "work"
+    },
+    {
+     "dur": 300,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 600,
+     "power": 248,
+     "label": "Sweet Spot",
+     "kind": "work"
+    },
+    {
+     "dur": 300,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 600,
+     "power": 248,
+     "label": "Sweet Spot",
+     "kind": "work"
+    },
+    {
+     "dur": 300,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 300,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "THR_2x12": {
+   "name": "Threshold 2×12",
+   "type": "thr",
+   "dur": 65,
+   "prescribed": "2 × 12min @ 265-275W (Threshold), 8min recovery",
+   "tss": 80,
+   "targetPower": 270,
+   "blocks": [
+    {
+     "dur": 900,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 720,
+     "power": 270,
+     "label": "Threshold",
+     "kind": "work"
+    },
+    {
+     "dur": 480,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 720,
+     "power": 270,
+     "label": "Threshold",
+     "kind": "work"
+    },
+    {
+     "dur": 480,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "THR_2x15": {
+   "name": "Threshold 2×15",
+   "type": "thr",
+   "dur": 70,
+   "prescribed": "2 × 15min @ 265-275W (Threshold), 8min recovery",
+   "tss": 95,
+   "targetPower": 270,
+   "blocks": [
+    {
+     "dur": 900,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 900,
+     "power": 270,
+     "label": "Threshold",
+     "kind": "work"
+    },
+    {
+     "dur": 480,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 900,
+     "power": 270,
+     "label": "Threshold",
+     "kind": "work"
+    },
+    {
+     "dur": 480,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "THR_2x10": {
+   "name": "Threshold 2×10",
+   "type": "thr",
+   "dur": 60,
+   "prescribed": "2 × 10min @ 265-275W, 8min recovery",
+   "tss": 70,
+   "targetPower": 270,
+   "blocks": [
+    {
+     "dur": 900,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 600,
+     "power": 270,
+     "label": "Threshold",
+     "kind": "work"
+    },
+    {
+     "dur": 480,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 600,
+     "power": 270,
+     "label": "Threshold",
+     "kind": "work"
+    },
+    {
+     "dur": 480,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "SS_3x8": {
+   "name": "Sweet Spot 3×8",
+   "type": "ss",
+   "dur": 55,
+   "prescribed": "3 × 8min @ 240-258W, 4min recovery",
+   "tss": 65,
+   "targetPower": 248,
+   "blocks": [
+    {
+     "dur": 720,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 480,
+     "power": 248,
+     "label": "Sweet Spot",
+     "kind": "work"
+    },
+    {
+     "dur": 240,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 480,
+     "power": 248,
+     "label": "Sweet Spot",
+     "kind": "work"
+    },
+    {
+     "dur": 240,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 480,
+     "power": 248,
+     "label": "Sweet Spot",
+     "kind": "work"
+    },
+    {
+     "dur": 240,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 300,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "LONG_Z2": {
+   "name": "Long Z2",
+   "type": "z2",
+   "dur": 120,
+   "prescribed": "2 hr steady Z2, 165-185W, HR <150",
+   "tss": 110,
+   "targetPower": 175,
+   "blocks": [
+    {
+     "dur": 300,
+     "power": 145,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 6600,
+     "power": 175,
+     "label": "Steady Z2",
+     "kind": "easy"
+    },
+    {
+     "dur": 300,
+     "power": 135,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "LONG_Z2_LONG": {
+   "name": "Long Z2",
+   "type": "z2",
+   "dur": 150,
+   "prescribed": "2.5 hr Z2, 165-185W, HR <150, fuel 60-80g/hr",
+   "tss": 140,
+   "targetPower": 175,
+   "blocks": [
+    {
+     "dur": 300,
+     "power": 145,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 8400,
+     "power": 175,
+     "label": "Steady Z2",
+     "kind": "easy"
+    },
+    {
+     "dur": 300,
+     "power": 135,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "VO2_5x3": {
+   "name": "VO2max 5×3",
+   "type": "vo2",
+   "dur": 60,
+   "prescribed": "5 × 3min @ 295-315W (108-115% FTP), 3min easy",
+   "tss": 90,
+   "targetPower": 305,
+   "blocks": [
+    {
+     "dur": 720,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 180,
+     "power": 305,
+     "label": "VO2max",
+     "kind": "work"
+    },
+    {
+     "dur": 180,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 180,
+     "power": 305,
+     "label": "VO2max",
+     "kind": "work"
+    },
+    {
+     "dur": 180,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 180,
+     "power": 305,
+     "label": "VO2max",
+     "kind": "work"
+    },
+    {
+     "dur": 180,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 180,
+     "power": 305,
+     "label": "VO2max",
+     "kind": "work"
+    },
+    {
+     "dur": 180,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 180,
+     "power": 305,
+     "label": "VO2max",
+     "kind": "work"
+    },
+    {
+     "dur": 180,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 420,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "VO2_4x4": {
+   "name": "VO2max 4×4",
+   "type": "vo2",
+   "dur": 60,
+   "prescribed": "4 × 4min @ 295-310W (107-112% FTP), 4min easy",
+   "tss": 90,
+   "targetPower": 300,
+   "blocks": [
+    {
+     "dur": 720,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 240,
+     "power": 300,
+     "label": "VO2max",
+     "kind": "work"
+    },
+    {
+     "dur": 240,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 240,
+     "power": 300,
+     "label": "VO2max",
+     "kind": "work"
+    },
+    {
+     "dur": 240,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 240,
+     "power": 300,
+     "label": "VO2max",
+     "kind": "work"
+    },
+    {
+     "dur": 240,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 240,
+     "power": 300,
+     "label": "VO2max",
+     "kind": "work"
+    },
+    {
+     "dur": 240,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 480,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "VO2_6x3": {
+   "name": "VO2max 6×3",
+   "type": "vo2",
+   "dur": 70,
+   "prescribed": "6 × 3min @ 300-320W, 2min recovery (short)",
+   "tss": 100,
+   "targetPower": 310,
+   "blocks": [
+    {
+     "dur": 900,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 180,
+     "power": 310,
+     "label": "VO2max",
+     "kind": "work"
+    },
+    {
+     "dur": 120,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 180,
+     "power": 310,
+     "label": "VO2max",
+     "kind": "work"
+    },
+    {
+     "dur": 120,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 180,
+     "power": 310,
+     "label": "VO2max",
+     "kind": "work"
+    },
+    {
+     "dur": 120,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 180,
+     "power": 310,
+     "label": "VO2max",
+     "kind": "work"
+    },
+    {
+     "dur": 120,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 180,
+     "power": 310,
+     "label": "VO2max",
+     "kind": "work"
+    },
+    {
+     "dur": 120,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 180,
+     "power": 310,
+     "label": "VO2max",
+     "kind": "work"
+    },
+    {
+     "dur": 120,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 600,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "VO2_30_15": {
+   "name": "VO2 30/15 × 13",
+   "type": "vo2",
+   "dur": 70,
+   "prescribed": "3 blocks of 13 × (30s @ 330W / 15s @ 150W), 4min recovery between blocks. Trainer or flat road only.",
+   "tss": 110,
+   "targetPower": 330,
+   "blocks": [
+    {
+     "dur": 900,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 240,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 240,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 330,
+     "label": "30s ON",
+     "kind": "work"
+    },
+    {
+     "dur": 15,
+     "power": 150,
+     "label": "15s off",
+     "kind": "work"
+    },
+    {
+     "dur": 480,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "OU_3x10": {
+   "name": "Over-Unders 3×10",
+   "type": "thr",
+   "dur": 70,
+   "prescribed": "3 × 10min OU: 1min @ 290W / 1min @ 250W × 5",
+   "tss": 95,
+   "targetPower": 270,
+   "blocks": [
+    {
+     "dur": 900,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 300,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 300,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 300,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 300,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "OU_4x8": {
+   "name": "Over-Unders 4×8",
+   "type": "thr",
+   "dur": 70,
+   "prescribed": "4 × 8min OU: 1min @ 290W / 1min @ 250W × 4",
+   "tss": 90,
+   "targetPower": 270,
+   "blocks": [
+    {
+     "dur": 720,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 240,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 240,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 240,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 290,
+     "label": "Over",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 250,
+     "label": "Under",
+     "kind": "work"
+    },
+    {
+     "dur": 240,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 480,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "LONG_VO2": {
+   "name": "Long + VO2",
+   "type": "z2",
+   "dur": 150,
+   "prescribed": "2.5 hr Z2 with 4×4min VO2 in middle",
+   "tss": 160,
+   "targetPower": 190,
+   "blocks": [
+    {
+     "dur": 3600,
+     "power": 175,
+     "label": "Z2",
+     "kind": "easy"
+    },
+    {
+     "dur": 240,
+     "power": 300,
+     "label": "VO2max",
+     "kind": "work"
+    },
+    {
+     "dur": 240,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 240,
+     "power": 300,
+     "label": "VO2max",
+     "kind": "work"
+    },
+    {
+     "dur": 240,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 240,
+     "power": 300,
+     "label": "VO2max",
+     "kind": "work"
+    },
+    {
+     "dur": 240,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 240,
+     "power": 300,
+     "label": "VO2max",
+     "kind": "work"
+    },
+    {
+     "dur": 240,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 3480,
+     "power": 175,
+     "label": "Z2",
+     "kind": "easy"
+    }
+   ]
+  },
+  "CLIMB_2x12": {
+   "name": "Climb Sim 2×12",
+   "type": "thr",
+   "dur": 75,
+   "prescribed": "2 × 12min variable: 270W baseline + 30s surges to 320W every 2min",
+   "tss": 100,
+   "targetPower": 280,
+   "blocks": [
+    {
+     "dur": 900,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 320,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 320,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 320,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 320,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 320,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 320,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 600,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 320,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 320,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 320,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 320,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 320,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 320,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 300,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "CLIMB_3x10": {
+   "name": "Climb Sim 3×10",
+   "type": "thr",
+   "dur": 80,
+   "prescribed": "3 × 10min variable: 270W baseline + surges to 315W every 90s",
+   "tss": 110,
+   "targetPower": 280,
+   "blocks": [
+    {
+     "dur": 900,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 315,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 315,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 315,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 315,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 315,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 480,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 315,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 315,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 315,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 315,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 315,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 480,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 315,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 315,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 315,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 315,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 90,
+     "power": 270,
+     "label": "Baseline",
+     "kind": "work"
+    },
+    {
+     "dur": 30,
+     "power": 315,
+     "label": "Surge",
+     "kind": "work"
+    },
+    {
+     "dur": 480,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 300,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "RACE_3x6": {
+   "name": "Race-Pace 3×6",
+   "type": "vo2",
+   "dur": 70,
+   "prescribed": "3 × 6min @ 290-300W (race target), 6min recovery",
+   "tss": 85,
+   "targetPower": 295,
+   "blocks": [
+    {
+     "dur": 900,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 360,
+     "power": 295,
+     "label": "Race pace",
+     "kind": "work"
+    },
+    {
+     "dur": 360,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 360,
+     "power": 295,
+     "label": "Race pace",
+     "kind": "work"
+    },
+    {
+     "dur": 360,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 360,
+     "power": 295,
+     "label": "Race pace",
+     "kind": "work"
+    },
+    {
+     "dur": 360,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 480,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "SHARP_5x2": {
+   "name": "Sharpener 5×2",
+   "type": "vo2",
+   "dur": 50,
+   "prescribed": "5 × 2min @ 315-330W, 3min recovery",
+   "tss": 60,
+   "targetPower": 320,
+   "blocks": [
+    {
+     "dur": 720,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 120,
+     "power": 320,
+     "label": "Sharpener",
+     "kind": "work"
+    },
+    {
+     "dur": 180,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 120,
+     "power": 320,
+     "label": "Sharpener",
+     "kind": "work"
+    },
+    {
+     "dur": 180,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 120,
+     "power": 320,
+     "label": "Sharpener",
+     "kind": "work"
+    },
+    {
+     "dur": 180,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 120,
+     "power": 320,
+     "label": "Sharpener",
+     "kind": "work"
+    },
+    {
+     "dur": 180,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 120,
+     "power": 320,
+     "label": "Sharpener",
+     "kind": "work"
+    },
+    {
+     "dur": 180,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 360,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "RACE_3x5": {
+   "name": "Race-Pace 3×5",
+   "type": "vo2",
+   "dur": 60,
+   "prescribed": "3 × 5min @ 290-300W, 5min recovery",
+   "tss": 75,
+   "targetPower": 295,
+   "blocks": [
+    {
+     "dur": 720,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 300,
+     "power": 295,
+     "label": "Race pace",
+     "kind": "work"
+    },
+    {
+     "dur": 300,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 300,
+     "power": 295,
+     "label": "Race pace",
+     "kind": "work"
+    },
+    {
+     "dur": 300,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 300,
+     "power": 295,
+     "label": "Race pace",
+     "kind": "work"
+    },
+    {
+     "dur": 300,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 480,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "TEST_5MIN": {
+   "name": "5min Power Test",
+   "type": "vo2",
+   "dur": 50,
+   "prescribed": "20min build + 5min ALL-OUT (pace evenly)",
+   "tss": 65,
+   "targetPower": 305,
+   "blocks": [
+    {
+     "dur": 1200,
+     "power": 175,
+     "label": "Build",
+     "kind": "warm"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 300,
+     "power": 305,
+     "label": "ALL-OUT",
+     "kind": "work"
+    },
+    {
+     "dur": 900,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "OPENERS": {
+   "name": "Pre-Race Openers",
+   "type": "z2",
+   "dur": 45,
+   "prescribed": "30min easy + 3×90s @ 280W, 3min recovery",
+   "tss": 30,
+   "targetPower": 165,
+   "blocks": [
+    {
+     "dur": 1800,
+     "power": 145,
+     "label": "Easy",
+     "kind": "easy"
+    },
+    {
+     "dur": 90,
+     "power": 280,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 180,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 90,
+     "power": 280,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 180,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 90,
+     "power": 280,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 180,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "PR_DAY": {
+   "name": "PR ATTEMPT",
+   "type": "vo2",
+   "dur": 0,
+   "prescribed": "🎯 Climb day in France",
+   "tss": 0,
+   "targetPower": 290,
+   "blocks": []
+  },
+  "STR_BW": {
+   "name": "Strength (bodyweight)",
+   "type": "strength",
+   "dur": 20,
+   "prescribed": "Goblet sq, RDL, Bulgarian split sq, calf raises, side plank",
+   "tss": 0,
+   "targetPower": null,
+   "blocks": []
+  },
+  "STR_GYM": {
+   "name": "Strength (gym)",
+   "type": "strength",
+   "dur": 30,
+   "prescribed": "Add leg press, light load on goblet/RDL",
+   "tss": 0,
+   "targetPower": null,
+   "blocks": []
+  },
+  "HALF_MONTY": {
+   "name": "Half Monty retest",
+   "type": "vo2",
+   "dur": 50,
+   "prescribed": "Ramp test, morning, fresh",
+   "tss": 60,
+   "targetPower": null,
+   "blocks": [
+    {
+     "dur": 600,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 60,
+     "power": 150,
+     "label": "Ramp",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 162,
+     "label": "Ramp",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 174,
+     "label": "Ramp",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 186,
+     "label": "Ramp",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 198,
+     "label": "Ramp",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 210,
+     "label": "Ramp",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 222,
+     "label": "Ramp",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 234,
+     "label": "Ramp",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 246,
+     "label": "Ramp",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 258,
+     "label": "Ramp",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 270,
+     "label": "Ramp",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 282,
+     "label": "Ramp",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 294,
+     "label": "Ramp",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 306,
+     "label": "Ramp",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 318,
+     "label": "Ramp",
+     "kind": "work"
+    },
+    {
+     "dur": 300,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 240,
+     "power": 290,
+     "label": "4min test",
+     "kind": "work"
+    },
+    {
+     "dur": 480,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "CANNES_SHAKEOUT": {
+   "name": "Cannes Shakeout",
+   "type": "z2",
+   "dur": 60,
+   "prescribed": "Sunday post-flight shakeout. Cannes seafront promenade, flat, cap 150W, HR ≤135. Light effort to wake the legs after travel.",
+   "tss": 35,
+   "targetPower": 145,
+   "blocks": [
+    {
+     "dur": 600,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 2400,
+     "power": 145,
+     "label": "Flat Z2",
+     "kind": "work"
+    },
+    {
+     "dur": 600,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "CANNES_SUN_AM": {
+   "name": "Cannes Sun AM Z2",
+   "type": "z2",
+   "dur": 90,
+   "prescribed": "90min Z2 early ride (back by 11am). La Bocca → coast → Cap d'Antibes loop. Z2 (145-180W), cadence 88+, HR ≤140.",
+   "tss": 55,
+   "targetPower": 165,
+   "blocks": [
+    {
+     "dur": 900,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 3600,
+     "power": 165,
+     "label": "Z2 cruise",
+     "kind": "work"
+    },
+    {
+     "dur": 900,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "CANNES_Z2_LOCAL": {
+   "name": "Cannes Local Z2",
+   "type": "z2",
+   "dur": 120,
+   "prescribed": "2 hours easy aerobic from La Bocca, scout local roads. Esterel coastal road or Mougins backroads. Z2 (145-180W), cadence 88+, HR ≤140. Sets up Tue Tanneron SS.",
+   "tss": 90,
+   "targetPower": 165,
+   "blocks": [
+    {
+     "dur": 900,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 5400,
+     "power": 165,
+     "label": "Z2 cruise + scout",
+     "kind": "work"
+    },
+    {
+     "dur": 900,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "CANNES_TANNERON_SS": {
+   "name": "Col du Tanneron SS",
+   "type": "ss",
+   "dur": 180,
+   "prescribed": "5km warmup ride to Mandelieu base. 3 × 15min @ 240-260W (sweet spot) on the climb, easy roll back between. Cool-down ride home.",
+   "tss": 170,
+   "targetPower": 250,
+   "blocks": [
+    {
+     "dur": 1200,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 900,
+     "power": 250,
+     "label": "Tanneron #1",
+     "kind": "work"
+    },
+    {
+     "dur": 480,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 900,
+     "power": 250,
+     "label": "Tanneron #2",
+     "kind": "work"
+    },
+    {
+     "dur": 480,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 900,
+     "power": 250,
+     "label": "Tanneron #3",
+     "kind": "work"
+    },
+    {
+     "dur": 2700,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "CANNES_TANNERON_AE": {
+   "name": "Col du Tanneron A-effort",
+   "type": "thr",
+   "dur": 120,
+   "prescribed": "🎯 Race-pace climb test. 1 × ~35-40min all-out ascent at 275-285W threshold. Same climb as Tuesday — direct A/B comparison.",
+   "tss": 130,
+   "targetPower": 280,
+   "blocks": [
+    {
+     "dur": 1200,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 30,
+     "power": 305,
+     "label": "Opener",
+     "kind": "work"
+    },
+    {
+     "dur": 60,
+     "power": 145,
+     "label": "Easy",
+     "kind": "rec"
+    },
+    {
+     "dur": 2280,
+     "power": 280,
+     "label": "Tanneron A-effort",
+     "kind": "work"
+    },
+    {
+     "dur": 2400,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "CANNES_VENCE_SS": {
+   "name": "Col de Vence SS",
+   "type": "ss",
+   "dur": 300,
+   "prescribed": "Ride to Vence base (~35km easy Z2). 3 × 15min @ 240-260W (sweet spot) on the climb, easy roll back between. Ride back to La Bocca. Fuel 60g carbs/hr.",
+   "tss": 240,
+   "targetPower": 250,
+   "blocks": [
+    {
+     "dur": 5400,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 900,
+     "power": 250,
+     "label": "Vence #1",
+     "kind": "work"
+    },
+    {
+     "dur": 480,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 900,
+     "power": 250,
+     "label": "Vence #2",
+     "kind": "work"
+    },
+    {
+     "dur": 480,
+     "power": 145,
+     "label": "Recovery",
+     "kind": "rec"
+    },
+    {
+     "dur": 900,
+     "power": 250,
+     "label": "Vence #3",
+     "kind": "work"
+    },
+    {
+     "dur": 7200,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  },
+  "CANNES_ESTEREL": {
+   "name": "Esterel Long",
+   "type": "z2",
+   "dur": 270,
+   "prescribed": "4-5 hour endurance: Cannes → coast west → Théoule → Esterel red rocks → back. Z2 base (165-180W), climbs drift to Z3/threshold briefly. Fuel like a race: 60g carbs/hr.",
+   "tss": 240,
+   "targetPower": 175,
+   "blocks": [
+    {
+     "dur": 1800,
+     "power": 160,
+     "label": "Warm-up",
+     "kind": "warm"
+    },
+    {
+     "dur": 12600,
+     "power": 175,
+     "label": "Z2 + terrain",
+     "kind": "work"
+    },
+    {
+     "dur": 1800,
+     "power": 130,
+     "label": "Cool-down",
+     "kind": "cool"
+    }
+   ]
+  }
+ },
+ "plan": [
+  {
+   "week": 1,
+   "label": "W1 Base",
+   "blockId": 1,
+   "days": [
+    [
+     "REST"
+    ],
+    [
+     "EASY45"
+    ],
+    [
+     "Z2_60"
+    ],
+    [
+     "SS_2x15"
+    ],
+    [
+     "REST"
+    ],
+    [
+     "LONG_Z2"
+    ],
+    [
+     "EASY45"
+    ]
+   ]
+  },
+  {
+   "week": 2,
+   "label": "W2 Base",
+   "blockId": 1,
+   "days": [
+    [
+     "REST"
+    ],
+    [
+     "SS_2x15"
+    ],
+    [
+     "Z2_60"
+    ],
+    [
+     "THR_2x12"
+    ],
+    [
+     "REST"
+    ],
+    [
+     "LONG_Z2"
+    ],
+    [
+     "EASY45"
+    ]
+   ]
+  },
+  {
+   "week": 3,
+   "label": "W3 Build",
+   "blockId": 1,
+   "days": [
+    [
+     "REST"
+    ],
+    [
+     "SS_3x10",
+     "STR_BW"
+    ],
+    [
+     "Z2_60"
+    ],
+    [
+     "THR_2x15",
+     "STR_BW"
+    ],
+    [
+     "REST"
+    ],
+    [
+     "LONG_Z2_LONG"
+    ],
+    [
+     "EASY45"
+    ]
+   ]
+  },
+  {
+   "week": 4,
+   "label": "W4 Recovery",
+   "blockId": 1,
+   "days": [
+    [
+     "SS_3x8",
+     "STR_BW"
+    ],
+    [
+     "Z2_60"
+    ],
+    [
+     "THR_2x10",
+     "STR_BW"
+    ],
+    [
+     "REST"
+    ],
+    [
+     "EASY45"
+    ],
+    [
+     "HALF_MONTY"
+    ],
+    [
+     "REST"
+    ]
+   ]
+  },
+  {
+   "week": 5,
+   "label": "W5 VO2 Intro",
+   "blockId": 2,
+   "days": [
+    [
+     "VO2_5x3",
+     "STR_BW"
+    ],
+    [
+     "Z2_60"
+    ],
+    [
+     "THR_2x10",
+     "STR_BW"
+    ],
+    [
+     "REST"
+    ],
+    [
+     "LONG_Z2"
+    ],
+    [
+     "REST"
+    ],
+    [
+     "EASY45"
+    ]
+   ]
+  },
+  {
+   "week": 6,
+   "label": "W6 VO2 Build",
+   "blockId": 2,
+   "days": [
+    [
+     "VO2_4x4",
+     "STR_BW"
+    ],
+    [
+     "Z2_60"
+    ],
+    [
+     "OU_3x10",
+     "STR_GYM"
+    ],
+    [
+     "REST"
+    ],
+    [
+     "LONG_Z2"
+    ],
+    [
+     "REST"
+    ],
+    [
+     "EASY45"
+    ]
+   ]
+  },
+  {
+   "week": 7,
+   "label": "W7 VO2 Peak",
+   "blockId": 2,
+   "days": [
+    [
+     "VO2_5x3",
+     "STR_BW"
+    ],
+    [
+     "Z2_60"
+    ],
+    [
+     "OU_4x8",
+     "STR_GYM"
+    ],
+    [
+     "REST"
+    ],
+    [
+     "LONG_VO2"
+    ],
+    [
+     "CANNES_SHAKEOUT"
+    ],
+    [
+     "CANNES_SUN_AM"
+    ]
+   ]
+  },
+  {
+   "week": 8,
+   "label": "W8 Cannes Camp",
+   "blockId": 2,
+   "days": [
+    [
+     "CANNES_VENCE_SS"
+    ],
+    [
+     "CANNES_Z2_LOCAL"
+    ],
+    [
+     "REST"
+    ],
+    [
+     "CANNES_ESTEREL"
+    ],
+    [
+     "CANNES_TANNERON_AE"
+    ],
+    [
+     "REST"
+    ],
+    [
+     "REST"
+    ]
+   ]
+  },
+  {
+   "week": 9,
+   "label": "W9 Taper + Retest",
+   "blockId": 2,
+   "days": [
+    [
+     "REST"
+    ],
+    [
+     "EASY45"
+    ],
+    [
+     "Z2_60"
+    ],
+    [
+     "OPENERS"
+    ],
+    [
+     "HALF_MONTY"
+    ],
+    [
+     "REST"
+    ],
+    [
+     "EASY45"
+    ]
+   ]
+  },
+  {
+   "week": 10,
+   "label": "W10 Specific",
+   "blockId": 3,
+   "days": [
+    [
+     "CLIMB_2x12",
+     "STR_BW"
+    ],
+    [
+     "Z2_60"
+    ],
+    [
+     "RACE_3x6",
+     "STR_GYM"
+    ],
+    [
+     "REST"
+    ],
+    [
+     "LONG_Z2_LONG"
+    ],
+    [
+     "REST"
+    ],
+    [
+     "EASY45"
+    ]
+   ]
+  },
+  {
+   "week": 11,
+   "label": "W11 Specific Peak",
+   "blockId": 3,
+   "days": [
+    [
+     "VO2_30_15",
+     "STR_BW"
+    ],
+    [
+     "Z2_60"
+    ],
+    [
+     "CLIMB_3x10",
+     "STR_GYM"
+    ],
+    [
+     "REST"
+    ],
+    [
+     "LONG_VO2"
+    ],
+    [
+     "REST"
+    ],
+    [
+     "EASY45"
+    ]
+   ]
+  },
+  {
+   "week": 12,
+   "label": "W12 Recovery",
+   "blockId": 3,
+   "days": [
+    [
+     "RACE_3x5",
+     "STR_BW"
+    ],
+    [
+     "Z2_60"
+    ],
+    [
+     "EASY45"
+    ],
+    [
+     "REST"
+    ],
+    [
+     "EASY45"
+    ],
+    [
+     "LONG_Z2"
+    ],
+    [
+     "REST"
+    ]
+   ]
+  },
+  {
+   "week": 13,
+   "label": "W13 Sharpen",
+   "blockId": 4,
+   "days": [
+    [
+     "SHARP_5x2",
+     "STR_BW"
+    ],
+    [
+     "EASY45"
+    ],
+    [
+     "RACE_3x5",
+     "STR_BW"
+    ],
+    [
+     "REST"
+    ],
+    [
+     "EASY45"
+    ],
+    [
+     "Z2_60"
+    ],
+    [
+     "REST"
+    ]
+   ]
+  },
+  {
+   "week": 14,
+   "label": "W14 PR Week",
+   "blockId": 4,
+   "days": [
+    [
+     "SHARP_5x2"
+    ],
+    [
+     "EASY30"
+    ],
+    [
+     "TEST_5MIN"
+    ],
+    [
+     "REST"
+    ],
+    [
+     "OPENERS"
+    ],
+    [
+     "PR_DAY"
+    ],
+    [
+     "REST"
+    ]
+   ]
+  }
+ ],
+ "zwo": {
+  "REST": null,
+  "EASY30": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Easy spin</name>\n    <description>Z1 recovery, &lt;140 bpm, cadence 90+ (30 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"1800\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy spin\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "EASY45": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Easy spin</name>\n    <description>Z1-Z2 recovery, &lt;140 bpm, cadence 90+ (45 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"2700\" Power=\"0.582\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy spin\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "Z2_60": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Z2 endurance</name>\n    <description>165-200W avg, HR &lt;150, cadence 90+ (60 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"300\" Power=\"0.527\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"3000\" Power=\"0.655\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Steady Z2\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.491\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "SS_2x15": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Sweet Spot 2×15</name>\n    <description>2 × 15min @ 240-258W (SS), 5min recovery (63 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"900\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"900\" Power=\"0.902\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Sweet Spot\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"900\" Power=\"0.902\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Sweet Spot\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "SS_3x10": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Sweet Spot 3×10</name>\n    <description>3 × 10min @ 240-258W (SS), 5min recovery (70 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"900\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"600\" Power=\"0.902\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Sweet Spot\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"600\" Power=\"0.902\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Sweet Spot\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"600\" Power=\"0.902\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Sweet Spot\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "THR_2x12": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Threshold 2×12</name>\n    <description>2 × 12min @ 265-275W (Threshold), 8min recovery (60 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"900\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"720\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Threshold\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"720\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Threshold\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "THR_2x15": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Threshold 2×15</name>\n    <description>2 × 15min @ 265-275W (Threshold), 8min recovery (66 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"900\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"900\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Threshold\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"900\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Threshold\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "THR_2x10": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Threshold 2×10</name>\n    <description>2 × 10min @ 265-275W, 8min recovery (56 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"900\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"600\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Threshold\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"600\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Threshold\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "SS_3x8": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Sweet Spot 3×8</name>\n    <description>3 × 8min @ 240-258W, 4min recovery (56 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"720\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.902\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Sweet Spot\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.902\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Sweet Spot\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.902\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Sweet Spot\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "LONG_Z2": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Long Z2</name>\n    <description>2 hr steady Z2, 165-185W, HR &lt;150 (120 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"300\" Power=\"0.527\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"6600\" Power=\"0.636\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Steady Z2\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.491\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "LONG_Z2_LONG": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Long Z2</name>\n    <description>2.5 hr Z2, 165-185W, HR &lt;150, fuel 60-80g/hr (150 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"300\" Power=\"0.527\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"8400\" Power=\"0.636\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Steady Z2\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.491\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "VO2_5x3": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>VO2max 5×3</name>\n    <description>5 × 3min @ 295-315W (108-115% FTP), 3min easy (52 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"720\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"VO2max\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"VO2max\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"VO2max\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"VO2max\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"VO2max\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"420\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "VO2_4x4": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>VO2max 4×4</name>\n    <description>4 × 4min @ 295-310W (107-112% FTP), 4min easy (55 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"720\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"1.091\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"VO2max\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"1.091\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"VO2max\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"1.091\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"VO2max\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"1.091\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"VO2max\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "VO2_6x3": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>VO2max 6×3</name>\n    <description>6 × 3min @ 300-320W, 2min recovery (short) (58 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"900\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"1.127\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"VO2max\"/>\n        </SteadyState>\n        <SteadyState Duration=\"120\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"1.127\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"VO2max\"/>\n        </SteadyState>\n        <SteadyState Duration=\"120\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"1.127\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"VO2max\"/>\n        </SteadyState>\n        <SteadyState Duration=\"120\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"1.127\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"VO2max\"/>\n        </SteadyState>\n        <SteadyState Duration=\"120\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"1.127\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"VO2max\"/>\n        </SteadyState>\n        <SteadyState Duration=\"120\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"1.127\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"VO2max\"/>\n        </SteadyState>\n        <SteadyState Duration=\"120\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"600\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "VO2_30_15": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>VO2 30/15 × 13</name>\n    <description>3 blocks of 13 × (30s @ 330W / 15s @ 150W), 4min recovery between blocks. Trainer or flat road only. (63 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"900\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.200\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"30s ON\"/>\n        </SteadyState>\n        <SteadyState Duration=\"15\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"15s off\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "OU_3x10": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Over-Unders 3×10</name>\n    <description>3 × 10min OU: 1min @ 290W / 1min @ 250W × 5 (65 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"900\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "OU_4x8": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Over-Unders 4×8</name>\n    <description>4 × 8min OU: 1min @ 290W / 1min @ 250W × 4 (68 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"720\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Over\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Under\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "LONG_VO2": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Long + VO2</name>\n    <description>2.5 hr Z2 with 4×4min VO2 in middle (150 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"3600\" Power=\"0.636\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Z2\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"1.091\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"VO2max\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"1.091\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"VO2max\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"1.091\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"VO2max\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"1.091\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"VO2max\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"3480\" Power=\"0.636\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Z2\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "CLIMB_2x12": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Climb Sim 2×12</name>\n    <description>2 × 12min variable: 270W baseline + 30s surges to 320W every 2min (57 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"900\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"600\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "CLIMB_3x10": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Climb Sim 3×10</name>\n    <description>3 × 10min variable: 270W baseline + surges to 315W every 90s (77 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"900\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.145\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.145\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.145\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.145\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.145\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.145\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.145\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.145\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.145\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.145\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.145\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.145\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.145\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.145\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Baseline\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.145\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Surge\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "RACE_3x6": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Race-Pace 3×6</name>\n    <description>3 × 6min @ 290-300W (race target), 6min recovery (62 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"900\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"360\" Power=\"1.073\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Race pace\"/>\n        </SteadyState>\n        <SteadyState Duration=\"360\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"360\" Power=\"1.073\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Race pace\"/>\n        </SteadyState>\n        <SteadyState Duration=\"360\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"360\" Power=\"1.073\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Race pace\"/>\n        </SteadyState>\n        <SteadyState Duration=\"360\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "SHARP_5x2": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Sharpener 5×2</name>\n    <description>5 × 2min @ 315-330W, 3min recovery (46 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"720\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"120\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Sharpener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"120\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Sharpener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"120\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Sharpener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"120\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Sharpener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"120\" Power=\"1.164\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Sharpener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"360\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "RACE_3x5": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Race-Pace 3×5</name>\n    <description>3 × 5min @ 290-300W, 5min recovery (53 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"720\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"1.073\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Race pace\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"1.073\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Race pace\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"1.073\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Race pace\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "TEST_5MIN": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>5min Power Test</name>\n    <description>20min build + 5min ALL-OUT (pace evenly) (43 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"1200\" Power=\"0.636\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Build\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"ALL-OUT\"/>\n        </SteadyState>\n        <SteadyState Duration=\"900\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "OPENERS": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Pre-Race Openers</name>\n    <description>30min easy + 3×90s @ 280W, 3min recovery (44 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"1800\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"1.018\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"1.018\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"90\" Power=\"1.018\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"180\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "PR_DAY": null,
+  "STR_BW": null,
+  "STR_GYM": null,
+  "HALF_MONTY": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Half Monty retest</name>\n    <description>Ramp test, morning, fresh (42 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"600\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.545\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Ramp\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.589\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Ramp\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.633\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Ramp\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.676\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Ramp\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.720\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Ramp\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.764\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Ramp\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.807\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Ramp\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.851\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Ramp\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.895\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Ramp\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.938\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Ramp\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.982\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Ramp\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.025\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Ramp\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.069\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Ramp\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.113\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Ramp\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"1.156\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Ramp\"/>\n        </SteadyState>\n        <SteadyState Duration=\"300\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"240\" Power=\"1.055\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"4min test\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "CANNES_SHAKEOUT": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Cannes Shakeout</name>\n    <description>Sunday post-flight shakeout. Cannes seafront promenade, flat, cap 150W, HR ≤135. Light effort to wake the legs after travel. (60 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"600\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"2400\" Power=\"0.527\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Flat Z2\"/>\n        </SteadyState>\n        <SteadyState Duration=\"600\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "CANNES_SUN_AM": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Cannes Sun AM Z2</name>\n    <description>90min Z2 early ride (back by 11am). La Bocca → coast → Cap d&apos;Antibes loop. Z2 (145-180W), cadence 88+, HR ≤140. (90 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"900\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"3600\" Power=\"0.600\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Z2 cruise\"/>\n        </SteadyState>\n        <SteadyState Duration=\"900\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "CANNES_Z2_LOCAL": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Cannes Local Z2</name>\n    <description>2 hours easy aerobic from La Bocca, scout local roads. Esterel coastal road or Mougins backroads. Z2 (145-180W), cadence 88+, HR ≤140. Sets up Tue Tanneron SS. (120 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"900\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"5400\" Power=\"0.600\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Z2 cruise + scout\"/>\n        </SteadyState>\n        <SteadyState Duration=\"900\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "CANNES_TANNERON_SS": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Col du Tanneron SS</name>\n    <description>5km warmup ride to Mandelieu base. 3 × 15min @ 240-260W (sweet spot) on the climb, easy roll back between. Cool-down ride home. (126 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"1200\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"900\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Tanneron #1\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"900\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Tanneron #2\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"900\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Tanneron #3\"/>\n        </SteadyState>\n        <SteadyState Duration=\"2700\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "CANNES_TANNERON_AE": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Col du Tanneron A-effort</name>\n    <description>🎯 Race-pace climb test. 1 × ~35-40min all-out ascent at 275-285W threshold. Same climb as Tuesday — direct A/B comparison. (103 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"1200\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"30\" Power=\"1.109\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Opener\"/>\n        </SteadyState>\n        <SteadyState Duration=\"60\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Easy\"/>\n        </SteadyState>\n        <SteadyState Duration=\"2280\" Power=\"1.018\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Tanneron A-effort\"/>\n        </SteadyState>\n        <SteadyState Duration=\"2400\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "CANNES_VENCE_SS": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Col de Vence SS</name>\n    <description>Ride to Vence base (~35km easy Z2). 3 × 15min @ 240-260W (sweet spot) on the climb, easy roll back between. Ride back to La Bocca. Fuel 60g carbs/hr. (271 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"5400\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"900\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Vence #1\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"900\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Vence #2\"/>\n        </SteadyState>\n        <SteadyState Duration=\"480\" Power=\"0.527\" Cadence=\"85\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Recovery\"/>\n        </SteadyState>\n        <SteadyState Duration=\"900\" Power=\"0.909\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Vence #3\"/>\n        </SteadyState>\n        <SteadyState Duration=\"7200\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>",
+  "CANNES_ESTEREL": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<workout_file>\n    <author>Glutes</author>\n    <name>Esterel Long</name>\n    <description>4-5 hour endurance: Cannes → coast west → Théoule → Esterel red rocks → back. Z2 base (165-180W), climbs drift to Z3/threshold briefly. Fuel like a race: 60g carbs/hr. (270 min, calibrated to FTP 275W — verify your TP FTP matches)</description>\n    <sportType>bike</sportType>\n    <tags/>\n    <workout>\n        <SteadyState Duration=\"1800\" Power=\"0.582\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Warm-up\"/>\n        </SteadyState>\n        <SteadyState Duration=\"12600\" Power=\"0.636\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Z2 + terrain\"/>\n        </SteadyState>\n        <SteadyState Duration=\"1800\" Power=\"0.473\" Cadence=\"90\" pace=\"0\">\n            <textevent timeoffset=\"0\" message=\"Cool-down\"/>\n        </SteadyState>\n    </workout>\n</workout_file>"
+ }
+}

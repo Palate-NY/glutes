@@ -1,0 +1,240 @@
+[
+  {
+    "id": "VO2_5x3",
+    "name": "VO2max 5×3",
+    "type": "vo2",
+    "duration_min": 60,
+    "description": "5 × 3min @ 295-315W (108-115% FTP), 3min easy",
+    "tss": 90,
+    "avg_power": 305,
+    "blocks": [
+      { "dur": 720, "power": 160, "label": "Warm-up", "kind": "warm" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "repeat": 5, "blocks": [
+        { "dur": 180, "power": 305, "label": "VO2max", "kind": "work" },
+        { "dur": 180, "power": 145, "label": "Recovery", "kind": "rec" }
+      ] },
+      { "dur": 420, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "VO2_4x4",
+    "name": "VO2max 4×4",
+    "type": "vo2",
+    "duration_min": 60,
+    "description": "4 × 4min @ 295-310W (107-112% FTP), 4min easy",
+    "tss": 90,
+    "avg_power": 300,
+    "blocks": [
+      { "dur": 720, "power": 160, "label": "Warm-up", "kind": "warm" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "repeat": 4, "blocks": [
+        { "dur": 240, "power": 300, "label": "VO2max", "kind": "work" },
+        { "dur": 240, "power": 145, "label": "Recovery", "kind": "rec" }
+      ] },
+      { "dur": 480, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "VO2_6x3",
+    "name": "VO2max 6×3",
+    "type": "vo2",
+    "duration_min": 70,
+    "description": "6 × 3min @ 300-320W, 2min recovery (short)",
+    "tss": 100,
+    "avg_power": 310,
+    "blocks": [
+      { "dur": 900, "power": 160, "label": "Warm-up", "kind": "warm" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "repeat": 6, "blocks": [
+        { "dur": 180, "power": 310, "label": "VO2max", "kind": "work" },
+        { "dur": 120, "power": 145, "label": "Recovery", "kind": "rec" }
+      ] },
+      { "dur": 600, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "VO2_30_15",
+    "name": "VO2 30/15 × 13",
+    "type": "vo2",
+    "duration_min": 70,
+    "description": "3 blocks of 13 × (30s @ 330W / 15s @ 150W), 4min recovery between blocks. Trainer or flat road only.",
+    "tss": 110,
+    "avg_power": 330,
+    "notes": "Rønnestad 30/15 protocol: 3 blocks of 13 × (30s @ 120% FTP / 15s @ 55% FTP). Maximises time at VO2max via short recovery valleys that do not let HR/lactate clear. Indoor or flat road only, terrain breaks the rhythm.",
+    "blocks": [
+      { "dur": 900, "power": 160, "label": "Warm-up", "kind": "warm" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "repeat": 13, "blocks": [
+        { "dur": 30, "power": 330, "label": "30s ON", "kind": "work" },
+        { "dur": 15, "power": 150, "label": "15s off", "kind": "work" }
+      ] },
+      { "dur": 240, "power": 145, "label": "Recovery", "kind": "rec" },
+      { "repeat": 13, "blocks": [
+        { "dur": 30, "power": 330, "label": "30s ON", "kind": "work" },
+        { "dur": 15, "power": 150, "label": "15s off", "kind": "work" }
+      ] },
+      { "dur": 240, "power": 145, "label": "Recovery", "kind": "rec" },
+      { "repeat": 13, "blocks": [
+        { "dur": 30, "power": 330, "label": "30s ON", "kind": "work" },
+        { "dur": 15, "power": 150, "label": "15s off", "kind": "work" }
+      ] },
+      { "dur": 480, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "RACE_3x6",
+    "name": "Race-Pace 3×6",
+    "type": "vo2",
+    "duration_min": 70,
+    "description": "3 × 6min @ 290-300W (race target), 6min recovery",
+    "tss": 85,
+    "avg_power": 295,
+    "blocks": [
+      { "dur": 900, "power": 160, "label": "Warm-up", "kind": "warm" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "repeat": 3, "blocks": [
+        { "dur": 360, "power": 295, "label": "Race pace", "kind": "work" },
+        { "dur": 360, "power": 145, "label": "Recovery", "kind": "rec" }
+      ] },
+      { "dur": 480, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "RACE_3x5",
+    "name": "Race-Pace 3×5",
+    "type": "vo2",
+    "duration_min": 60,
+    "description": "3 × 5min @ 290-300W, 5min recovery",
+    "tss": 75,
+    "avg_power": 295,
+    "blocks": [
+      { "dur": 720, "power": 160, "label": "Warm-up", "kind": "warm" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "repeat": 3, "blocks": [
+        { "dur": 300, "power": 295, "label": "Race pace", "kind": "work" },
+        { "dur": 300, "power": 145, "label": "Recovery", "kind": "rec" }
+      ] },
+      { "dur": 480, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "RACE_2x8",
+    "name": "Race Sim 2×8",
+    "type": "vo2",
+    "duration_min": 75,
+    "description": "🎯 Climb simulation: 2 × 8min @ 300-315W (target race power), 8min recovery. Pace evenly.",
+    "tss": 95,
+    "avg_power": 305,
+    "notes": "Direct race simulation: 2 × 8min at climb-day power (300-315W). Matches the August goal of 8-10 min at 320W. Trains VO2 durability at the specific duration/intensity of race day.",
+    "blocks": [
+      { "dur": 900, "power": 160, "label": "Warm-up", "kind": "warm" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "dur": 480, "power": 305, "label": "Race sim #1", "kind": "work" },
+      { "dur": 480, "power": 145, "label": "Recovery", "kind": "rec" },
+      { "dur": 480, "power": 305, "label": "Race sim #2", "kind": "work" },
+      { "dur": 480, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "SHARP_5x2",
+    "name": "Sharpener 5×2",
+    "type": "vo2",
+    "duration_min": 50,
+    "description": "5 × 2min @ 315-330W, 3min recovery",
+    "tss": 60,
+    "avg_power": 320,
+    "blocks": [
+      { "dur": 720, "power": 160, "label": "Warm-up", "kind": "warm" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "repeat": 5, "blocks": [
+        { "dur": 120, "power": 320, "label": "Sharpener", "kind": "work" },
+        { "dur": 180, "power": 145, "label": "Recovery", "kind": "rec" }
+      ] },
+      { "dur": 360, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "TEST_5MIN",
+    "name": "5min Power Test",
+    "type": "vo2",
+    "duration_min": 50,
+    "description": "20min build + 5min ALL-OUT (pace evenly)",
+    "tss": 65,
+    "avg_power": 305,
+    "blocks": [
+      { "dur": 1200, "power": 175, "label": "Build", "kind": "warm" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "dur": 300, "power": 305, "label": "ALL-OUT", "kind": "work" },
+      { "dur": 900, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "HALF_MONTY",
+    "name": "Half Monty retest",
+    "type": "vo2",
+    "duration_min": 50,
+    "description": "Ramp test, morning, fresh",
+    "tss": 60,
+    "avg_power": null,
+    "notes": "Ramp portion: 15 one-minute steps rising from 150W to 318W in 12W increments, then a 4 min effort.",
+    "blocks": [
+      { "dur": 600, "power": 160, "label": "Warm-up", "kind": "warm" },
+      { "dur": 60, "power": 150, "label": "Ramp", "kind": "work" },
+      { "dur": 60, "power": 162, "label": "Ramp", "kind": "work" },
+      { "dur": 60, "power": 174, "label": "Ramp", "kind": "work" },
+      { "dur": 60, "power": 186, "label": "Ramp", "kind": "work" },
+      { "dur": 60, "power": 198, "label": "Ramp", "kind": "work" },
+      { "dur": 60, "power": 210, "label": "Ramp", "kind": "work" },
+      { "dur": 60, "power": 222, "label": "Ramp", "kind": "work" },
+      { "dur": 60, "power": 234, "label": "Ramp", "kind": "work" },
+      { "dur": 60, "power": 246, "label": "Ramp", "kind": "work" },
+      { "dur": 60, "power": 258, "label": "Ramp", "kind": "work" },
+      { "dur": 60, "power": 270, "label": "Ramp", "kind": "work" },
+      { "dur": 60, "power": 282, "label": "Ramp", "kind": "work" },
+      { "dur": 60, "power": 294, "label": "Ramp", "kind": "work" },
+      { "dur": 60, "power": 306, "label": "Ramp", "kind": "work" },
+      { "dur": 60, "power": 318, "label": "Ramp", "kind": "work" },
+      { "dur": 300, "power": 145, "label": "Recovery", "kind": "rec" },
+      { "dur": 240, "power": 290, "label": "4min test", "kind": "work" },
+      { "dur": 480, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "PR_DAY",
+    "name": "PR ATTEMPT",
+    "type": "vo2",
+    "duration_min": 0,
+    "description": "🎯 Climb day in France",
+    "tss": 0,
+    "avg_power": 290,
+    "blocks": []
+  }
+]

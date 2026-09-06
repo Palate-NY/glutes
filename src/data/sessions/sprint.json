@@ -1,0 +1,40 @@
+[
+  {
+    "id": "Z2_60_SPRINT",
+    "name": "Z2 + Sprints",
+    "type": "z2",
+    "duration_min": 60,
+    "description": "45min Z2 (145-180W, cad 88+) then 5 × 15sec ALL-OUT sprints in the last 15min. Rolling start, 3-4min full recovery between sprints.",
+    "tss": 55,
+    "avg_power": 165,
+    "notes": "Z2 endurance + short neural sprints at the end. Sprints tacked onto Z2 maintain sprint capacity without stealing recovery from VO2/threshold days.",
+    "blocks": [
+      { "dur": 600, "power": 160, "label": "Warm-up", "kind": "warm" },
+      { "dur": 2100, "power": 165, "label": "Z2 base", "kind": "work" },
+      { "repeat": 5, "blocks": [
+        { "dur": 15, "power": 500, "label": "SPRINT", "kind": "work" },
+        { "dur": 225, "power": 145, "label": "Recovery", "kind": "rec" }
+      ] },
+      { "dur": 180, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "NEURAL_SPRINTS",
+    "name": "Z2 + Neural Sprints",
+    "type": "z2",
+    "duration_min": 75,
+    "description": "60min Z2 then 6 × 10-15sec ALL-OUT sprints in the last 15min. Rolling start, 3-4min full recovery between sprints.",
+    "tss": 70,
+    "avg_power": 165,
+    "notes": "Neural sprint session: 6 short all-out efforts to maintain fast-twitch during the aerobic-focused phase. Keeps sprint pathways firing.",
+    "blocks": [
+      { "dur": 600, "power": 145, "label": "Warm-up", "kind": "warm" },
+      { "dur": 3000, "power": 165, "label": "Z2 base", "kind": "easy" },
+      { "repeat": 6, "blocks": [
+        { "dur": 12, "power": 700, "label": "SPRINT", "kind": "work" },
+        { "dur": 228, "power": 130, "label": "Recovery", "kind": "rec" }
+      ] },
+      { "dur": 300, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  }
+]
