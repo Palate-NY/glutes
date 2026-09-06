@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>Glutes</title>
+
+<!-- PWA / Apple Home Screen support -->
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="Glutes"/>
+<meta name="theme-color" content="#17241b"/>
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"/>
+<link rel="apple-touch-icon" sizes="192x192" href="icon-192.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png"/>
+<link rel="icon" type="image/svg+xml" href="icon.svg"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+</head>
+<body>
+
+<!-- Modal for stat trend -->
+<div class="modal-backdrop" id="stat-modal" onclick="G.closeStatModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title">FTP Trend</div>
+      <button class="modal-close" onclick="G.closeStatModal()">×</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+<div class="container">
+  <div class="tabs">
+    <button class="tab active" data-tab="week" id="tab-week">This Week</button>
+    <button class="tab" data-tab="trends" id="tab-trends">Trends</button>
+    <button class="tab" data-tab="upcoming" id="tab-upcoming">Upcoming</button>
+    <span class="spacer"></span>
+    <select class="plan-select" id="plan-select" aria-label="Training plan"></select>
+  </div>
+  <div id="weekview">
+    <div class="strain">
+      <div class="row">
+        <span class="label">Week Load (TSS)</span>
+        <span class="val"><span id="actual-tss">0</span><span class="planned"> / <span id="planned-tss">0</span> planned</span></span>
+      </div>
+      <div class="bar"><div class="fill" id="strain-bar" style="width:0%"></div></div>
+    </div>
+
+    <div class="weeknav">
+      <button class="navbtn" id="prevwk">←</button>
+      <button class="today-btn" id="today-btn" onclick="G.jumpToToday()" aria-label="Jump to today">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="3" x2="12" y2="12"/>
+          <polyline points="7,8 12,13 17,8"/>
+          <circle cx="12" cy="18.5" r="3"/>
+        </svg>
+      </button>
+      <div class="wlabel">
+        <div class="wname" id="wname">Week 1</div>
+        <div class="wdates" id="wdates"></div>
+      </div>
+      <button class="navbtn" id="nextwk">→</button>
+    </div>
+
+    <div class="days" id="days"></div>
+  </div>
+
+  <div id="trendsview" style="display:none"></div>
+
+  <div id="upcomingview" style="display:none">
+    <div class="plan-goal" id="plan-goal"></div>
+    <div id="upcoming-list"></div>
+  </div>
+
+  <!-- Stats row — reference values, click for trend -->
+  <div class="block-section-label">Performance Stats</div>
+  <div class="stats-row" id="stats-row">
+    <div class="stat-tile" data-stat="ftp" onclick="G.showStatTrend('ftp')">
+      <div class="st-lbl">FTP</div>
+      <div class="st-vl" id="stat-ftp">—<span class="st-unit">W</span></div>
+    </div>
+    <div class="stat-tile" data-stat="hrmax" onclick="G.showStatTrend('hrmax')">
+      <div class="st-lbl">HR Max</div>
+      <div class="st-vl" id="stat-hrmax">—<span class="st-unit">bpm</span></div>
+    </div>
+    <div class="stat-tile" data-stat="lthr" onclick="G.showStatTrend('lthr')">
+      <div class="st-lbl">LTHR</div>
+      <div class="st-vl" id="stat-lthr">—<span class="st-unit">bpm</span></div>
+    </div>
+  </div>
+
+  <!-- Block overview -->
+  <div class="block-section-label">Training Blocks</div>
+  <div class="blocks" id="blocks"></div>
+  <div class="blockdetail" id="blockdetail"></div>
+
+  <!-- Data: backup / restore the training log -->
+  <div class="block-section-label">Data</div>
+  <div class="data-row">
+    <button class="zwo-btn" onclick="G.exportData()"><span class="zwo-icon">⬇</span> Export log (JSON)</button>
+    <button class="zwo-btn" onclick="G.importData()"><span class="zwo-icon">⬆</span> Import log</button>
+    <input type="file" id="import-file" accept="application/json,.json" style="display:none"/>
+  </div>
+  <div class="data-note" id="data-note"></div>
+</div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

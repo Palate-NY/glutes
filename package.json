@@ -1,0 +1,19 @@
+{
+  "name": "glutes",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Personal cycling training planner and logger",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "jsdom": "^29.1.1",
+    "vite": "^8.2.2",
+    "vitest": "^5.0.0"
+  }
+}
