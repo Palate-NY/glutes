@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/Palate-NY/glutes/schema/session.schema.json",
+  "title": "Glutes session file",
+  "description": "A file in src/data/sessions/ is a JSON array of sessions. Validate one file against this schema.",
+  "type": "array",
+  "items": { "$ref": "#/definitions/session" },
+  "definitions": {
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "type", "duration_min", "description", "tss", "avg_power", "blocks"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[A-Za-z0-9_]+$", "description": "Stable id referenced by plans. Never rename an id that a plan uses." },
+        "name": { "type": "string", "minLength": 1, "description": "Shown on the day card, in uppercase." },
+        "type": { "enum": ["rest", "z2", "ss", "thr", "vo2", "strength"], "description": "ss, thr and vo2 count as hard days (orange). z2 is lime. rest is aqua." },
+        "duration_min": { "type": "number", "minimum": 0, "description": "Nominal duration shown next to the name. Should be close to the sum of the blocks." },
+        "description": { "type": "string", "description": "The prescription text shown when the day card is opened." },
+        "tss": { "type": "number", "minimum": 0, "description": "Planned training stress; 0 for rest and strength." },
+        "avg_power": { "type": ["number", "null"], "minimum": 0, "description": "Target average watts, or null for rest/strength." },
+        "notes": { "type": "string", "description": "Optional coaching notes. Not shown in the app." },
+        "blocks": {
+          "type": "array",
+          "description": "Ordered workout steps. Empty for rest and strength (no chart, no ZWO export).",
+          "items": { "$ref": "#/definitions/blockOrGroup" }
+        }
+      }
+    },
+    "block": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dur", "power", "label", "kind"],
+      "properties": {
+        "dur": { "type": "integer", "minimum": 1, "description": "Seconds." },
+        "power": { "type": "number", "minimum": 0, "description": "Watts. ZWO export divides by the current FTP." },
+        "label": { "type": "string", "minLength": 1, "description": "Shown in the chart tooltip and as the ZWO text event." },
+        "kind": { "enum": ["warm", "work", "rec", "easy", "cool"], "description": "Only work blocks count toward Work time; work is orange on hard sessions." }
+      }
+    },
+    "group": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repeat", "blocks"],
+      "properties": {
+        "repeat": { "type": "integer", "minimum": 1, "description": "How many times to repeat the inner blocks." },
+        "blocks": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/blockOrGroup" } }
+      }
+    },
+    "blockOrGroup": { "oneOf": [{ "$ref": "#/definitions/block" }, { "$ref": "#/definitions/group" }] }
+  }
+}

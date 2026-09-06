@@ -2,19 +2,19 @@
 // loaded here. A session's "blocks" may contain repeat groups
 // ({ "repeat": n, "blocks": [...] }) which are expanded to a flat list.
 
-import rest from '../data/sessions/rest.json';
-import z2 from '../data/sessions/z2.json';
-import threshold from '../data/sessions/threshold.json';
-import vo2 from '../data/sessions/vo2.json';
-import sprint from '../data/sessions/sprint.json';
-import strength from '../data/sessions/strength.json';
-import cannes2026 from '../data/sessions/cannes-2026.json';
+// Every JSON file in src/data/sessions/ is loaded; add a file, no JS edit needed.
+const files = import.meta.glob('../data/sessions/*.json', { eager: true, import: 'default' });
 
 export const SESSION_TYPES = ['rest', 'z2', 'ss', 'thr', 'vo2', 'strength'];
 export const BLOCK_KINDS = ['warm', 'work', 'rec', 'easy', 'cool'];
 export const HARD_TYPES = ['vo2', 'thr', 'ss'];
 
-export const RAW_SESSIONS = [...rest, ...z2, ...threshold, ...vo2, ...sprint, ...strength, ...cannes2026];
+export const SESSION_FILES = Object.keys(files).sort();
+export const RAW_SESSIONS = SESSION_FILES.flatMap((f) => {
+  const list = files[f];
+  if (!Array.isArray(list)) throw new Error(`${f}: must be a JSON array of sessions`);
+  return list.map((raw) => ({ ...raw, _file: f.replace('../data/sessions/', '') }));
+});
 
 export function isHardType(type) {
   return HARD_TYPES.includes(type);
@@ -80,6 +80,7 @@ export function normalizeSession(raw) {
     tss: raw.tss,
     targetPower: raw.avg_power,
     notes: raw.notes || '',
+    file: raw._file || null,
     blocks: expandBlocks(raw.blocks),
   };
 }

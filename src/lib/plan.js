@@ -2,12 +2,12 @@
 // (a Monday), a list of blocks (phases) and a list of weeks whose days reference
 // session ids from the session library.
 
-import climb2026 from '../data/plans/2026-climb-pr.json';
-import season2027 from '../data/plans/2027-season.json';
+// Every JSON file in src/data/plans/ is loaded; add a file, no JS edit needed.
+const files = import.meta.glob('../data/plans/*.json', { eager: true, import: 'default' });
 import { SESSIONS } from './sessions.js';
 import { addDays, fmtDate, parseLocalDate } from './dates.js';
 
-export const RAW_PLANS = [climb2026, season2027];
+export const RAW_PLANS = Object.keys(files).sort().map((f) => files[f]);
 
 export function normalizeDayCell(cell) {
   return Array.isArray(cell) ? cell : [cell];
@@ -82,7 +82,12 @@ export function loadPlan(raw, sessions = SESSIONS) {
   return plan;
 }
 
-export const PLANS = RAW_PLANS.map((raw) => loadPlan(raw));
+export const PLANS = RAW_PLANS.map((raw) => loadPlan(raw)).sort((a, b) => a.start - b.start);
+{
+  const ids = PLANS.map((p) => p.id);
+  const dup = ids.find((id, i) => ids.indexOf(id) !== i);
+  if (dup) throw new Error(`duplicate plan id "${dup}"`);
+}
 
 export function planById(id) {
   return PLANS.find((p) => p.id === id) || null;
