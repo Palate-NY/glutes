@@ -1,0 +1,105 @@
+# Glutes
+
+Personal cycling training planner and logger. Single user, vanilla JS, no framework.
+Dark tile UI, Helvetica, chartreuse accents. Runs as a home-screen web app on iPhone.
+
+Goal: FTP 300W + 700W sprint by August 2027.
+
+## Daily use
+
+```bash
+npm install        # once
+npm run dev        # http://localhost:5173, hot reload
+npm test           # session/plan validation, ZWO golden test, migration, app smoke test
+npm run build      # production bundle in dist/
+git push           # GitHub Actions tests, builds and deploys to GitHub Pages
+```
+
+## Layout
+
+```
+index.html                  page shell (Vite entry)
+src/main.js                 boot: load + migrate state, pick plan, render, wire events
+src/app.js                  runtime state shared by UI modules (plan, week, ftp, hrmax)
+src/styles.css              all styles
+src/data/sessions/*.json    workout library, grouped by type   <- edit workouts here
+src/data/plans/*.json       training plans (weeks -> session ids) <- edit the calendar here
+src/lib/sessions.js         JSON loader, validation, repeat-group expansion
+src/lib/plan.js             plan loader, validation, date math, current-week detection
+src/lib/zwo.js              .zwo writer (byte-identical to the old app, golden-tested)
+src/lib/session-log.js      "SESSION LOG" paste parser
+src/lib/migrate.js          storage migrations (v1 position keys -> v2 date keys)
+src/lib/storage.js          localStorage wrapper, export/import
+src/lib/metrics.js          HR estimate, TSS helpers
+src/lib/dates.js            local-date helpers
+src/ui/week.js              This Week view, day cards, session forms, training blocks
+src/ui/viz.js               workout profile chart + mini bars
+src/ui/trends.js            Trends view
+src/ui/upcoming.js          Upcoming view
+src/ui/stats.js             FTP / HRmax / LTHR tiles + history modal
+src/ui/data.js              export / import / toast
+tests/                      Vitest; fixtures/golden-v47.json is the truth from the old app
+legacy/glutes-v47.html      the single-file app this was migrated from (v0 commit)
+```
+
+## Editing workouts
+
+Add or change a session in `src/data/sessions/<type>.json`:
+
+```json
+{
+  "id": "SS_2x15",
+  "name": "Sweet Spot 2×15",
+  "type": "ss",
+  "duration_min": 60,
+  "description": "2 × 15min @ 240-258W (SS), 5min recovery",
+  "tss": 75,
+  "avg_power": 248,
+  "notes": "optional free text",
+  "blocks": [
+    { "dur": 900, "power": 160, "label": "Warm-up", "kind": "warm" },
+    { "repeat": 3, "blocks": [
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" }
+    ] },
+    { "dur": 900, "power": 248, "label": "Sweet Spot", "kind": "work" },
+    { "dur": 300, "power": 145, "label": "Recovery", "kind": "rec" },
+    { "dur": 900, "power": 248, "label": "Sweet Spot", "kind": "work" },
+    { "dur": 480, "power": 130, "label": "Cool-down", "kind": "cool" }
+  ]
+}
+```
+
+- `type`: `rest | z2 | ss | thr | vo2 | strength`. `ss`, `thr`, `vo2` count as hard days.
+- `dur` is seconds, `power` is watts (ZWO export converts to FTP fractions).
+- `kind`: `warm | work | rec | easy | cool`. Only `work` blocks count toward "Work" time.
+- `{ "repeat": n, "blocks": [...] }` groups can nest.
+- The id is what plans reference. Renaming an id breaks every plan that uses it; `npm test` catches that.
+
+## Editing the plan
+
+`src/data/plans/2027-season.json`. `start` must be a Monday. Each week has 7 days; a day is a session id or a list of ids (first one is the "main" ride). Blocks (phases) get their week ranges and dates computed from the weeks that reference them.
+
+To add a new phase in December: append weeks, add a block, run `npm test`, push.
+
+Old plans stay in the repo (`2026-climb-pr.json`) and can be viewed with the plan selector, so the log from May to August 2026 stays readable.
+
+## Data and storage
+
+Everything lives in `localStorage` under the key `climb-tracker-state`, same as before.
+Logged sessions are keyed by date (`2026-09-10/0`), not by plan position, so editing the plan never re-attaches a log to the wrong workout.
+
+The first load of the new app converts the old position keys (`W3D1S0`) to dates and keeps the untouched original under `climb-tracker-state.v1-backup`.
+
+`localStorage` is per origin: the GitHub Pages site and `localhost:5173` do not share data. Use the Data section at the bottom of the page (Export log / Import log) to copy your log to the dev server, or to back it up.
+
+## Deploying
+
+One-time: in the GitHub repo, Settings -> Pages -> Build and deployment -> Source: **GitHub Actions**.
+After that every push to `main` runs tests, builds, and deploys. A failing test blocks the deploy.
+
+The app icons (`icon-180.png`, `icon-192.png`, `favicon-32.png`, `favicon-16.png`) are referenced from the page root. Drop them into `public/` and they ship with the build. `public/icon.svg` is the fallback favicon.
+
+## ZWO export
+
+`src/lib/zwo.js` is tested against files generated by the old app (`tests/zwo.test.js`). If you intentionally change the format, regenerate `tests/fixtures/golden-v47.json` or update the test.
