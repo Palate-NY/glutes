@@ -1,0 +1,2658 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>Glutes</title>
+
+<!-- PWA / Apple Home Screen support -->
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="Glutes"/>
+<meta name="theme-color" content="#17241b"/>
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"/>
+<link rel="apple-touch-icon" sizes="192x192" href="icon-192.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+
+<!-- App icon (inline SVG → data URL, no extra files needed) -->
+<style>
+  /* ==================================================================
+     UTILITARIAN — lime/black, condensed display, monospace data
+     ================================================================== */
+  :root{
+    --bg:#0a0a0a;
+    --panel:#141414;
+    --panel-2:#1c1c1c;
+    --panel-3:#262626;
+    --line:#2a2a2a;
+    --line-2:#3a3a3a;
+    --ink:#f5f5f5;
+    --ink-2:#a8a8a8;
+    --ink-3:#666;
+    --ink-4:#444;
+    --lime:#c6ff3d;
+    --lime-2:#aae626;
+    --lime-dim:rgba(198,255,61,.12);
+    --orange:#ff8c42;
+    --orange-2:#ff7322;
+    --orange-dim:rgba(255,140,66,.12);
+    --aqua:#5fc9d9;
+    --aqua-dim:rgba(95,201,217,.10);
+    --warn:#ffb84d;
+    --bad:#ff6b4d;
+    --done:#c6ff3d;
+
+    --r:18px;
+    --rs:14px;
+    --rp:12px;
+
+    /* Type stacks */
+    --display: 'Helvetica Neue', Helvetica, 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'SF Mono', 'JetBrains Mono', 'IBM Plex Mono', Menlo, Consolas, monospace;
+    --ui: -apple-system, BlinkMacSystemFont, 'Inter', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--ui);
+    font-size:14px;
+    line-height:1.45;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+  body{
+    /* Respect iPhone safe areas when installed as a home-screen app */
+    padding-top:env(safe-area-inset-top);
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  button{font:inherit;color:inherit;cursor:pointer;font-family:var(--ui)}
+  input,select,textarea{font-family:var(--mono);color:inherit}
+
+  /* ===== HEADER (stat tiles) ===== */
+  .stats-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:6px;
+    margin:0 0 14px;
+  }
+  .stat-tile{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--rs);
+    padding:10px 14px 12px;
+    cursor:pointer;
+    transition:all .12s ease;
+  }
+  .stat-tile:hover{
+    border-color:var(--lime);
+    background:var(--panel-2);
+  }
+  .stat-tile:active{transform:scale(0.98)}
+  .stat-tile .st-lbl{
+    font-family:var(--mono);
+    font-size:9px;
+    color:var(--ink-3);
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    font-weight:700;
+  }
+  .stat-tile .st-vl{
+    font-family:var(--display);
+    font-size:28px;
+    font-weight:800;
+    margin-top:2px;
+    letter-spacing:-.04em;
+    line-height:1;
+    color:var(--ink);
+  }
+  .stat-tile .st-vl .st-unit{
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:500;
+    color:var(--ink-3);
+    margin-left:4px;
+    letter-spacing:.04em;
+  }
+
+  /* ===== MODAL ===== */
+  .modal-backdrop{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.7);
+    backdrop-filter:blur(8px);
+    z-index:100;
+    align-items:flex-end;
+    justify-content:center;
+    padding:0;
+  }
+  .modal-backdrop.show{display:flex}
+  .modal{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--rs) var(--rs) 0 0;
+    width:100%;
+    max-width:880px;
+    max-height:85vh;
+    overflow-y:auto;
+    padding:20px;
+    animation:slide-up .25s ease;
+  }
+  @keyframes slide-up{
+    from{transform:translateY(20px);opacity:0}
+    to{transform:translateY(0);opacity:1}
+  }
+  @media (min-width:600px){
+    .modal-backdrop{align-items:center;padding:20px}
+    .modal{border-radius:var(--rs);max-height:80vh}
+  }
+  .modal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:16px;
+  }
+  .modal-title{
+    font-family:var(--display);
+    font-size:22px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:-.03em;
+  }
+  .modal-close{
+    background:var(--panel-3);
+    border:none;
+    color:var(--ink-2);
+    width:36px;height:36px;
+    border-radius:50%;
+    font-size:22px;
+    line-height:1;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .modal-close:hover{background:var(--ink-4);color:var(--ink)}
+
+  .stat-history{
+    background:#000;
+    border:1px solid var(--line);
+    border-radius:var(--rs);
+    padding:14px;
+    margin-bottom:14px;
+  }
+  .stat-history .sh-title{
+    font-family:var(--mono);
+    font-size:10px;
+    color:var(--ink-3);
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  .stat-history table{width:100%;border-collapse:collapse}
+  .stat-history td{
+    padding:10px 0;
+    border-bottom:1px solid var(--line);
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.02em;
+  }
+  .stat-history tr:last-child td{border-bottom:none}
+  .stat-history td.date{color:var(--ink-3);text-transform:uppercase}
+  .stat-history td.val{text-align:right;font-weight:700}
+  .stat-history td.val.current{color:var(--lime)}
+  .stat-history td.delta{text-align:right;color:var(--ink-3);width:60px}
+  .stat-history td.delta.up{color:var(--lime)}
+  .stat-history td.delta.down{color:var(--bad)}
+
+  .stat-note{
+    background:#000;
+    border:1px solid var(--line);
+    border-radius:var(--rs);
+    padding:14px;
+    font-size:13px;
+    line-height:1.5;
+    color:var(--ink-2);
+  }
+  .stat-note strong{color:var(--ink)}
+  .stat-note .nt{
+    font-family:var(--mono);
+    font-size:10px;
+    color:var(--ink-3);
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    font-weight:700;
+    margin-bottom:8px;
+    display:block;
+  }
+  .container{max-width:880px;margin:0 auto;padding:24px 14px 80px}
+
+  /* ===== BLOCK CARDS (now at bottom — smaller, secondary) ===== */
+  .block-section-label{
+    font-family:var(--mono);
+    font-size:10px;
+    color:var(--ink-3);
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    font-weight:700;
+    margin:32px 0 10px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+  }
+  .blocks{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:0 0 14px}
+  .block{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--rs);
+    padding:10px 12px 12px;
+    cursor:pointer;
+    transition:all .15s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .block:hover{border-color:var(--line-2);background:var(--panel-2)}
+  .block.current{
+    background:var(--lime);
+    border-color:var(--lime);
+    color:#000;
+  }
+  .block .b-name{
+    font-family:var(--mono);
+    font-size:9px;
+    color:var(--ink-3);
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    font-weight:700;
+  }
+  .block.current .b-name{color:rgba(0,0,0,.55)}
+  .block .b-weeks{
+    font-family:var(--display);
+    font-size:13px;
+    color:var(--ink);
+    margin-top:4px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:-.03em;
+    line-height:1.05;
+  }
+  .block.current .b-weeks{color:#000}
+  .block .b-focus{
+    font-family:var(--mono);
+    font-size:9px;
+    color:var(--ink-3);
+    margin-top:4px;
+    letter-spacing:.04em;
+  }
+  .block.current .b-focus{color:rgba(0,0,0,.65)}
+
+  /* ===== WORKOUT VISUALIZATION ===== */
+  .workout-viz{
+    margin-top:10px;
+    background:#000;
+    border:1px solid var(--line);
+    border-radius:var(--rs);
+    padding:12px 14px;
+  }
+  .workout-viz .viz-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:10px;
+    gap:8px;
+  }
+  .workout-viz .viz-title{
+    font-family:var(--mono);
+    font-size:10px;
+    color:var(--ink-3);
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    font-weight:700;
+  }
+  .workout-viz .viz-legend{
+    display:flex;
+    gap:12px;
+    font-family:var(--mono);
+    font-size:9px;
+    color:var(--ink-3);
+    text-transform:uppercase;
+    letter-spacing:.08em;
+  }
+  .workout-viz .viz-legend .lg-item{display:flex;align-items:center;gap:5px}
+  .workout-viz .viz-legend .lg-bar{width:10px;height:8px;border-radius:2px}
+  .workout-viz svg{width:100%;height:120px;display:block}
+  .workout-viz svg rect.block-bar{cursor:pointer;transition:opacity .12s ease}
+  .workout-viz svg rect.block-bar:hover{opacity:0.85}
+  .workout-viz{position:relative}
+  .viz-tooltip{
+    position:absolute;
+    background:#000;
+    border:1px solid var(--line-2);
+    border-radius:8px;
+    padding:10px 12px;
+    pointer-events:none;
+    z-index:10;
+    min-width:140px;
+    display:none;
+    box-shadow:0 6px 20px rgba(0,0,0,.5);
+  }
+  .viz-tooltip.show{display:block}
+  .viz-tooltip .tt-label{
+    font-family:var(--mono);
+    font-size:9px;
+    color:var(--ink-3);
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    font-weight:700;
+    margin-bottom:4px;
+  }
+  .viz-tooltip .tt-name{
+    font-family:var(--display);
+    font-size:14px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:-.03em;
+    margin-bottom:6px;
+  }
+  .viz-tooltip .tt-row{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    font-family:var(--mono);
+    font-size:11px;
+    padding:3px 0;
+  }
+  .viz-tooltip .tt-row .k{color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;font-size:9px}
+  .viz-tooltip .tt-row .v{color:var(--ink);font-weight:700}
+  .viz-tooltip .tt-row .v .pct{color:var(--ink-3);font-weight:500;margin-left:4px}
+  .workout-viz .viz-summary{
+    display:flex;
+    gap:14px;
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px solid var(--line);
+    font-family:var(--mono);
+    font-size:10px;
+    color:var(--ink-3);
+    text-transform:uppercase;
+    letter-spacing:.06em;
+  }
+  .workout-viz .viz-summary .seg{display:flex;flex-direction:column;gap:2px}
+  .workout-viz .viz-summary .seg .v{
+    color:var(--ink);
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.02em;
+  }
+
+  /* Mini viz inside collapsed day card */
+  .mini-viz{
+    width:60px;
+    height:24px;
+    display:flex;
+    align-items:flex-end;
+    gap:1px;
+    flex-shrink:0;
+  }
+  .mini-viz .mb{
+    flex:1;
+    background:var(--ink-4);
+    border-radius:1px;
+    min-height:2px;
+  }
+  .mini-viz .mb.warm{background:var(--ink-3)}
+  .mini-viz .mb.work{background:var(--lime)}
+  .mini-viz.hard .mb.work{background:var(--orange)}
+  .mini-viz .mb.cool{background:var(--ink-3)}
+  .mini-viz .mb.rec{background:var(--ink-4)}
+
+  /* ===== WEEK NAV (oversized pill) ===== */
+  .weeknav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--rp);
+    padding:10px 12px;
+    margin-bottom:14px;
+    user-select:none;
+    -webkit-user-select:none;
+    touch-action:pan-y;
+  }
+  .weeknav .navbtn{
+    background:transparent;
+    color:var(--ink-2);
+    border:1.5px solid var(--ink-4);
+    border-radius:12px;
+    width:44px;
+    height:44px;
+    font-size:18px;
+    font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+    transition:all .12s ease;
+    flex-shrink:0;
+  }
+  .weeknav .navbtn:hover{border-color:var(--ink-2);color:var(--ink)}
+  .weeknav .navbtn:active{transform:scale(0.96)}
+  .weeknav .wlabel{text-align:center;flex:1}
+  .today-btn{
+    background:transparent;
+    color:var(--lime);
+    border:1.5px solid var(--lime);
+    border-radius:12px;
+    width:44px;
+    height:44px;
+    padding:0;
+    margin-left:6px;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    transition:all .12s ease;
+    flex-shrink:0;
+  }
+  .today-btn.show{display:flex}
+  .today-btn:hover{background:var(--lime);color:#000}
+  .today-btn:active{transform:scale(0.96)}
+  .today-btn svg{width:18px;height:18px;display:block}
+  .weeknav .wlabel .wname{
+    font-family:var(--display);
+    font-weight:800;
+    font-size:18px;
+    text-transform:uppercase;
+    letter-spacing:-.03em;
+    line-height:1;
+  }
+  .weeknav .wlabel .wdates{
+    color:var(--ink-3);
+    font-family:var(--mono);
+    font-size:11px;
+    margin-top:4px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+  }
+
+  /* ===== SUMMARY CARDS (big numbers) ===== */
+  .summary-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:14px}
+  .scard{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--rs);
+    padding:12px 14px 14px;
+  }
+  .scard.accent{background:var(--lime);border-color:var(--lime);color:#000}
+  .scard .lbl{
+    font-family:var(--mono);
+    font-size:9px;
+    color:var(--ink-3);
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    font-weight:600;
+  }
+  .scard.accent .lbl{color:rgba(0,0,0,.55)}
+  .scard .vl{
+    font-family:var(--display);
+    font-size:32px;
+    font-weight:800;
+    margin-top:4px;
+    line-height:1;
+    letter-spacing:-.04em;
+  }
+  .scard .vl .unit{
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:500;
+    color:var(--ink-3);
+    margin-left:4px;
+    letter-spacing:.04em;
+  }
+  .scard.accent .vl .unit{color:rgba(0,0,0,.55)}
+  .scard .sub{
+    font-family:var(--mono);
+    font-size:9px;
+    color:var(--ink-3);
+    margin-top:6px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+  }
+  .scard.accent .sub{color:rgba(0,0,0,.55)}
+
+  /* ===== STRAIN BAR ===== */
+  .strain{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--rs);
+    padding:14px 16px;
+    margin-bottom:16px;
+  }
+  .strain .row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+  .strain .label{
+    font-family:var(--mono);
+    font-size:10px;
+    color:var(--ink-3);
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    font-weight:600;
+  }
+  .strain .val{
+    font-family:var(--display);
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:-.04em;
+  }
+  .strain .val .planned{
+    color:var(--ink-3);
+    font-weight:500;
+    font-size:14px;
+    margin-left:8px;
+    font-family:var(--mono);
+    letter-spacing:.02em;
+  }
+  .bar{
+    height:6px;
+    background:var(--panel-3);
+    border-radius:var(--rp);
+    overflow:hidden;
+    position:relative;
+  }
+  .bar .fill{
+    height:100%;
+    background:var(--lime);
+    border-radius:var(--rp);
+    transition:width .3s ease;
+  }
+
+  /* ===== DAYS ===== */
+  .days{display:flex;flex-direction:column;gap:6px}
+  .day{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--rs);
+    overflow:hidden;
+    transition:border-color .12s ease;
+  }
+  .day:hover{border-color:var(--line-2)}
+  /* Today's card: solid fill, black text — strong "you are here" signal */
+  .day.today{
+    background:var(--ink);
+    border-color:var(--ink);
+    box-shadow:none;
+  }
+  .day.today .dmeta .session{color:#000}
+
+  /* Color the today card by day type */
+  .day.is-hard.today{background:var(--orange);border-color:var(--orange)}
+  .day.is-z2.today{background:var(--lime);border-color:var(--lime)}
+  .day.is-rest.today{background:var(--aqua);border-color:var(--aqua)}
+
+  /* When today is highlighted, the cal-tile inverts to dark stroke/text on colored bg */
+  .day.today .cal-tile{border-color:#000;color:#000;background:transparent}
+  .day.today.is-hard .cal-tile,
+  .day.today.is-z2 .cal-tile,
+  .day.today.is-rest .cal-tile{border-color:#000;color:#000;background:transparent}
+
+  /* Today pill — inverted on the colored bg */
+  .today-pill{
+    display:inline-block;
+    background:#000;
+    color:#fff;
+    font-family:var(--mono);
+    font-size:9px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    padding:3px 8px;
+    border-radius:var(--rp);
+    margin-left:8px;
+    vertical-align:middle;
+  }
+  /* The mini-viz on today's card needs adjusted colors for contrast */
+  .day.today .mini-viz .mb{background:rgba(0,0,0,.25)}
+  .day.today .mini-viz .mb.work{background:#000}
+  .day.today .mini-viz .mb.warm,
+  .day.today .mini-viz .mb.cool{background:rgba(0,0,0,.4)}
+  /* The badge on today's card */
+  .day.today .badge.planned{background:rgba(0,0,0,.2);color:#000}
+  .day.today .badge.done{background:#000;color:var(--ink)}
+  .day.today .badge.partial{background:#000;color:var(--warn)}
+  .day.today .badge.skipped{background:rgba(0,0,0,.2);color:#000}
+  .day-head{
+    padding:14px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    cursor:pointer;
+    user-select:none;
+    gap:12px;
+  }
+  .day-head .dleft{display:flex;align-items:center;gap:14px;min-width:0;flex:1}
+  .dmeta{min-width:0;flex:1}
+  .dmeta .session{
+    font-family:var(--display);
+    font-size:22px;
+    color:var(--ink);
+    letter-spacing:-.04em;
+    text-transform:uppercase;
+    font-weight:800;
+    line-height:1.05;
+    margin:0;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  /* Color the workout title by day type to match the tile */
+  .day.is-hard .dmeta .session{color:var(--orange)}
+  .day.is-z2 .dmeta .session{color:var(--lime)}
+  .day.is-rest .dmeta .session{color:var(--aqua)}
+  /* On today's solid-color card, the title becomes black for contrast */
+  .day.today .dmeta .session{color:#000}
+  .dmeta .tss-chip{
+    display:inline-block;
+    margin-top:8px;
+    margin-right:4px;
+    background:var(--panel-3);
+    color:var(--ink-2);
+    font-family:var(--mono);
+    font-size:10px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    padding:3px 8px;
+    border-radius:var(--rp);
+  }
+  .dmeta .tss-chip.wrk-chip{
+    background:transparent;
+    border:1px solid var(--line-2);
+    color:var(--ink-2);
+  }
+  .day.today .dmeta .tss-chip{background:rgba(0,0,0,.2);color:#000}
+  .day.today .dmeta .tss-chip.wrk-chip{background:transparent;border-color:rgba(0,0,0,.4);color:#000}
+  .dmeta .today-pill{margin-left:0;margin-top:8px;margin-right:6px;display:inline-block}
+  /* Rest-day subtle aqua treatment */
+  .day.is-rest{
+    background:rgba(95,201,217,.10);
+    border-color:rgba(95,201,217,.18);
+  }
+
+  /* Hard-day subtle orange treatment */
+  .day.is-hard{
+    background:rgba(255,140,66,.10);
+    border-color:rgba(255,140,66,.18);
+  }
+
+  /* Z2-day subtle lime treatment */
+  .day.is-z2{
+    background:rgba(198,255,61,.08);
+    border-color:rgba(198,255,61,.16);
+  }
+
+  /* Calendar-style date tile — outlined treatment */
+  .cal-tile{
+    width:52px;
+    height:52px;
+    border-radius:12px;
+    background:transparent;
+    border:1.5px solid var(--ink-4);
+    color:var(--ink-2);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    line-height:1;
+  }
+  .cal-tile .ct-dow{
+    font-family:var(--mono);
+    font-size:9px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    opacity:.85;
+    margin-bottom:2px;
+  }
+  .cal-tile .ct-day{
+    font-family:var(--display);
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:-.04em;
+  }
+  /* Type-colored tiles — outlined */
+  .day.is-hard .cal-tile{border-color:var(--orange);color:var(--orange)}
+  .day.is-z2 .cal-tile{border-color:var(--lime);color:var(--lime)}
+  .day.is-rest .cal-tile{border-color:var(--aqua);color:var(--aqua)}
+
+  .day-head .dname{
+    font-family:var(--display);
+    font-weight:800;
+    font-size:16px;
+    text-transform:uppercase;
+    letter-spacing:-.03em;
+  }
+  .day-head .ddate{
+    color:var(--ink-3);
+    font-family:var(--mono);
+    font-size:11px;
+    margin-left:8px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+  }
+  .day-head .session{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--ink-2);
+    margin-top:4px;
+    letter-spacing:.02em;
+    text-transform:uppercase;
+  }
+  .day-head .session.lowercase{text-transform:none}
+  .session{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--ink-2);
+    margin-top:4px;
+    letter-spacing:.02em;
+    text-transform:uppercase;
+  }
+  .day-head .dright{display:flex;align-items:center;gap:8px}
+
+  /* ===== BADGES (pill shaped, high contrast) ===== */
+  .badge{
+    font-family:var(--mono);
+    font-size:9px;
+    padding:5px 10px;
+    border-radius:var(--rp);
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    white-space:nowrap;
+  }
+  .badge.planned{background:var(--panel-3);color:var(--ink-2)}
+  .badge.done{background:var(--lime);color:#000}
+  .badge.done.hard-done{background:var(--orange);color:#000}
+  .badge.done.rest-done{background:var(--aqua);color:#000}
+  .badge.partial{background:var(--warn);color:#000}
+  .badge.skipped{background:var(--ink-4);color:var(--ink-2)}
+
+  .day-body{display:none;border-top:1px solid var(--line);background:var(--panel-2);padding:16px}
+  .day.open .day-body{display:block}
+
+  /* ===== FORM FIELDS ===== */
+  .prescribed{
+    background:#000;
+    border:1px solid var(--line);
+    border-radius:var(--rs);
+    padding:14px 16px;
+    margin-bottom:12px;
+    font-size:13px;
+    color:var(--ink-2);
+    line-height:1.5;
+  }
+  .prescribed .ptitle{
+    color:var(--ink);
+    font-family:var(--display);
+    font-weight:800;
+    margin-bottom:6px;
+    font-size:16px;
+    text-transform:uppercase;
+    letter-spacing:-.03em;
+  }
+  .prescribed .ptitle .dur{
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:600;
+    color:var(--ink-3);
+    margin-left:8px;
+    letter-spacing:.06em;
+  }
+
+  /* ===== STATUS BUTTONS (pill row) ===== */
+  .status-row{display:flex;gap:6px;margin-bottom:14px}
+  .status-btn{
+    flex:1;
+    padding:12px;
+    background:transparent;
+    border:1px solid var(--line);
+    border-radius:var(--rp);
+    color:var(--ink-3);
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    transition:all .12s ease;
+  }
+  .status-btn:hover{border-color:var(--line-2);color:var(--ink-2)}
+  .status-btn.active.done{background:var(--lime);border-color:var(--lime);color:#000}
+  .status-btn.hard-done.active{background:var(--orange);border-color:var(--orange);color:#000}
+  .status-btn.rest-done.active{background:var(--aqua);border-color:var(--aqua);color:#000}
+  .status-btn.active.partial{background:var(--warn);border-color:var(--warn);color:#000}
+  .status-btn.active.skipped{background:var(--ink-4);border-color:var(--ink-4);color:var(--ink)}
+
+  /* ===== INPUT FIELDS ===== */
+  .form-row{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+  .form-field{flex:1;min-width:0}
+  .form-field label{
+    display:block;
+    font-family:var(--mono);
+    font-size:9px;
+    color:var(--ink-3);
+    margin-bottom:6px;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    font-weight:700;
+  }
+  .form-field input,.form-field select,.form-field textarea{
+    width:100%;
+    background:#000;
+    border:1px solid var(--line);
+    border-radius:var(--rs);
+    padding:12px 14px;
+    outline:none;
+    font-family:var(--mono);
+    font-size:15px;
+    font-weight:600;
+    color:var(--ink);
+    letter-spacing:.02em;
+    transition:border-color .12s ease;
+  }
+  .form-field input:focus,.form-field select:focus,.form-field textarea:focus{
+    border-color:var(--lime);
+  }
+  .form-field input::placeholder{color:var(--ink-4)}
+  .form-field textarea{
+    resize:vertical;
+    min-height:120px;
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:400;
+    letter-spacing:.01em;
+    line-height:1.5;
+  }
+  .parse-btn{
+    margin-top:8px;
+    background:var(--lime);
+    color:#000;
+    border:none;
+    border-radius:var(--rp);
+    padding:10px 18px;
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    transition:transform .12s ease;
+  }
+  .parse-btn:hover{transform:scale(0.98)}
+  .parse-btn:active{transform:scale(0.95)}
+  .parse-btn .parse-icon{
+    display:inline-block;
+    width:14px;
+    height:14px;
+    border-radius:50%;
+    background:#000;
+    color:var(--lime);
+    font-size:11px;
+    line-height:14px;
+    text-align:center;
+    font-weight:900;
+  }
+  .zwo-btn{
+    margin-top:10px;
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--line-2);
+    border-radius:var(--rp);
+    padding:10px 18px;
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:all .12s ease;
+  }
+  .zwo-btn:hover{border-color:var(--lime);color:var(--lime)}
+  .zwo-btn:active{transform:scale(0.97)}
+  .zwo-btn .zwo-icon{font-size:13px;line-height:1}
+
+  /* ===== TABS ===== */
+  .tabs{
+    display:flex;
+    gap:6px;
+    margin-bottom:16px;
+    overflow-x:auto;
+    padding-bottom:2px;
+  }
+  .tab{
+    padding:10px 18px;
+    color:var(--ink-3);
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:11px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--rp);
+    white-space:nowrap;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    transition:all .12s ease;
+  }
+  .tab:hover{border-color:var(--line-2);color:var(--ink-2)}
+  .tab.active{background:var(--lime);border-color:var(--lime);color:#000}
+
+  /* ===== BLOCK DETAIL EXPANSION ===== */
+  .blockdetail{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--rs);
+    padding:18px;
+    margin-bottom:16px;
+    display:none;
+  }
+  .blockdetail.show{display:block}
+  .blockdetail h3{
+    margin:0 0 6px;
+    font-family:var(--display);
+    font-size:24px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:-.04em;
+    line-height:1.05;
+  }
+  .blockdetail .b-purpose{
+    color:var(--ink-2);
+    font-size:13px;
+    margin-bottom:14px;
+    line-height:1.5;
+  }
+  .blockdetail .b-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:14px}
+  .blockdetail .b-stat{
+    background:var(--panel-2);
+    border-radius:var(--rs);
+    padding:12px 14px;
+  }
+  .blockdetail .b-stat .lbl{
+    font-family:var(--mono);
+    font-size:9px;
+    color:var(--ink-3);
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    font-weight:700;
+  }
+  .blockdetail .b-stat .vl{
+    font-family:var(--display);
+    font-size:22px;
+    font-weight:800;
+    margin-top:4px;
+    letter-spacing:-.04em;
+    line-height:1;
+  }
+
+  /* ===== TREND CHARTS ===== */
+  .chart{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--rs);
+    padding:18px;
+    margin-bottom:10px;
+  }
+  .chart h4{
+    margin:0 0 14px;
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--ink-2);
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    font-weight:700;
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:8px;
+  }
+  .chart h4 .sub{
+    font-family:var(--mono);
+    font-size:10px;
+    color:var(--ink-3);
+    font-weight:500;
+    letter-spacing:.06em;
+  }
+  .chart svg{width:100%;height:140px;display:block}
+
+  @media (max-width: 600px) {
+    .stats-row{gap:4px}
+    .stat-tile{padding:8px 10px 10px}
+    .stat-tile .st-vl{font-size:22px}
+    .stat-tile .st-vl .st-unit{font-size:10px}
+    .blocks{grid-template-columns:repeat(2,1fr)}
+    .blockdetail .b-stats{grid-template-columns:repeat(2,1fr)}
+    .summary-cards{grid-template-columns:repeat(2,1fr)}
+    .summary-cards .scard:nth-child(3){grid-column:1 / -1}
+    .scard .vl{font-size:26px}
+    .dmeta .session{font-size:18px}
+    .cal-tile{width:46px;height:46px}
+    .cal-tile .ct-day{font-size:20px}
+    .prescribed .ptitle{font-size:14px}
+    .blockdetail h3{font-size:20px}
+    .blockdetail .b-stat .vl{font-size:18px}
+    .day-head .dright .mini-viz{display:flex;width:48px;height:22px}
+    .workout-viz svg{height:100px}
+    .modal-title{font-size:18px}
+  }
+</style>
+</head>
+<body>
+
+
+<!-- Modal for stat trend -->
+<div class="modal-backdrop" id="stat-modal" onclick="closeStatModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title">FTP Trend</div>
+      <button class="modal-close" onclick="closeStatModal()">×</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+<div class="container">
+  <div class="tabs">
+    <button class="tab active" data-tab="week" id="tab-week">This Week</button>
+    <button class="tab" data-tab="trends" id="tab-trends">Trends</button>
+    <button class="tab" data-tab="upcoming" id="tab-upcoming">Upcoming</button>
+  </div>
+  <div id="weekview">
+    <div class="strain">
+      <div class="row">
+        <span class="label">Week Load (TSS)</span>
+        <span class="val"><span id="actual-tss">0</span><span class="planned"> / <span id="planned-tss">0</span> planned</span></span>
+      </div>
+      <div class="bar"><div class="fill" id="strain-bar" style="width:0%"></div></div>
+    </div>
+
+    <div class="weeknav">
+      <button class="navbtn" id="prevwk">←</button>
+      <button class="today-btn" id="today-btn" onclick="jumpToToday()" aria-label="Jump to today">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="3" x2="12" y2="12"/>
+          <polyline points="7,8 12,13 17,8"/>
+          <circle cx="12" cy="18.5" r="3"/>
+        </svg>
+      </button>
+      <div class="wlabel">
+        <div class="wname" id="wname">Week 1</div>
+        <div class="wdates" id="wdates">May 4 — May 10</div>
+      </div>
+      <button class="navbtn" id="nextwk">→</button>
+    </div>
+
+    <div class="days" id="days"></div>
+  </div>
+
+  <div id="trendsview" style="display:none"></div>
+
+  <div id="upcomingview" style="display:none">
+    <div id="upcoming-list"></div>
+  </div>
+
+  <!-- Stats row — reference values, click for trend -->
+  <div class="block-section-label">Performance Stats</div>
+  <div class="stats-row" id="stats-row">
+    <div class="stat-tile" data-stat="ftp" onclick="showStatTrend('ftp')">
+      <div class="st-lbl">FTP</div>
+      <div class="st-vl" id="stat-ftp">275<span class="st-unit">W</span></div>
+    </div>
+    <div class="stat-tile" data-stat="hrmax" onclick="showStatTrend('hrmax')">
+      <div class="st-lbl">HR Max</div>
+      <div class="st-vl" id="stat-hrmax">194<span class="st-unit">bpm</span></div>
+    </div>
+    <div class="stat-tile" data-stat="lthr" onclick="showStatTrend('lthr')">
+      <div class="st-lbl">LTHR</div>
+      <div class="st-vl" id="stat-lthr">172<span class="st-unit">bpm</span></div>
+    </div>
+  </div>
+
+  <!-- Block overview moved to bottom -->
+  <div class="block-section-label">Training Blocks</div>
+  <div class="blocks" id="blocks"></div>
+  <div class="blockdetail" id="blockdetail"></div>
+</div>
+<script>
+// ============================================================================
+// PLAN DEFINITION
+// ============================================================================
+let FTP = 280;
+let HRMAX = 194;
+const START = new Date('2026-05-04T00:00:00');
+
+const BLOCKS = [
+  { id:1, name:'Block 1', focus:'Base & Threshold', weeks:'W1–W4', dateRange:'May 4 – May 31',
+    purpose:'Build aerobic base, raise FTP floor with sweet spot and threshold work. Establish strength routine and cadence pattern.' },
+  { id:2, name:'Block 2', focus:'VO2max Build', weeks:'W5–W8', dateRange:'Jun 1 – Jun 28',
+    purpose:'Raise the 5-min power ceiling — the direct limiter for your climb PR. VO2 intervals, over-unders, climb sims.' },
+  { id:3, name:'Block 3', focus:'Specificity', weeks:'W9–W12', dateRange:'Jun 29 – Jul 26',
+    purpose:'Climb-specific variable efforts and race-pace work. Train the exact surge-recovery pattern of a mixed climb.' },
+  { id:4, name:'Block 4', focus:'Peak & Taper', weeks:'W13–W14', dateRange:'Jul 27 – Aug 9',
+    purpose:'Sharpen with short high-quality intervals, reduce volume, then PR attempt in France.' }
+];
+
+function session(name, type, dur, prescribed, tss, targetPower, blocks) {
+  return { name, type, dur, prescribed, tss, targetPower, blocks };
+}
+
+// Workout block helpers — each block is {dur (sec), power (W), label, kind}
+// kind: 'warm' | 'work' | 'rec' | 'cool' | 'easy'
+function wu(dur) { return { dur, power: 160, label:'Warm-up', kind:'warm' }; }
+function cd(dur) { return { dur, power: 130, label:'Cool-down', kind:'cool' }; }
+function rec(dur, power) { return { dur, power: power||145, label:'Recovery', kind:'rec' }; }
+function work(dur, power, label) { return { dur, power, label:label||'Interval', kind:'work' }; }
+function opener() { return { dur: 30, power: 305, label:'Opener', kind:'work' }; }
+function openerRec() { return { dur: 60, power: 145, label:'Easy', kind:'rec' }; }
+function repeat(n, ...blocks) {
+  const out = [];
+  for (let i=0; i<n; i++) out.push(...blocks.map(b=>({...b})));
+  return out;
+}
+
+const REST = session('Rest', 'rest', 0, 'Full rest. Walk, hydrate, sleep. Recovery IS training.', 0, null, []);
+
+const EASY30 = session('Easy spin', 'z2', 30,
+  'Z1 recovery, <140 bpm, cadence 90+', 20, 145,
+  [{ dur: 30*60, power: 145, label:'Easy spin', kind:'easy' }]);
+
+const EASY45 = session('Easy spin', 'z2', 45,
+  'Z1-Z2 recovery, <140 bpm, cadence 90+', 30, 160,
+  [{ dur: 45*60, power: 160, label:'Easy spin', kind:'easy' }]);
+
+const Z2_60 = session('Z2 endurance', 'z2', 60,
+  '165-200W avg, HR <150, cadence 90+', 55, 180,
+  [{ dur: 5*60, power: 145, label:'Warm-up', kind:'warm' },
+   { dur: 50*60, power: 180, label:'Steady Z2', kind:'easy' },
+   { dur: 5*60, power: 135, label:'Cool-down', kind:'cool' }]);
+
+const SS_2x15 = session('Sweet Spot 2×15', 'ss', 60,
+  '2 × 15min @ 240-258W (SS), 5min recovery', 75, 248,
+  [wu(15*60), opener(), openerRec(), opener(), openerRec(), opener(), openerRec(),
+   work(15*60, 248, 'Sweet Spot'), rec(5*60), work(15*60, 248, 'Sweet Spot'),
+   cd(8*60)]);
+
+const SS_3x10 = session('Sweet Spot 3×10', 'ss', 60,
+  '3 × 10min @ 240-258W (SS), 5min recovery', 75, 248,
+  [wu(15*60), opener(), openerRec(), opener(), openerRec(), opener(), openerRec(),
+   ...repeat(3, work(10*60, 248, 'Sweet Spot'), rec(5*60)),
+   cd(5*60)]);
+
+const THR_2x12 = session('Threshold 2×12', 'thr', 65,
+  '2 × 12min @ 265-275W (Threshold), 8min recovery', 80, 270,
+  [wu(15*60), opener(), openerRec(), opener(), openerRec(), opener(), openerRec(),
+   work(12*60, 270, 'Threshold'), rec(8*60), work(12*60, 270, 'Threshold'),
+   cd(8*60)]);
+
+const THR_2x15 = session('Threshold 2×15', 'thr', 70,
+  '2 × 15min @ 265-275W (Threshold), 8min recovery', 95, 270,
+  [wu(15*60), opener(), openerRec(), opener(), openerRec(), opener(), openerRec(),
+   work(15*60, 270, 'Threshold'), rec(8*60), work(15*60, 270, 'Threshold'),
+   cd(8*60)]);
+
+const THR_2x10 = session('Threshold 2×10', 'thr', 60,
+  '2 × 10min @ 265-275W, 8min recovery', 70, 270,
+  [wu(15*60), opener(), openerRec(), opener(), openerRec(), opener(), openerRec(),
+   work(10*60, 270, 'Threshold'), rec(8*60), work(10*60, 270, 'Threshold'),
+   cd(8*60)]);
+
+const SS_3x8 = session('Sweet Spot 3×8', 'ss', 55,
+  '3 × 8min @ 240-258W, 4min recovery', 65, 248,
+  [wu(12*60), opener(), openerRec(), opener(), openerRec(),
+   ...repeat(3, work(8*60, 248, 'Sweet Spot'), rec(4*60)),
+   cd(5*60)]);
+
+const LONG_Z2 = session('Long Z2', 'z2', 120,
+  '2 hr steady Z2, 165-185W, HR <150', 110, 175,
+  [{ dur: 5*60, power: 145, label:'Warm-up', kind:'warm' },
+   { dur: 110*60, power: 175, label:'Steady Z2', kind:'easy' },
+   { dur: 5*60, power: 135, label:'Cool-down', kind:'cool' }]);
+
+const LONG_Z2_LONG = session('Long Z2', 'z2', 150,
+  '2.5 hr Z2, 165-185W, HR <150, fuel 60-80g/hr', 140, 175,
+  [{ dur: 5*60, power: 145, label:'Warm-up', kind:'warm' },
+   { dur: 140*60, power: 175, label:'Steady Z2', kind:'easy' },
+   { dur: 5*60, power: 135, label:'Cool-down', kind:'cool' }]);
+
+const VO2_5x3 = session('VO2max 5×3', 'vo2', 60,
+  '5 × 3min @ 295-315W (108-115% FTP), 3min easy', 90, 305,
+  [wu(12*60), opener(), openerRec(), opener(), openerRec(),
+   ...repeat(5, work(3*60, 305, 'VO2max'), rec(3*60)),
+   cd(7*60)]);
+
+const VO2_4x4 = session('VO2max 4×4', 'vo2', 60,
+  '4 × 4min @ 295-310W (107-112% FTP), 4min easy', 90, 300,
+  [wu(12*60), opener(), openerRec(), opener(), openerRec(),
+   ...repeat(4, work(4*60, 300, 'VO2max'), rec(4*60)),
+   cd(8*60)]);
+
+const VO2_6x3 = session('VO2max 6×3', 'vo2', 70,
+  '6 × 3min @ 300-320W, 2min recovery (short)', 100, 310,
+  [wu(15*60), opener(), openerRec(), opener(), openerRec(),
+   ...repeat(6, work(3*60, 310, 'VO2max'), rec(2*60)),
+   cd(10*60)]);
+
+// Rønnestad 30/15 protocol — 3 blocks of 13 × (30s @ 120% FTP / 15s @ 55% FTP).
+// Designed to maximize time at VO2max via short recovery valleys that don't
+// allow HR/lactate to fully clear. Indoor or flat road only — terrain breaks
+// the rhythm. Each block is ~10 min; 3 blocks = 30 min total VO2 work.
+const VO2_30_15 = session('VO2 30/15 × 13', 'vo2', 70,
+  '3 blocks of 13 × (30s @ 330W / 15s @ 150W), 4min recovery between blocks. Trainer or flat road only.',
+  110, 330,
+  [wu(15*60), opener(), openerRec(), opener(), openerRec(),
+   // Block 1: 13 reps of 30s on / 15s off
+   ...repeat(13, work(30, 330, '30s ON'), work(15, 150, '15s off')),
+   rec(4*60),
+   // Block 2
+   ...repeat(13, work(30, 330, '30s ON'), work(15, 150, '15s off')),
+   rec(4*60),
+   // Block 3
+   ...repeat(13, work(30, 330, '30s ON'), work(15, 150, '15s off')),
+   cd(8*60)]);
+
+// Over-unders: 1 min over (290W), 1 min under (250W) × 5 per block
+const OU_3x10 = session('Over-Unders 3×10', 'thr', 70,
+  '3 × 10min OU: 1min @ 290W / 1min @ 250W × 5', 95, 270,
+  [wu(15*60),
+   ...repeat(3,
+     ...repeat(5, work(60, 290, 'Over'), work(60, 250, 'Under')),
+     rec(5*60)),
+   cd(5*60)]);
+
+const OU_4x8 = session('Over-Unders 4×8', 'thr', 70,
+  '4 × 8min OU: 1min @ 290W / 1min @ 250W × 4', 90, 270,
+  [wu(12*60),
+   ...repeat(4,
+     ...repeat(4, work(60, 290, 'Over'), work(60, 250, 'Under')),
+     rec(4*60)),
+   cd(8*60)]);
+
+const LONG_VO2 = session('Long + VO2', 'z2', 150,
+  '2.5 hr Z2 with 4×4min VO2 in middle', 160, 190,
+  [{ dur: 60*60, power: 175, label:'Z2', kind:'easy' },
+   ...repeat(4, work(4*60, 300, 'VO2max'), rec(4*60)),
+   { dur: 58*60, power: 175, label:'Z2', kind:'easy' }]);
+
+// Climb sim variable: alternating baseline + surges
+const CLIMB_2x12 = session('Climb Sim 2×12', 'thr', 75,
+  '2 × 12min variable: 270W baseline + 30s surges to 320W every 2min', 100, 280,
+  [wu(15*60), opener(), openerRec(), opener(), openerRec(),
+   // Block 1: 6 surge cycles of (90s @ 270W + 30s @ 320W) = 12 min
+   ...repeat(6, work(90, 270, 'Baseline'), work(30, 320, 'Surge')),
+   rec(10*60),
+   ...repeat(6, work(90, 270, 'Baseline'), work(30, 320, 'Surge')),
+   cd(5*60)]);
+
+const CLIMB_3x10 = session('Climb Sim 3×10', 'thr', 80,
+  '3 × 10min variable: 270W baseline + surges to 315W every 90s', 110, 280,
+  [wu(15*60), opener(), openerRec(), opener(), openerRec(),
+   ...repeat(3,
+     ...repeat(5, work(90, 270, 'Baseline'), work(30, 315, 'Surge')),
+     rec(8*60)),
+   cd(5*60)]);
+
+const RACE_3x6 = session('Race-Pace 3×6', 'vo2', 70,
+  '3 × 6min @ 290-300W (race target), 6min recovery', 85, 295,
+  [wu(15*60), opener(), openerRec(), opener(), openerRec(),
+   ...repeat(3, work(6*60, 295, 'Race pace'), rec(6*60)),
+   cd(8*60)]);
+
+const SHARP_5x2 = session('Sharpener 5×2', 'vo2', 50,
+  '5 × 2min @ 315-330W, 3min recovery', 60, 320,
+  [wu(12*60), opener(), openerRec(), opener(), openerRec(),
+   ...repeat(5, work(2*60, 320, 'Sharpener'), rec(3*60)),
+   cd(6*60)]);
+
+const RACE_3x5 = session('Race-Pace 3×5', 'vo2', 60,
+  '3 × 5min @ 290-300W, 5min recovery', 75, 295,
+  [wu(12*60), opener(), openerRec(), opener(), openerRec(),
+   ...repeat(3, work(5*60, 295, 'Race pace'), rec(5*60)),
+   cd(8*60)]);
+
+// Direct race simulation: 2 × 8min at climb-day power (300-315W).
+// Matches the August goal of 8-10 min at 320W. Trains VO2 durability at
+// the specific duration/intensity you'll deliver on race day.
+const RACE_2x8 = session('Race Sim 2×8', 'vo2', 75,
+  '🎯 Climb simulation: 2 × 8min @ 300-315W (target race power), 8min recovery. Pace evenly.',
+  95, 305,
+  [wu(15*60), opener(), openerRec(), opener(), openerRec(),
+   work(8*60, 305, 'Race sim #1'),
+   rec(8*60),
+   work(8*60, 305, 'Race sim #2'),
+   cd(8*60)]);
+
+// Z2 endurance + short neural sprints at the end. Sprints tacked onto Z2
+// maintain sprint capacity without stealing recovery from VO2/threshold days.
+const Z2_60_SPRINT = session('Z2 + Sprints', 'z2', 60,
+  '45min Z2 (145-180W, cad 88+) then 5 × 15sec ALL-OUT sprints in the last 15min. Rolling start, 3-4min full recovery between sprints.',
+  55, 165,
+  [wu(10*60),
+   work(35*60, 165, 'Z2 base'),
+   ...repeat(5, work(15, 500, 'SPRINT'), rec(3*60+45)),
+   cd(3*60)]);
+
+const TEST_5MIN = session('5min Power Test', 'vo2', 50,
+  '20min build + 5min ALL-OUT (pace evenly)', 65, 305,
+  [{ dur: 20*60, power: 175, label:'Build', kind:'warm' },
+   opener(), openerRec(), opener(), openerRec(),
+   work(5*60, 305, 'ALL-OUT'),
+   cd(15*60)]);
+
+const OPENERS = session('Pre-Race Openers', 'z2', 45,
+  '30min easy + 3×90s @ 280W, 3min recovery', 30, 165,
+  [{ dur: 30*60, power: 145, label:'Easy', kind:'easy' },
+   work(90, 280, 'Opener'), rec(3*60),
+   work(90, 280, 'Opener'), rec(3*60),
+   work(90, 280, 'Opener'),
+   cd(3*60)]);
+
+const PR_DAY = session('PR ATTEMPT', 'vo2', 0,
+  '🎯 Climb day in France', 0, 290, []);
+
+const STR_BW = session('Strength (bodyweight)', 'strength', 20,
+  'Goblet sq 3×12, single-leg RDL 3×10, Bulgarian split sq 3×8, calf raises 3×15, side plank 3×30s', 0, null, []);
+const STR_GYM = session('Strength (heavy)', 'strength', 45,
+  'Sprint-prep: Back sq 4×4 @ 80-85% 1RM (2-3min rest), Bulgarian split sq w/ DB 3×6/side heavy, Barbell hip thrust 3×5 heavy, Explosive step-ups 3×5/side (fast), Plank 3×45s. Full recovery between sets.',
+  0, null, []);
+const HALF_MONTY = session('Half Monty retest','vo2',50,
+  'Ramp test, morning, fresh',60, null,
+  [wu(10*60),
+   // ramp portion: ~15 stepping rises from 150W to 320W in 1-min increments
+   ...Array.from({length:15},(_,i)=>({dur:60, power:150+i*12, label:'Ramp', kind:'work'})),
+   rec(5*60),
+   work(4*60, 290, '4min test'),
+   cd(8*60)]);
+
+// ============================================================================
+// CANNES TRAINING CAMP (W8) — June 22-26, 2026
+// Five custom sessions tied to specific climbs and routes in the Côte d'Azur.
+// ============================================================================
+const CANNES_SHAKEOUT = session('Cannes Shakeout', 'z2', 60,
+  'Sunday post-flight shakeout. Cannes seafront promenade, flat, cap 150W, HR ≤135. Light effort to wake the legs after travel.',
+  35, 145,
+  [wu(10*60),
+   work(40*60, 145, 'Flat Z2'),
+   cd(10*60)]);
+
+const CANNES_SUN_AM = session('Cannes Sun AM Z2', 'z2', 90,
+  '90min Z2 early ride (back by 11am). La Bocca → coast → Cap d\'Antibes loop. Z2 (145-180W), cadence 88+, HR ≤140.',
+  55, 165,
+  [wu(15*60),
+   work(60*60, 165, 'Z2 cruise'),
+   cd(15*60)]);
+
+const CANNES_Z2_LOCAL = session('Cannes Local Z2', 'z2', 120,
+  '2 hours easy aerobic from La Bocca, scout local roads. Esterel coastal road or Mougins backroads. Z2 (145-180W), cadence 88+, HR ≤140. Sets up Tue Tanneron SS.',
+  90, 165,
+  [wu(15*60),
+   work(90*60, 165, 'Z2 cruise + scout'),
+   cd(15*60)]);
+
+const CANNES_TANNERON_SS = session('Col du Tanneron SS', 'ss', 180,
+  '5km warmup ride to Mandelieu base. 3 × 15min @ 240-260W (sweet spot) on the climb, easy roll back between. Cool-down ride home.',
+  170, 250,
+  [wu(20*60),
+   work(15*60, 250, 'Tanneron #1'),
+   rec(8*60),
+   work(15*60, 250, 'Tanneron #2'),
+   rec(8*60),
+   work(15*60, 250, 'Tanneron #3'),
+   cd(45*60)]);
+
+const CANNES_TANNERON_AE = session('Col du Tanneron A-effort', 'thr', 120,
+  '🎯 Race-pace climb test. 1 × ~35-40min all-out ascent at 275-285W threshold. Same climb as Tuesday — direct A/B comparison.',
+  130, 280,
+  [wu(20*60),
+   opener(), openerRec(), opener(), openerRec(), opener(), openerRec(),
+   work(38*60, 280, 'Tanneron A-effort'),
+   cd(40*60)]);
+
+const CANNES_VENCE_SS = session('Col de Vence SS', 'ss', 300,
+  'Ride to Vence base (~35km easy Z2). 3 × 15min @ 240-260W (sweet spot) on the climb, easy roll back between. Ride back to La Bocca. Fuel 60g carbs/hr.',
+  240, 250,
+  [wu(90*60),
+   work(15*60, 250, 'Vence #1'),
+   rec(8*60),
+   work(15*60, 250, 'Vence #2'),
+   rec(8*60),
+   work(15*60, 250, 'Vence #3'),
+   cd(120*60)]);
+
+const CANNES_ESTEREL = session('Esterel Long', 'z2', 270,
+  '4-5 hour endurance: Cannes → coast west → Théoule → Esterel red rocks → back. Z2 base (165-180W), climbs drift to Z3/threshold briefly. Fuel like a race: 60g carbs/hr.',
+  240, 175,
+  [wu(30*60),
+   work(210*60, 175, 'Z2 + terrain'),
+   cd(30*60)]);
+
+// ============================================================================
+// 2027 FOUNDATION PHASE (Sep-Dec 2026)
+// Target: FTP 300W + 700W/50s by Aug 2027
+// Priority: aerobic base rebuild + heavy strength + sprint maintenance
+// ============================================================================
+
+const Z2_90 = session('Z2 endurance 90', 'z2', 90,
+  '90 min steady Z2, 155-180W, HR <145, cadence 88+', 75, 165,
+  [{ dur: 10*60, power: 145, label:'Warm-up', kind:'warm' },
+   { dur: 75*60, power: 168, label:'Steady Z2', kind:'easy' },
+   { dur: 5*60, power: 135, label:'Cool-down', kind:'cool' }]);
+
+const LONG_Z2_3H = session('Long Z2 3hr', 'z2', 180,
+  '3hr steady Z2, 155-180W, HR <148. Fuel 60-80g/hr. Foundation-builder.', 170, 168,
+  [{ dur: 10*60, power: 145, label:'Warm-up', kind:'warm' },
+   { dur: 165*60, power: 168, label:'Steady Z2', kind:'easy' },
+   { dur: 5*60, power: 135, label:'Cool-down', kind:'cool' }]);
+
+// Neural sprint session — 6-8 short all-out efforts to maintain fast-twitch
+// during aerobic-focused phase. Keeps sprint pathways firing.
+const NEURAL_SPRINTS = session('Z2 + Neural Sprints', 'z2', 75,
+  '60min Z2 then 6 × 10-15sec ALL-OUT sprints in the last 15min. Rolling start, 3-4min full recovery between sprints.',
+  70, 165,
+  [{ dur: 10*60, power: 145, label:'Warm-up', kind:'warm' },
+   { dur: 50*60, power: 165, label:'Z2 base', kind:'easy' },
+   ...Array.from({length:6}, () => [
+     { dur: 12, power: 700, label:'SPRINT', kind:'work' },
+     { dur: 3*60+48, power: 130, label:'Recovery', kind:'rec' },
+   ]).flat(),
+   { dur: 5*60, power: 130, label:'Cool-down', kind:'cool' }]);
+
+const PLAN = [
+  // ═══════════════════════════════════════════════════════════════
+  // 2027 SEASON — 11-month build to FTP 300W + 700W/50s (Aug 2027)
+  // Phase 1: PREP (3 weeks, Sep 7-27) — restart after break
+  // ═══════════════════════════════════════════════════════════════
+  { week:1, label:'SEP W1 Prep', blockId:1, days:[REST, Z2_60, EASY45, [Z2_60, STR_BW], REST, LONG_Z2, EASY45]},
+  { week:2, label:'SEP W2 Prep', blockId:1, days:[REST, [Z2_60, STR_GYM], Z2_60, [Z2_90, STR_BW], REST, LONG_Z2, EASY45]},
+  { week:3, label:'SEP W3 Prep', blockId:1, days:[[Z2_60, STR_GYM], Z2_90, NEURAL_SPRINTS, REST, [Z2_60, STR_GYM], LONG_Z2, EASY45]},
+
+  // ═══════════════════════════════════════════════════════════════
+  // Phase 2: FOUNDATION (12 weeks, Oct-Dec) — aerobic base + strength
+  // Volume ramps 6→10hrs/week. Heavy strength 2x/week. Weekly sprint.
+  // ═══════════════════════════════════════════════════════════════
+  { week:4, label:'OCT W1 Foundation', blockId:2, days:[[Z2_60, STR_GYM], Z2_90, NEURAL_SPRINTS, REST, [Z2_60, STR_GYM], LONG_Z2, EASY45]},
+  { week:5, label:'OCT W2 Foundation', blockId:2, days:[[Z2_60, STR_GYM], Z2_90, NEURAL_SPRINTS, EASY30, [Z2_60, STR_GYM], LONG_Z2_LONG, EASY45]},
+  { week:6, label:'OCT W3 Foundation', blockId:2, days:[[Z2_60, STR_GYM], Z2_90, NEURAL_SPRINTS, EASY30, [Z2_60, STR_GYM], LONG_Z2_LONG, EASY45]},
+  { week:7, label:'OCT W4 Recovery', blockId:2, days:[[Z2_60, STR_BW], EASY45, Z2_60, REST, EASY45, LONG_Z2, REST]},
+
+  { week:8, label:'NOV W1 Foundation', blockId:2, days:[[Z2_90, STR_GYM], Z2_60, NEURAL_SPRINTS, EASY30, [Z2_90, STR_GYM], LONG_Z2_LONG, EASY45]},
+  { week:9, label:'NOV W2 Foundation', blockId:2, days:[[Z2_90, STR_GYM], Z2_60, NEURAL_SPRINTS, EASY30, [Z2_90, STR_GYM], LONG_Z2_3H, EASY45]},
+  { week:10, label:'NOV W3 Foundation', blockId:2, days:[[Z2_90, STR_GYM], Z2_60, NEURAL_SPRINTS, EASY30, [Z2_90, STR_GYM], LONG_Z2_3H, EASY45]},
+  { week:11, label:'NOV W4 Recovery', blockId:2, days:[[Z2_60, STR_BW], EASY45, Z2_60, REST, EASY45, LONG_Z2, REST]},
+
+  { week:12, label:'DEC W1 Foundation', blockId:2, days:[[Z2_90, STR_GYM], Z2_90, NEURAL_SPRINTS, EASY30, [Z2_90, STR_GYM], LONG_Z2_3H, EASY45]},
+  { week:13, label:'DEC W2 Foundation Peak', blockId:2, days:[[Z2_90, STR_GYM], Z2_90, NEURAL_SPRINTS, EASY30, [Z2_90, STR_GYM], LONG_Z2_3H, EASY45]},
+  { week:14, label:'DEC W3 Threshold Intro', blockId:2, days:[[SS_2x15, STR_GYM], Z2_60, NEURAL_SPRINTS, REST, [Z2_90, STR_BW], LONG_Z2, EASY45]},
+  { week:15, label:'DEC W4 Threshold Intro', blockId:2, days:[[THR_2x12, STR_GYM], Z2_60, NEURAL_SPRINTS, REST, [Z2_90, STR_BW], LONG_Z2, EASY45]},
+  { week:16, label:'DEC W5 Recovery + Test', blockId:2, days:[[Z2_60, STR_BW], EASY45, HALF_MONTY, REST, EASY45, LONG_Z2, REST]}
+
+  // ═══════════════════════════════════════════════════════════════
+  // Phase 3: BUILD (Jan-Mar 2027) — threshold + strength [TBD Dec]
+  // Phase 4: SPECIFIC (Apr-May 2027) — VO2 + anaerobic block [TBD Mar]
+  // Cannes Camp (end of June 2027, heat-adapted this time)
+  // Phase 5: PEAK (Jul-Aug 15, 2027) — final taper + PR
+  // ═══════════════════════════════════════════════════════════════
+];
+
+function normalizeDayCell(cell) { return Array.isArray(cell) ? cell : [cell]; }
+
+// ============================================================================
+// STATE & STORAGE
+// ============================================================================
+let state = { actuals: {} };
+let currentWeek = 1;
+let currentBlockExpanded = null;
+
+function load() {
+  try {
+    const raw = localStorage.getItem('climb-tracker-state');
+    if (raw) {
+      state = JSON.parse(raw);
+      if (!state.actuals) state.actuals = {};
+    }
+  } catch(e) { state = { actuals: {} }; }
+}
+function save() {
+  try { localStorage.setItem('climb-tracker-state', JSON.stringify(state)); }
+  catch(e) { console.error('Save failed:', e); }
+}
+
+// ============================================================================
+// DATE HELPERS
+// ============================================================================
+function dateForDay(week, dayIdx) {
+  const d = new Date(START);
+  d.setDate(d.getDate() + (week-1)*7 + dayIdx);
+  return d;
+}
+function fmtDate(d) { return d.toLocaleDateString('en-US',{month:'short',day:'numeric'}); }
+function fmtDayName(idx) { return ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][idx]; }
+function isToday(d) {
+  const t = new Date();
+  return d.getFullYear()===t.getFullYear() && d.getMonth()===t.getMonth() && d.getDate()===t.getDate();
+}
+function detectCurrentWeek() {
+  const now = new Date();
+  for (let i = 0; i < 14; i++) {
+    const start = new Date(START);
+    start.setDate(start.getDate() + i*7);
+    const end = new Date(start);
+    end.setDate(end.getDate() + 7);
+    if (now >= start && now < end) return i+1;
+  }
+  if (now < START) return 1;
+  return 14;
+}
+
+// ============================================================================
+// WORKOUT VISUALIZATION
+// ============================================================================
+// Estimate HR from %FTP using piecewise linear mapping calibrated to your data
+// Reference points: Z2 ~75% HRmax @ 65% FTP, SS ~87% @ 90% FTP, Threshold ~92% @ 100% FTP, VO2 ~96% @ 112% FTP
+function estimateHRFromFTP(pctFTP) {
+  if (!pctFTP || pctFTP < 30) return { bpm: 0, pct: 0 }; // recovery / not pedaling
+  let pctHR;
+  if (pctFTP < 55) pctHR = 60 + (pctFTP - 30) * 0.32;       // Z1: 60-68%
+  else if (pctFTP < 75) pctHR = 68 + (pctFTP - 55) * 0.40;  // Z2: 68-76%
+  else if (pctFTP < 88) pctHR = 76 + (pctFTP - 75) * 0.69;  // Z3: 76-85%
+  else if (pctFTP < 95) pctHR = 85 + (pctFTP - 88) * 0.43;  // SS: 85-88%
+  else if (pctFTP < 105) pctHR = 88 + (pctFTP - 95) * 0.50; // Threshold: 88-93%
+  else if (pctFTP < 115) pctHR = 93 + (pctFTP - 105) * 0.30; // VO2 sustained: 93-96%
+  else pctHR = 96 + Math.min((pctFTP - 115) * 0.15, 3);     // Above VO2: cap ~99%
+  pctHR = Math.min(Math.max(pctHR, 50), 99);
+  return { bpm: Math.round(HRMAX * pctHR / 100), pct: Math.round(pctHR) };
+}
+
+// Convert mouse/touch event to SVG-local point and return the rect under it
+function findBlockUnderPointer(svg, clientX, clientY) {
+  const pt = svg.createSVGPoint();
+  pt.x = clientX;
+  pt.y = clientY;
+  const ctm = svg.getScreenCTM();
+  if (!ctm) return null;
+  const local = pt.matrixTransform(ctm.inverse());
+  // Find which rect contains this point
+  const rects = svg.querySelectorAll('rect.block-bar');
+  for (const r of rects) {
+    const x = parseFloat(r.getAttribute('x'));
+    const y = parseFloat(r.getAttribute('y'));
+    const w = parseFloat(r.getAttribute('width'));
+    const h = parseFloat(r.getAttribute('height'));
+    // Expand vertical hit area to whole chart so users can hover anywhere in column
+    if (local.x >= x && local.x <= x + w) {
+      return r;
+    }
+  }
+  return null;
+}
+
+function showTooltipForBar(rect, tooltipEl, container, clientX, clientY) {
+  const label = rect.getAttribute('data-label');
+  const dur = rect.getAttribute('data-dur');
+  const power = rect.getAttribute('data-power');
+  const pctftp = rect.getAttribute('data-pctftp');
+  const hr = rect.getAttribute('data-hr');
+  const pcthr = rect.getAttribute('data-pcthr');
+  const kind = rect.getAttribute('data-kind');
+
+  const kindLabel = {work:'Work', warm:'Warm-up', cool:'Cool-down', rec:'Recovery', easy:'Easy'}[kind] || kind;
+
+  tooltipEl.innerHTML = `
+    <div class="tt-label">${kindLabel}</div>
+    <div class="tt-name">${label}</div>
+    <div class="tt-row"><span class="k">Duration</span><span class="v">${dur}</span></div>
+    <div class="tt-row"><span class="k">Power</span><span class="v">${power}W <span class="pct">${pctftp}%</span></span></div>
+    <div class="tt-row"><span class="k">Est. HR</span><span class="v">${hr} bpm <span class="pct">${pcthr}%</span></span></div>
+  `;
+  tooltipEl.classList.add('show');
+
+  // Position tooltip relative to the container
+  const containerRect = container.getBoundingClientRect();
+  const tipW = tooltipEl.offsetWidth;
+  const tipH = tooltipEl.offsetHeight;
+  let left = clientX - containerRect.left - tipW / 2;
+  let top = clientY - containerRect.top - tipH - 12;
+  // Clamp horizontally
+  left = Math.max(8, Math.min(containerRect.width - tipW - 8, left));
+  // If too high, show below instead
+  if (top < 4) top = clientY - containerRect.top + 16;
+  tooltipEl.style.left = left + 'px';
+  tooltipEl.style.top = top + 'px';
+}
+
+function handleVizHover(event, vizId) {
+  const svg = event.currentTarget;
+  const tooltipEl = document.getElementById('viz-tooltip-' + vizId);
+  if (!tooltipEl) return;
+  const container = tooltipEl.parentElement;
+  const rect = findBlockUnderPointer(svg, event.clientX, event.clientY);
+  if (rect) showTooltipForBar(rect, tooltipEl, container, event.clientX, event.clientY);
+  else tooltipEl.classList.remove('show');
+}
+
+function handleVizTap(event, vizId) {
+  // For touch / tap-to-show — same logic as hover
+  const svg = event.currentTarget;
+  const tooltipEl = document.getElementById('viz-tooltip-' + vizId);
+  if (!tooltipEl) return;
+  const container = tooltipEl.parentElement;
+  const clientX = event.clientX || (event.touches && event.touches[0] && event.touches[0].clientX);
+  const clientY = event.clientY || (event.touches && event.touches[0] && event.touches[0].clientY);
+  if (clientX == null) return;
+  const rect = findBlockUnderPointer(svg, clientX, clientY);
+  if (rect) {
+    showTooltipForBar(rect, tooltipEl, container, clientX, clientY);
+    event.stopPropagation();
+  }
+}
+
+function hideVizTooltip(event, vizId) {
+  if (vizId) {
+    const tooltipEl = document.getElementById('viz-tooltip-' + vizId);
+    if (tooltipEl) tooltipEl.classList.remove('show');
+  } else {
+    // global click outside — hide all visible tooltips
+    document.querySelectorAll('.viz-tooltip.show').forEach(el => el.classList.remove('show'));
+  }
+}
+
+function renderWorkoutViz(sess) {
+  if (!sess.blocks || sess.blocks.length === 0) return '';
+  const blocks = sess.blocks;
+  const totalDur = blocks.reduce((sum, b) => sum + b.dur, 0);
+  if (totalDur === 0) return '';
+
+  // Unique id for this viz instance so tooltips don't collide
+  const vizId = 'v' + Math.random().toString(36).slice(2, 9);
+
+  // SVG canvas
+  const W = 800, H = 120, PAD_X = 24, PAD_Y = 16;
+  const chartW = W - 2*PAD_X;
+  const chartH = H - 2*PAD_Y;
+
+  // Power range
+  const maxPower = Math.max(330, ...blocks.map(b => b.power)) * 1.05;
+  const minPower = 80;
+  const powerRange = maxPower - minPower;
+
+  // Color by kind — work block color depends on session type
+  const isHard = ['vo2','thr','ss'].includes(sess.type);
+  const workColor = isHard ? '#ff8c42' : '#c6ff3d'; // orange for hard, lime for Z2
+  const colorFor = (kind) => {
+    if (kind === 'work') return workColor;
+    if (kind === 'warm' || kind === 'cool') return '#666';
+    if (kind === 'rec' || kind === 'easy') return '#3a3a3a';
+    return '#3a3a3a';
+  };
+
+  // Compute summary stats
+  const workBlocks = blocks.filter(b => b.kind === 'work');
+  const totalWork = workBlocks.reduce((s,b) => s + b.dur, 0);
+  const avgWorkPower = workBlocks.length ? Math.round(workBlocks.reduce((s,b)=>s+b.power*b.dur,0)/totalWork) : 0;
+  const peakPower = Math.max(...blocks.map(b => b.power));
+
+  // Build bars (interactive — data attrs for tooltip)
+  let bars = '';
+  let xPos = PAD_X;
+  blocks.forEach((b, i) => {
+    const bw = (b.dur / totalDur) * chartW;
+    const bh = ((b.power - minPower) / powerRange) * chartH;
+    const y = H - PAD_Y - bh;
+    // estimate HR from %FTP
+    const pctFTP = (b.power / FTP) * 100;
+    const estHR = estimateHRFromFTP(pctFTP);
+    const durMin = Math.floor(b.dur / 60);
+    const durSec = b.dur % 60;
+    const durStr = durMin > 0 ? `${durMin}:${String(durSec).padStart(2,'0')}` : `${durSec}s`;
+    bars += `<rect class="block-bar" x="${xPos.toFixed(1)}" y="${y.toFixed(1)}" width="${Math.max(bw-0.3, 0.5).toFixed(1)}" height="${bh.toFixed(1)}" fill="${colorFor(b.kind)}" rx="1" data-label="${b.label}" data-dur="${durStr}" data-power="${b.power}" data-pctftp="${pctFTP.toFixed(0)}" data-hr="${estHR.bpm}" data-pcthr="${estHR.pct}" data-kind="${b.kind}"/>`;
+    xPos += bw;
+  });
+
+  // FTP reference line
+  const ftpY = H - PAD_Y - ((275 - minPower) / powerRange) * chartH;
+  const ftpLine = `<line x1="${PAD_X}" y1="${ftpY.toFixed(1)}" x2="${W-PAD_X}" y2="${ftpY.toFixed(1)}" stroke="#c6ff3d" stroke-width="0.6" stroke-dasharray="3 3" opacity="0.4"/>
+    <text x="${W-PAD_X}" y="${ftpY-3}" fill="#c6ff3d" font-size="9" font-family="SF Mono,monospace" text-anchor="end" opacity="0.7">FTP 275W</text>`;
+
+  // Power scale ticks (left side)
+  const ticks = [];
+  for (const p of [150, 200, 250, 300]) {
+    const ty = H - PAD_Y - ((p - minPower) / powerRange) * chartH;
+    ticks.push(`<text x="${PAD_X-4}" y="${ty+3}" fill="#444" font-size="8" font-family="SF Mono,monospace" text-anchor="end">${p}</text>`);
+  }
+
+  const totalMin = Math.round(totalDur / 60);
+  const workMin = Math.round(totalWork / 60);
+
+  return `
+    <div class="workout-viz" onclick="hideVizTooltip(event)">
+      <div class="viz-tooltip" id="viz-tooltip-${vizId}"></div>
+      <div class="viz-header">
+        <div class="viz-title">Workout Profile</div>
+        <div class="viz-legend">
+          <div class="lg-item"><div class="lg-bar" style="background:${workColor}"></div>Work</div>
+          <div class="lg-item"><div class="lg-bar" style="background:#666"></div>WU/CD</div>
+          <div class="lg-item"><div class="lg-bar" style="background:#3a3a3a"></div>Recovery</div>
+        </div>
+      </div>
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" onmousemove="handleVizHover(event, '${vizId}')" onmouseleave="hideVizTooltip(event, '${vizId}')" onclick="handleVizTap(event, '${vizId}')">
+        ${ticks.join('')}
+        ${bars}
+        ${ftpLine}
+      </svg>
+      <div class="viz-summary">
+        <div class="seg"><span>Total</span><span class="v">${totalMin} min</span></div>
+        ${workBlocks.length ? `<div class="seg"><span>Work</span><span class="v">${workMin} min</span></div>` : ''}
+        ${avgWorkPower ? `<div class="seg"><span>Avg Work</span><span class="v">${avgWorkPower}W</span></div>` : ''}
+        ${peakPower > 200 ? `<div class="seg"><span>Peak</span><span class="v">${peakPower}W</span></div>` : ''}
+      </div>
+    </div>`;
+}
+
+function renderMiniViz(sess) {
+  if (!sess.blocks || sess.blocks.length === 0) return '';
+  // Show ~10-15 bars max, summarize if more
+  let blocks = sess.blocks;
+  const targetBars = 14;
+  if (blocks.length > targetBars) {
+    // Sample / merge — keep every Nth
+    const step = blocks.length / targetBars;
+    const sampled = [];
+    for (let i = 0; i < blocks.length; i += step) {
+      sampled.push(blocks[Math.floor(i)]);
+    }
+    blocks = sampled;
+  }
+  const maxPower = Math.max(330, ...blocks.map(b => b.power));
+  const minHeight = 2, maxHeight = 24;
+  const isHard = ['vo2','thr','ss'].includes(sess.type);
+  return `<div class="mini-viz ${isHard ? 'hard' : ''}">
+    ${blocks.map(b => {
+      const h = Math.max(minHeight, (b.power/maxPower) * maxHeight);
+      return `<div class="mb ${b.kind}" style="height:${h.toFixed(1)}px"></div>`;
+    }).join('')}
+  </div>`;
+}
+function computeTSS(durMin, npOrAvg, ftp) {
+  if (!durMin || !npOrAvg) return null;
+  const IF = npOrAvg / ftp;
+  return Math.round((durMin/60) * IF * IF * 100);
+}
+
+// =============================================================================
+// ZWO WRITER — generates a Zwift Workout XML (.zwo) file.
+// TrainingPeaks accepts .zwo imports for power-based cycling workouts and
+// syncs them to the Wahoo Bolt automatically. Power values are expressed as
+// fractions of FTP (e.g. 0.95 = 95% FTP). The Bolt resolves to watts at
+// ride-time using its configured FTP value.
+// =============================================================================
+
+function escapeXml(s) {
+  if (s == null) return '';
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+function buildZwoFile(sess) {
+  if (!sess.blocks || sess.blocks.length === 0) return null;
+  const totalSec = sess.blocks.reduce((sum, b) => sum + b.dur, 0);
+  const totalMin = Math.round(totalSec / 60);
+
+  // Use FTP FRACTIONS — TrainingPeaks always multiplies the Power value by its
+  // own FTP setting, regardless of which attribute we use (Power, PowerLow,
+  // PowerHigh). Absolute watts would get multiplied AGAIN, producing absurd
+  // 70,000W targets. The only correct format is fractions.
+  // 
+  // CRITICAL: For this to render correctly downstream, the user's TP FTP
+  // setting MUST match the FTP value in Glutes. Verify both before importing.
+  const steadyStates = sess.blocks.map(b => {
+    const power = (b.power / FTP).toFixed(3);
+    const cadence = b.kind === 'work' ? 90 : (b.kind === 'rec' || b.kind === 'easy' ? 85 : 90);
+    return `        <SteadyState Duration="${b.dur}" Power="${power}" Cadence="${cadence}" pace="0">
+            <textevent timeoffset="0" message="${escapeXml(b.label)}"/>
+        </SteadyState>`;
+  }).join('\n');
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<workout_file>
+    <author>Glutes</author>
+    <name>${escapeXml(sess.name)}</name>
+    <description>${escapeXml(sess.prescribed || '')} (${totalMin} min, calibrated to FTP ${FTP}W — verify your TP FTP matches)</description>
+    <sportType>bike</sportType>
+    <tags/>
+    <workout>
+${steadyStates}
+    </workout>
+</workout_file>`;
+}
+
+function downloadFit(weekN, dayIdx, sessIdx) {
+  // Keeping the function name 'downloadFit' so existing onclick handlers work,
+  // but the underlying file is .zwo (the format TrainingPeaks actually accepts
+  // for power-based cycling workouts).
+  const w = PLAN[weekN - 1];
+  const cell = w.days[dayIdx];
+  const sess = normalizeDayCell(cell)[sessIdx];
+  if (!sess) return;
+  const xml = buildZwoFile(sess);
+  if (!xml) return;
+  const d = dateForDay(weekN, dayIdx);
+  const dateStr = d.toISOString().slice(0,10);
+  const safeName = sess.name.replace(/[^a-zA-Z0-9]+/g, '_').replace(/^_|_$/g, '');
+  const filename = `${dateStr}_${safeName}.zwo`;
+  const blob = new Blob([xml], {type: 'application/xml'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function parseSessionLog(text) {
+  if (!text || typeof text !== 'string') return null;
+  if (!/SESSION LOG/i.test(text)) return null;
+  const out = {};
+  // Power — match "Power: avg 178W" or "avg 178 W" or "avg power 178"
+  const powerMatch = text.match(/(?:avg\s*power|power[:\s]+avg|avg)[:\s]+(\d{2,4})\s*w/i);
+  if (powerMatch) out.power = parseInt(powerMatch[1]);
+  // HR — match "HR: avg 158" or "avg HR 158" or "avg 158 bpm"
+  const hrMatch = text.match(/(?:avg\s*hr|hr[:\s]+avg|avg)[:\s]+(\d{2,3})(?:\s*bpm|\s*$|\s*[·.\n])/im);
+  // Fall back to simpler HR pattern if first doesn't match
+  let hrVal = hrMatch ? parseInt(hrMatch[1]) : null;
+  if (!hrVal) {
+    const hrAlt = text.match(/hr[:\s]+(\d{2,3})/i);
+    if (hrAlt) hrVal = parseInt(hrAlt[1]);
+  }
+  if (hrVal && hrVal >= 80 && hrVal <= 220) out.hr = hrVal;
+  // TSS — match "TSS: 92" or "TSS 92"
+  const tssMatch = text.match(/tss[:\s]+(\d{1,3})/i);
+  if (tssMatch) out.tss = parseInt(tssMatch[1]);
+  // RPE — match "RPE: 7/10" or "RPE 7"
+  const rpeMatch = text.match(/rpe[:\s]+(\d{1,2})(?:\s*\/\s*10)?/i);
+  if (rpeMatch) out.rpe = parseInt(rpeMatch[1]);
+  // Return null if we found no usable fields
+  if (Object.keys(out).length === 0) return null;
+  return out;
+}
+
+// ============================================================================
+// RENDER
+// ============================================================================
+function renderBlocks() {
+  const el = document.getElementById('blocks');
+  const currentBlockId = PLAN[currentWeek-1].blockId;
+  el.innerHTML = BLOCKS.map(b => `
+    <div class="block ${b.id===currentBlockId?'current':''}" onclick="expandBlock(${b.id})">
+      <div class="b-name">${b.name}</div>
+      <div class="b-weeks">${b.focus}</div>
+      <div class="b-focus">${b.weeks} · ${b.dateRange}</div>
+    </div>`).join('');
+}
+function expandBlock(id) {
+  if (currentBlockExpanded === id) {
+    currentBlockExpanded = null;
+    document.getElementById('blockdetail').classList.remove('show');
+    return;
+  }
+  currentBlockExpanded = id;
+  const b = BLOCKS.find(x => x.id === id);
+  const weeksInBlock = PLAN.filter(w => w.blockId === id);
+  let plannedTSS = 0, actualTSS = 0;
+  weeksInBlock.forEach(w => {
+    w.days.forEach((cell, di) => {
+      normalizeDayCell(cell).forEach((s, si) => {
+        plannedTSS += s.tss || 0;
+        const key = `W${w.week}D${di}S${si}`;
+        const a = state.actuals[key];
+        if (a && a.status === 'done') actualTSS += (a.tss != null && a.tss !== '' ? parseInt(a.tss) : s.tss);
+        else if (a && a.status === 'partial') actualTSS += (a.tss != null && a.tss !== '' ? parseInt(a.tss) : Math.round(s.tss * 0.6));
+      });
+    });
+  });
+  const el = document.getElementById('blockdetail');
+  el.classList.add('show');
+  el.innerHTML = `
+    <h3>${b.name} — ${b.focus}</h3>
+    <div class="b-purpose">${b.purpose}</div>
+    <div class="b-stats">
+      <div class="b-stat"><div class="lbl">Weeks</div><div class="vl">${b.weeks}</div></div>
+      <div class="b-stat"><div class="lbl">Planned TSS</div><div class="vl">${plannedTSS}</div></div>
+      <div class="b-stat"><div class="lbl">Logged TSS</div><div class="vl">${actualTSS}</div></div>
+    </div>`;
+}
+
+function renderWeek() {
+  const w = PLAN[currentWeek-1];
+  document.getElementById('wname').textContent = `Week ${w.week} — ${w.label.split(' ').slice(1).join(' ')}`;
+  const start = dateForDay(w.week, 0);
+  const end = dateForDay(w.week, 6);
+  document.getElementById('wdates').textContent = `${fmtDate(start)} — ${fmtDate(end)}`;
+  updateTodayButton();
+
+  // Aggregate week stats (used for strain bar)
+  let plannedTSS = 0, actualTSS = 0;
+
+  w.days.forEach((cell, di) => {
+    normalizeDayCell(cell).forEach((s, si) => {
+      plannedTSS += s.tss || 0;
+      const key = `W${w.week}D${di}S${si}`;
+      const a = state.actuals[key];
+      if (a && a.status === 'done') {
+        actualTSS += (a.tss != null && a.tss !== '' ? parseInt(a.tss) : s.tss);
+      } else if (a && a.status === 'partial') {
+        actualTSS += (a.tss != null && a.tss !== '' ? parseInt(a.tss) : Math.round(s.tss * 0.6));
+      }
+    });
+  });
+
+  document.getElementById('planned-tss').textContent = plannedTSS;
+  document.getElementById('actual-tss').textContent = actualTSS;
+  const pct = plannedTSS > 0 ? Math.min(150, (actualTSS/plannedTSS)*100) : 0;
+  document.getElementById('strain-bar').style.width = pct + '%';
+
+  // Days
+  const daysEl = document.getElementById('days');
+  daysEl.innerHTML = w.days.map((cell, di) => {
+    const d = dateForDay(w.week, di);
+    const todayCls = isToday(d) ? 'today' : '';
+    const isTodayDay = isToday(d);
+    const sessions = normalizeDayCell(cell);
+    const primarySess = sessions[0];
+    const sessionLine = sessions.map(s => s.name).join(' + ');
+    const isRestDay = sessions.every(s => s.type === 'rest');
+    const isHardDay = sessions.some(s => ['vo2','thr','ss'].includes(s.type));
+    const isZ2Day = !isRestDay && !isHardDay && sessions.some(s => s.type === 'z2');
+    const statuses = sessions.map((s,si) => (state.actuals[`W${w.week}D${di}S${si}`]||{}).status || 'planned');
+    let badge = 'planned';
+    if (statuses.every(x => x === 'done')) badge = 'done';
+    else if (statuses.includes('partial') || (statuses.includes('done') && statuses.length > 1)) badge = 'partial';
+    else if (statuses.every(x => x === 'skipped')) badge = 'skipped';
+    else if (statuses.includes('skipped')) badge = 'partial';
+    const badgeLabel = {planned:'Planned', done:isRestDay ? 'Rested' : 'Done', partial:'Partial', skipped:'Skipped'}[badge];
+    let badgeClass = badge;
+    if (badge === 'done' && isRestDay) badgeClass = 'done rest-done';
+    else if (badge === 'done' && isHardDay) badgeClass = 'done hard-done';
+    const dayClasses = [todayCls, isRestDay ? 'is-rest' : '', isHardDay ? 'is-hard' : '', isZ2Day ? 'is-z2' : ''].filter(Boolean).join(' ');
+    const dayTSS = sessions.reduce((sum, s) => sum + (s.tss || 0), 0);
+    const hasStrength = sessions.some(s => s.type === 'strength');
+
+    // Build compact one-line display string. Strength gets shown as a chip below,
+    // so we exclude it from the title to keep it short. Parens like "(Bodyweight)" stripped.
+    const bikeSessions = sessions.filter(s => s.type !== 'strength');
+    const titleSessions = bikeSessions.length > 0 ? bikeSessions : sessions;
+    const sessionLineCompact = titleSessions.map(s => {
+      return s.name.replace(/\s*\([^)]*\)\s*/g, '').trim();
+    }).join(' + ');
+    return `
+      <div class="day ${dayClasses}" id="day-${di}">
+        <div class="day-head" onclick="toggleDay(${di})">
+          <div class="dleft">
+            <div class="cal-tile">
+              <div class="ct-dow">${fmtDayName(di)}</div>
+              <div class="ct-day">${d.getDate()}</div>
+            </div>
+            <div class="dmeta">
+              <div class="session">${sessionLineCompact}</div>
+              <div>
+                ${dayTSS > 0 ? `<span class="tss-chip">${dayTSS} TSS</span>` : ''}
+                ${hasStrength ? '<span class="tss-chip wrk-chip">+ WRK</span>' : ''}
+              </div>
+            </div>
+          </div>
+          <div class="dright">
+            ${primarySess.blocks && primarySess.blocks.length > 0 ? renderMiniViz(primarySess) : ''}
+            ${badge !== 'planned' ? `<span class="badge ${badgeClass}">${badgeLabel}</span>` : ''}
+          </div>
+        </div>
+        <div class="day-body">
+          ${sessions.map((s,si) => renderSessionForm(w.week, di, si, s)).join('<hr style="border:0;border-top:1px solid var(--line);margin:14px 0">')}
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function renderSessionForm(weekN, dayIdx, sessIdx, sess) {
+  const key = `W${weekN}D${dayIdx}S${sessIdx}`;
+  const a = state.actuals[key] || {};
+  const status = a.status || 'planned';
+
+  if (sess.type === 'rest') {
+    return `
+      <div class="prescribed">
+        <div class="ptitle">${sess.name}</div>
+        <div>${sess.prescribed}</div>
+      </div>
+      <div class="status-row">
+        <button class="status-btn rest-done ${status==='done'?'active':''}" onclick="setStatus('${key}','done')">Rested</button>
+        <button class="status-btn ${status==='skipped'?'active skipped':''}" onclick="setStatus('${key}','skipped')">Trained instead</button>
+      </div>`;
+  }
+
+  const sessIsHard = ['vo2','thr','ss'].includes(sess.type);
+  return `
+    <div class="prescribed">
+      <div class="ptitle">${sess.name}<span class="dur">${sess.dur}min</span></div>
+      <div>${sess.prescribed}</div>
+    </div>
+    ${sess.blocks && sess.blocks.length > 0 ? renderWorkoutViz(sess) : ''}
+    ${sess.blocks && sess.blocks.length > 0 ? `
+      <button class="zwo-btn" onclick="downloadFit(${weekN}, ${dayIdx}, ${sessIdx})">
+        <span class="zwo-icon">⬇</span> Export .zwo for TrainingPeaks
+      </button>` : ''}
+    <div class="status-row" style="margin-top:14px">
+      <button class="status-btn ${sessIsHard ? 'hard-done' : ''} ${status==='done'?'active done':''}" onclick="setStatus('${key}','done')">Done</button>
+      <button class="status-btn ${status==='partial'?'active partial':''}" onclick="setStatus('${key}','partial')">Partial</button>
+      <button class="status-btn ${status==='skipped'?'active skipped':''}" onclick="setStatus('${key}','skipped')">Skipped</button>
+    </div>
+    ${sess.type !== 'strength' ? `
+    <div class="form-row">
+      <div class="form-field">
+        <label>Avg Power (W)</label>
+        <input type="number" value="${a.power||''}" onchange="setField('${key}','power',this.value)" placeholder="—"/>
+      </div>
+      <div class="form-field">
+        <label>Avg HR (bpm)</label>
+        <input type="number" value="${a.hr||''}" onchange="setField('${key}','hr',this.value)" placeholder="—"/>
+      </div>
+      <div class="form-field">
+        <label>RPE 1-10</label>
+        <input type="number" min="1" max="10" value="${a.rpe||''}" onchange="setField('${key}','rpe',this.value)" placeholder="—"/>
+      </div>
+      <div class="form-field">
+        <label>TSS</label>
+        <input type="number" value="${a.tss||''}" onchange="setField('${key}','tss',this.value)" placeholder="${sess.tss}"/>
+      </div>
+    </div>` : ''}
+    <div class="form-field">
+      <label>Notes</label>
+      <textarea id="notes-${key}" onchange="setField('${key}','notes',this.value);refreshParseButton('${key}')" oninput="refreshParseButton('${key}')" placeholder="Paste session log from chat, or note how it felt, conditions, adjustments...">${a.notes||''}</textarea>
+      ${parseSessionLog(a.notes) ? `
+        <button class="parse-btn" onclick="parseAndFill('${key}')">
+          <span class="parse-icon">↓</span> Parse log to fields
+        </button>` : ''}
+    </div>`;
+}
+
+// ============================================================================
+// TRENDS VIEW
+// ============================================================================
+function renderTrends() {
+  const el = document.getElementById('trendsview');
+
+  // Collect data series
+  const weekTSS = []; // [{week, planned, actual}]
+  const z2Eff = []; // [{date, power, hr, ratio}] from Z2 sessions
+  const ssEff = []; // sweet spot sessions
+  const thrEff = []; // threshold sessions
+  const vo2Eff = []; // vo2 sessions
+
+  PLAN.forEach(w => {
+    let p = 0, a = 0;
+    w.days.forEach((cell, di) => {
+      normalizeDayCell(cell).forEach((s, si) => {
+        p += s.tss || 0;
+        const key = `W${w.week}D${di}S${si}`;
+        const ac = state.actuals[key];
+        if (ac && ac.status === 'done') {
+          a += (ac.tss != null && ac.tss !== '' ? parseInt(ac.tss) : s.tss);
+        } else if (ac && ac.status === 'partial') {
+          a += (ac.tss != null && ac.tss !== '' ? parseInt(ac.tss) : Math.round(s.tss * 0.6));
+        }
+
+        // Efficiency tracking by session type
+        if (ac && (ac.status === 'done' || ac.status === 'partial') && ac.power && ac.hr) {
+          const point = {
+            week: w.week,
+            date: dateForDay(w.week, di),
+            power: parseFloat(ac.power),
+            hr: parseFloat(ac.hr),
+            ratio: parseFloat(ac.hr)/parseFloat(ac.power)
+          };
+          if (s.type === 'z2') z2Eff.push(point);
+          else if (s.type === 'ss') ssEff.push(point);
+          else if (s.type === 'thr') thrEff.push(point);
+          else if (s.type === 'vo2') vo2Eff.push(point);
+        }
+      });
+    });
+    weekTSS.push({ week: w.week, planned: p, actual: a, label: w.label });
+  });
+
+  el.innerHTML = `
+    <div class="chart">
+      <h4>Weekly Load (TSS) <span class="sub">planned vs done</span></h4>
+      ${renderBarChart(weekTSS, 'tss')}
+    </div>
+    ${renderEfficiencyChart('Z2 Endurance Efficiency', z2Eff, 'lower = aerobic engine improving')}
+    ${renderEfficiencyChart('Sweet Spot Efficiency', ssEff, 'lower = handling load better')}
+    ${renderEfficiencyChart('Threshold Efficiency', thrEff, 'lower = threshold floor rising')}
+    ${renderEfficiencyChart('VO2max Efficiency', vo2Eff, 'lower = ceiling rising')}
+  `;
+}
+
+function renderBarChart(data, mode) {
+  const W = 800, H = 140, P = 30;
+  const maxV = Math.max(...data.map(d => Math.max(d.planned||0, d.actual||0)), 100);
+  const bw = (W - 2*P) / data.length;
+  let bars = '';
+  data.forEach((d, i) => {
+    const x = P + i*bw;
+    const ph = (d.planned||0) / maxV * (H - 2*P);
+    const ah = (d.actual||0) / maxV * (H - 2*P);
+    bars += `<rect x="${x+bw*0.1}" y="${H-P-ph}" width="${bw*0.35}" height="${ph}" fill="#3a3f48" rx="2"/>`;
+    bars += `<rect x="${x+bw*0.5}" y="${H-P-ah}" width="${bw*0.35}" height="${ah}" fill="#7c9cff" rx="2"/>`;
+    bars += `<text x="${x+bw*0.5}" y="${H-10}" fill="#6c7280" font-size="9" text-anchor="middle">W${d.week}</text>`;
+  });
+  return `<svg class="sparkline" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
+    ${bars}
+    <text x="${P}" y="${P-8}" fill="#6c7280" font-size="10">${maxV} TSS</text>
+  </svg>`;
+}
+
+function renderEfficiencyChart(title, data, sub) {
+  if (data.length < 2) {
+    return `
+      <div class="chart">
+        <h4>${title} <span class="sub">${sub}</span></h4>
+        <div style="text-align:center;color:var(--ink-3);padding:30px 0;font-size:12px">Need ≥ 2 logged sessions to show trend</div>
+      </div>`;
+  }
+  const W = 800, H = 140, P = 30;
+  const ratios = data.map(d => d.ratio);
+  const minR = Math.min(...ratios) * 0.95;
+  const maxR = Math.max(...ratios) * 1.05;
+  const range = maxR - minR;
+  const stepX = (W - 2*P) / Math.max(data.length-1, 1);
+  let path = '';
+  let dots = '';
+  let labels = '';
+  data.forEach((d, i) => {
+    const x = P + i*stepX;
+    const y = H - P - ((d.ratio - minR) / range) * (H - 2*P);
+    if (i === 0) path += `M${x},${y}`;
+    else path += ` L${x},${y}`;
+    dots += `<circle cx="${x}" cy="${y}" r="3.5" fill="#7c9cff" stroke="#0e0f12" stroke-width="1.5"/>`;
+    if (i === 0 || i === data.length-1 || i === Math.floor(data.length/2)) {
+      labels += `<text x="${x}" y="${H-10}" fill="#6c7280" font-size="9" text-anchor="middle">${fmtDate(d.date)}</text>`;
+    }
+  });
+  // Trend direction
+  const first = data[0].ratio, last = data[data.length-1].ratio;
+  const direction = last < first ? 'improving' : last > first ? 'declining' : 'stable';
+  const change = ((last - first) / first * 100).toFixed(1);
+
+  return `
+    <div class="chart">
+      <h4>${title}
+        <span class="sub" style="color:${direction==='improving'?'var(--ok)':direction==='declining'?'var(--bad)':'var(--ink-3)'}">
+          ${direction === 'improving' ? '▼' : direction === 'declining' ? '▲' : '–'} ${Math.abs(change)}%
+        </span>
+      </h4>
+      <svg class="sparkline" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
+        <path d="${path}" stroke="#7c9cff" stroke-width="2" fill="none"/>
+        ${dots}
+        ${labels}
+        <text x="${P}" y="${P-8}" fill="#6c7280" font-size="10">HR/W ratio · ${data.length} sessions</text>
+      </svg>
+    </div>`;
+}
+
+function renderUpcoming() {
+  const el = document.getElementById('upcoming-list');
+  el.innerHTML = PLAN.map(w => {
+    const start = dateForDay(w.week, 0);
+    const end = dateForDay(w.week, 6);
+    let plannedTSS = 0;
+    let qualityDays = [];
+    w.days.forEach((cell, di) => {
+      const sessions = normalizeDayCell(cell);
+      sessions.forEach(s => {
+        plannedTSS += s.tss || 0;
+        if (['vo2','thr','ss'].includes(s.type)) {
+          qualityDays.push(`${fmtDayName(di)}: ${s.name}`);
+        }
+      });
+    });
+    const isCur = w.week === currentWeek;
+    return `
+      <div class="day ${isCur?'today':''}" style="margin-bottom:8px;cursor:pointer" onclick="goToWeek(${w.week})">
+        <div class="day-head">
+          <div class="dleft">
+            <div>
+              <div class="dname">Week ${w.week} — ${w.label.split(' ').slice(1).join(' ')}</div>
+              <div class="session">${fmtDate(start)} – ${fmtDate(end)} · ${plannedTSS} TSS · Block ${w.blockId}</div>
+              ${qualityDays.length ? `<div class="session" style="margin-top:6px;color:var(--ink-3)">${qualityDays.join(' · ')}</div>` : ''}
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// ============================================================================
+// EVENT HANDLERS
+// ============================================================================
+function toggleDay(idx) {
+  document.getElementById(`day-${idx}`).classList.toggle('open');
+}
+function setStatus(key, status) {
+  if (!state.actuals[key]) state.actuals[key] = {};
+  state.actuals[key].status = state.actuals[key].status === status ? null : status;
+  save();
+  renderWeek();
+  const dayIdx = parseInt(key.match(/D(\d+)/)[1]);
+  document.getElementById(`day-${dayIdx}`).classList.add('open');
+}
+function setField(key, field, value) {
+  if (!state.actuals[key]) state.actuals[key] = {};
+  state.actuals[key][field] = value;
+  save();
+  renderWeek();
+  const dayIdx = parseInt(key.match(/D(\d+)/)[1]);
+  document.getElementById(`day-${dayIdx}`).classList.add('open');
+}
+
+// Live-update the Parse button visibility as user types in notes field,
+// without triggering a full re-render that would steal focus from the textarea.
+function refreshParseButton(key) {
+  const textarea = document.getElementById(`notes-${key}`);
+  if (!textarea) return;
+  const hasLog = !!parseSessionLog(textarea.value);
+  const existingBtn = textarea.parentElement.querySelector('.parse-btn');
+  if (hasLog && !existingBtn) {
+    const btn = document.createElement('button');
+    btn.className = 'parse-btn';
+    btn.innerHTML = '<span class="parse-icon">↓</span> Parse log to fields';
+    btn.onclick = () => parseAndFill(key);
+    textarea.parentElement.appendChild(btn);
+  } else if (!hasLog && existingBtn) {
+    existingBtn.remove();
+  }
+}
+
+function parseAndFill(key) {
+  const a = state.actuals[key] || {};
+  const parsed = parseSessionLog(a.notes);
+  if (!parsed) return;
+  if (!state.actuals[key]) state.actuals[key] = {};
+  // Only overwrite fields that the parse found AND user hasn't already typed in.
+  // Actually: parse always overwrites, since user explicitly tapped Parse.
+  if (parsed.power != null) state.actuals[key].power = parsed.power;
+  if (parsed.hr != null) state.actuals[key].hr = parsed.hr;
+  if (parsed.tss != null) state.actuals[key].tss = parsed.tss;
+  if (parsed.rpe != null) state.actuals[key].rpe = parsed.rpe;
+  // Auto-mark as done if not already set
+  if (!state.actuals[key].status) state.actuals[key].status = 'done';
+  save();
+  renderWeek();
+  const dayIdx = parseInt(key.match(/D(\d+)/)[1]);
+  document.getElementById(`day-${dayIdx}`).classList.add('open');
+}
+function goToWeek(w) {
+  currentWeek = w;
+  document.getElementById('tab-week').click();
+  renderBlocks();
+  renderWeek();
+}
+function jumpToToday() {
+  const todayWeek = detectCurrentWeek();
+  currentWeek = todayWeek;
+  document.getElementById('tab-week').click();
+  renderBlocks();
+  renderWeek();
+  // Auto-expand today's day and scroll to it
+  setTimeout(() => {
+    const now = new Date();
+    const start = new Date(START);
+    start.setDate(start.getDate() + (todayWeek-1)*7);
+    const dayIdx = Math.floor((now - start) / (24*60*60*1000));
+    if (dayIdx >= 0 && dayIdx < 7) {
+      const dayEl = document.getElementById(`day-${dayIdx}`);
+      if (dayEl) {
+        dayEl.classList.add('open');
+        dayEl.scrollIntoView({behavior:'smooth', block:'center'});
+      }
+    }
+  }, 50);
+}
+function updateTodayButton() {
+  const todayWeek = detectCurrentWeek();
+  const btn = document.getElementById('today-btn');
+  if (!btn) return;
+  if (currentWeek !== todayWeek) {
+    btn.classList.add('show');
+  } else {
+    btn.classList.remove('show');
+  }
+}
+document.getElementById('prevwk').onclick = () => {
+  if (currentWeek > 1) { currentWeek--; renderBlocks(); renderWeek(); }
+};
+document.getElementById('nextwk').onclick = () => {
+  if (currentWeek < 14) { currentWeek++; renderBlocks(); renderWeek(); }
+};
+
+// Swipe handling on the week nav strip
+(function setupWeekSwipe() {
+  const weeknav = document.querySelector('.weeknav');
+  if (!weeknav) return;
+  let startX = 0, startY = 0, startTime = 0, tracking = false;
+  const MIN_DISTANCE = 50;        // min horizontal travel in px to register a swipe
+  const MAX_OFF_AXIS = 40;        // max vertical drift allowed before we treat as scroll
+  const MAX_DURATION = 600;       // ms — anything slower is treated as a hold, not a swipe
+
+  weeknav.addEventListener('touchstart', (e) => {
+    if (e.touches.length !== 1) return;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    startTime = Date.now();
+    tracking = true;
+  }, {passive:true});
+
+  weeknav.addEventListener('touchend', (e) => {
+    if (!tracking) return;
+    tracking = false;
+    const touch = e.changedTouches[0];
+    if (!touch) return;
+    const dx = touch.clientX - startX;
+    const dy = touch.clientY - startY;
+    const dt = Date.now() - startTime;
+    if (dt > MAX_DURATION) return;
+    if (Math.abs(dy) > MAX_OFF_AXIS) return;  // it was probably a scroll attempt
+    if (Math.abs(dx) < MIN_DISTANCE) return;
+    // Don't trigger if user actually tapped a button inside the nav
+    const targetEl = e.target;
+    if (targetEl && targetEl.closest('button')) return;
+    if (dx < 0 && currentWeek < 14) {
+      // swipe left → next week
+      currentWeek++;
+      renderBlocks();
+      renderWeek();
+    } else if (dx > 0 && currentWeek > 1) {
+      // swipe right → previous week
+      currentWeek--;
+      renderBlocks();
+      renderWeek();
+    }
+  }, {passive:true});
+
+  weeknav.addEventListener('touchcancel', () => { tracking = false; }, {passive:true});
+})();
+document.querySelectorAll('.tab').forEach(t => {
+  t.onclick = () => {
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    const view = t.dataset.tab;
+    document.getElementById('weekview').style.display = view==='week' ? 'block' : 'none';
+    document.getElementById('trendsview').style.display = view==='trends' ? 'block' : 'none';
+    document.getElementById('upcomingview').style.display = view==='upcoming' ? 'block' : 'none';
+    if (view === 'upcoming') renderUpcoming();
+    if (view === 'trends') renderTrends();
+  };
+});
+
+// ============================================================================
+// STAT HISTORY (FTP / HRmax / LTHR over time)
+// ============================================================================
+const STAT_DEFINITIONS = {
+  ftp: {
+    label: 'FTP',
+    unit: 'W',
+    full: 'Functional Threshold Power',
+    description: 'The highest average power you can sustain for ~1 hour. Drives all training zones.',
+    method: 'Half Monty test (75% of MAP), or 95% of 20-min all-out effort.'
+  },
+  hrmax: {
+    label: 'HR Max',
+    unit: 'bpm',
+    full: 'Maximum Heart Rate',
+    description: 'The highest HR you can reach in an all-out effort.',
+    method: 'Observed at peak of ramp test, or end of a max 5-min effort with full warmup.'
+  },
+  lthr: {
+    label: 'LTHR',
+    unit: 'bpm',
+    full: 'Lactate Threshold HR',
+    description: 'The HR at which lactate begins to accumulate faster than the body can clear it. The HR zone where threshold work lives.',
+    method: 'Average HR during the last 20 minutes of an all-out 1-hour effort, or measured during sustained threshold intervals.'
+  }
+};
+
+// Default history. User can update via prompts.
+function defaultStatHistory() {
+  return {
+    ftp: [
+      { date: '2026-05-04', value: 260, note: 'First Half Monty test' },
+      { date: '2026-05-21', value: 275, note: 'Refined after Thu threshold @ 270W felt easy' },
+      { date: '2026-05-30', value: 275, note: 'Retest confirmed (Quarq-adjusted MAP ~360W)' }
+    ],
+    hrmax: [
+      { date: '2026-05-04', value: 194, note: 'Observed at Half Monty failure' }
+    ],
+    lthr: [
+      { date: '2026-05-27', value: 172, note: 'Avg HR during 270W threshold (block 1 169, block 2 173)' }
+    ]
+  };
+}
+
+function getStatHistory(key) {
+  if (!state.statHistory) state.statHistory = defaultStatHistory();
+  if (!state.statHistory[key]) state.statHistory[key] = [];
+  return state.statHistory[key].slice().sort((a,b) => a.date.localeCompare(b.date));
+}
+
+function currentStatValue(key) {
+  const h = getStatHistory(key);
+  return h.length ? h[h.length-1].value : null;
+}
+
+function addStatEntry(key, dateStr, value, note) {
+  if (!state.statHistory) state.statHistory = defaultStatHistory();
+  if (!state.statHistory[key]) state.statHistory[key] = [];
+  state.statHistory[key].push({ date: dateStr, value: parseFloat(value), note: note || '' });
+  save();
+  renderStatTiles();
+}
+
+function deleteStatEntry(key, idx) {
+  const h = state.statHistory[key].slice().sort((a,b) => a.date.localeCompare(b.date));
+  const target = h[idx];
+  state.statHistory[key] = state.statHistory[key].filter(e =>
+    !(e.date === target.date && e.value === target.value && e.note === target.note)
+  );
+  save();
+  renderStatTiles();
+  showStatTrend(key); // re-render modal
+}
+
+function renderStatTiles() {
+  const ftp = currentStatValue('ftp');
+  const hrmax = currentStatValue('hrmax');
+  const lthr = currentStatValue('lthr');
+  if (ftp != null) document.getElementById('stat-ftp').innerHTML = `${ftp}<span class="st-unit">W</span>`;
+  if (hrmax != null) document.getElementById('stat-hrmax').innerHTML = `${hrmax}<span class="st-unit">bpm</span>`;
+  if (lthr != null) document.getElementById('stat-lthr').innerHTML = `${lthr}<span class="st-unit">bpm</span>`;
+}
+
+function showStatTrend(key) {
+  const def = STAT_DEFINITIONS[key];
+  const history = getStatHistory(key);
+  document.getElementById('modal-title').textContent = `${def.label} — History`;
+
+  // Build history table
+  let tableRows = '';
+  for (let i = 0; i < history.length; i++) {
+    const entry = history[i];
+    const date = new Date(entry.date + 'T00:00:00');
+    const dateStr = date.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'2-digit'});
+    const isCurrent = (i === history.length - 1);
+    let deltaStr = '';
+    let deltaClass = '';
+    if (i > 0) {
+      const delta = entry.value - history[i-1].value;
+      if (delta > 0) { deltaStr = `+${delta}`; deltaClass = 'up'; }
+      else if (delta < 0) { deltaStr = `${delta}`; deltaClass = 'down'; }
+      else { deltaStr = '—'; }
+    }
+    tableRows += `
+      <tr>
+        <td class="date">${dateStr}</td>
+        <td class="val ${isCurrent ? 'current' : ''}">${entry.value} ${def.unit}</td>
+        <td class="delta ${deltaClass}">${deltaStr}</td>
+      </tr>`;
+    if (entry.note) {
+      tableRows += `<tr><td colspan="3" style="padding:0 0 10px;border-bottom:1px solid var(--line);color:var(--ink-3);font-size:11px;text-transform:none;letter-spacing:0">${entry.note}</td></tr>`;
+    }
+  }
+
+  // SVG sparkline if 2+ entries
+  let chartHtml = '';
+  if (history.length >= 2) {
+    const W = 800, H = 100, P = 24;
+    const values = history.map(h => h.value);
+    const minV = Math.min(...values) - (Math.max(...values) - Math.min(...values)) * 0.1 - 1;
+    const maxV = Math.max(...values) + (Math.max(...values) - Math.min(...values)) * 0.1 + 1;
+    const range = Math.max(maxV - minV, 1);
+    const stepX = (W - 2*P) / Math.max(history.length - 1, 1);
+    let path = '';
+    let dots = '';
+    history.forEach((h, i) => {
+      const x = P + i*stepX;
+      const y = H - P - ((h.value - minV) / range) * (H - 2*P);
+      if (i === 0) path += `M${x.toFixed(1)},${y.toFixed(1)}`;
+      else path += ` L${x.toFixed(1)},${y.toFixed(1)}`;
+      dots += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4" fill="#c6ff3d" stroke="#0a0a0a" stroke-width="2"/>`;
+      dots += `<text x="${x.toFixed(1)}" y="${(y-10).toFixed(1)}" fill="#f5f5f5" font-size="10" font-family="SF Mono,monospace" text-anchor="middle">${h.value}</text>`;
+    });
+    chartHtml = `
+      <div class="chart" style="margin-bottom:14px">
+        <h4>Trend <span class="sub">${history.length} data points</span></h4>
+        <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="height:120px">
+          <path d="${path}" stroke="#c6ff3d" stroke-width="2" fill="none"/>
+          ${dots}
+        </svg>
+      </div>`;
+  }
+
+  // Add new entry form
+  const today = new Date().toISOString().slice(0,10);
+  const placeholderVal = currentStatValue(key) || '';
+
+  const body = `
+    ${chartHtml}
+    <div class="stat-history">
+      <div class="sh-title">All entries</div>
+      ${history.length > 0 ? `<table>${tableRows}</table>` : '<div style="color:var(--ink-3);font-size:12px;padding:10px 0">No history yet.</div>'}
+    </div>
+
+    <div class="stat-history" style="margin-bottom:14px">
+      <div class="sh-title">Add new entry</div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>Date</label>
+          <input type="date" id="new-stat-date" value="${today}"/>
+        </div>
+        <div class="form-field">
+          <label>${def.label} (${def.unit})</label>
+          <input type="number" id="new-stat-val" placeholder="${placeholderVal}"/>
+        </div>
+      </div>
+      <div class="form-field" style="margin-bottom:10px">
+        <label>Note (optional)</label>
+        <input type="text" id="new-stat-note" placeholder="e.g., post-test, refined estimate..."/>
+      </div>
+      <button class="status-btn active done" style="width:100%" onclick="saveNewStat('${key}')">Add Entry</button>
+    </div>
+
+    <div class="stat-note">
+      <span class="nt">About ${def.label}</span>
+      <strong>${def.full}.</strong> ${def.description}
+      <div style="margin-top:8px;color:var(--ink-3);font-size:12px">
+        <strong style="color:var(--ink-2)">How it's measured:</strong> ${def.method}
+      </div>
+    </div>
+  `;
+  document.getElementById('modal-body').innerHTML = body;
+  document.getElementById('stat-modal').classList.add('show');
+}
+
+function saveNewStat(key) {
+  const dateInput = document.getElementById('new-stat-date');
+  const valInput = document.getElementById('new-stat-val');
+  const noteInput = document.getElementById('new-stat-note');
+  const date = dateInput.value;
+  const val = valInput.value;
+  if (!date || !val) {
+    alert('Date and value required');
+    return;
+  }
+  addStatEntry(key, date, val, noteInput.value);
+  showStatTrend(key); // refresh modal
+}
+
+function closeStatModal(event) {
+  if (event && event.target.id !== 'stat-modal') return;
+  document.getElementById('stat-modal').classList.remove('show');
+}
+
+// ============================================================================
+// INIT
+// ============================================================================
+let lastSeenDate = null;
+
+function checkDateChanged() {
+  const today = new Date().toDateString();
+  if (lastSeenDate && lastSeenDate !== today) {
+    // The date rolled over while the app was backgrounded.
+    // Jump to today's week and let render show the new date.
+    lastSeenDate = today;
+    const todayWeek = detectCurrentWeek();
+    if (currentWeek !== todayWeek) {
+      currentWeek = todayWeek;
+      renderBlocks();
+    }
+    // Always re-render the week so today's card gets the highlight on the new day
+    renderWeek();
+  }
+  lastSeenDate = today;
+}
+
+(function init(){
+  load();
+  // If state has stat history values, override the planning defaults
+  const histFTP = currentStatValue('ftp');
+  const histHRMAX = currentStatValue('hrmax');
+  if (histFTP) FTP = histFTP;
+  if (histHRMAX) HRMAX = histHRMAX;
+  currentWeek = detectCurrentWeek();
+  lastSeenDate = new Date().toDateString();
+  renderStatTiles();
+  renderBlocks();
+  renderWeek();
+
+  // Re-check on tab visibility and focus changes — handles the case where the
+  // app stays open overnight or is restored from background after the date rolls over.
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') checkDateChanged();
+  });
+  window.addEventListener('focus', checkDateChanged);
+  window.addEventListener('pageshow', checkDateChanged);
+})();
+</script>
+</body>
+</html>
