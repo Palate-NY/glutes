@@ -98,7 +98,7 @@ The first load of the new app converts the old position keys (`W3D1S0`) to dates
 One-time: in the GitHub repo, Settings -> Pages -> Build and deployment -> Source: **GitHub Actions**.
 After that every push to `main` runs tests, builds, and deploys. A failing test blocks the deploy.
 
-The app icons (`icon-180.png`, `icon-192.png`, `favicon-32.png`, `favicon-16.png`) are referenced from the page root. Drop them into `public/` and they ship with the build. `public/icon.svg` is the fallback favicon.
+The app icons live in `public/` and ship at the site root with the build. `public/icon.svg` is the fallback favicon.
 
 ## ZWO export
 
