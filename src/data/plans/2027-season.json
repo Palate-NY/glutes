@@ -1,0 +1,53 @@
+{
+  "id": "2027-season",
+  "name": "2027 Season",
+  "status": "active",
+  "start": "2026-09-07",
+  "goal": "FTP 300W + 700W/50s sprint by August 2027. 11-month build; phases 3-5 to be planned as each phase ends.",
+  "blocks": [
+    { "id": 1, "name": "Phase 1", "focus": "Prep",
+      "purpose": "Restart after the summer break (Sep 7-27). Three weeks of easy aerobic riding, reintroduce strength, first neural sprint session." },
+    { "id": 2, "name": "Phase 2", "focus": "Foundation",
+      "purpose": "Aerobic base rebuild + heavy strength (Oct-Dec). Volume ramps 6 to 10 hrs/week, heavy strength 2x/week, weekly neural sprints. Threshold reintroduced late December, then Half Monty retest." }
+  ],
+  "weeks": [
+    { "week": 1, "label": "SEP W1 Prep", "block": 1,
+      "days": ["REST", "Z2_60", "EASY45", ["Z2_60","STR_BW"], "REST", "LONG_Z2", "EASY45"] },
+    { "week": 2, "label": "SEP W2 Prep", "block": 1,
+      "days": ["REST", ["Z2_60","STR_GYM"], "Z2_60", ["Z2_90","STR_BW"], "REST", "LONG_Z2", "EASY45"] },
+    { "week": 3, "label": "SEP W3 Prep", "block": 1,
+      "days": [["Z2_60","STR_GYM"], "Z2_90", "NEURAL_SPRINTS", "REST", ["Z2_60","STR_GYM"], "LONG_Z2", "EASY45"] },
+    { "week": 4, "label": "OCT W1 Foundation", "block": 2,
+      "days": [["Z2_60","STR_GYM"], "Z2_90", "NEURAL_SPRINTS", "REST", ["Z2_60","STR_GYM"], "LONG_Z2", "EASY45"] },
+    { "week": 5, "label": "OCT W2 Foundation", "block": 2,
+      "days": [["Z2_60","STR_GYM"], "Z2_90", "NEURAL_SPRINTS", "EASY30", ["Z2_60","STR_GYM"], "LONG_Z2_LONG", "EASY45"] },
+    { "week": 6, "label": "OCT W3 Foundation", "block": 2,
+      "days": [["Z2_60","STR_GYM"], "Z2_90", "NEURAL_SPRINTS", "EASY30", ["Z2_60","STR_GYM"], "LONG_Z2_LONG", "EASY45"] },
+    { "week": 7, "label": "OCT W4 Recovery", "block": 2,
+      "days": [["Z2_60","STR_BW"], "EASY45", "Z2_60", "REST", "EASY45", "LONG_Z2", "REST"] },
+    { "week": 8, "label": "NOV W1 Foundation", "block": 2,
+      "days": [["Z2_90","STR_GYM"], "Z2_60", "NEURAL_SPRINTS", "EASY30", ["Z2_90","STR_GYM"], "LONG_Z2_LONG", "EASY45"] },
+    { "week": 9, "label": "NOV W2 Foundation", "block": 2,
+      "days": [["Z2_90","STR_GYM"], "Z2_60", "NEURAL_SPRINTS", "EASY30", ["Z2_90","STR_GYM"], "LONG_Z2_3H", "EASY45"] },
+    { "week": 10, "label": "NOV W3 Foundation", "block": 2,
+      "days": [["Z2_90","STR_GYM"], "Z2_60", "NEURAL_SPRINTS", "EASY30", ["Z2_90","STR_GYM"], "LONG_Z2_3H", "EASY45"] },
+    { "week": 11, "label": "NOV W4 Recovery", "block": 2,
+      "days": [["Z2_60","STR_BW"], "EASY45", "Z2_60", "REST", "EASY45", "LONG_Z2", "REST"] },
+    { "week": 12, "label": "DEC W1 Foundation", "block": 2,
+      "days": [["Z2_90","STR_GYM"], "Z2_90", "NEURAL_SPRINTS", "EASY30", ["Z2_90","STR_GYM"], "LONG_Z2_3H", "EASY45"] },
+    { "week": 13, "label": "DEC W2 Foundation Peak", "block": 2,
+      "days": [["Z2_90","STR_GYM"], "Z2_90", "NEURAL_SPRINTS", "EASY30", ["Z2_90","STR_GYM"], "LONG_Z2_3H", "EASY45"] },
+    { "week": 14, "label": "DEC W3 Threshold Intro", "block": 2,
+      "days": [["SS_2x15","STR_GYM"], "Z2_60", "NEURAL_SPRINTS", "REST", ["Z2_90","STR_BW"], "LONG_Z2", "EASY45"] },
+    { "week": 15, "label": "DEC W4 Threshold Intro", "block": 2,
+      "days": [["THR_2x12","STR_GYM"], "Z2_60", "NEURAL_SPRINTS", "REST", ["Z2_90","STR_BW"], "LONG_Z2", "EASY45"] },
+    { "week": 16, "label": "DEC W5 Recovery + Test", "block": 2,
+      "days": [["Z2_60","STR_BW"], "EASY45", "HALF_MONTY", "REST", "EASY45", "LONG_Z2", "REST"] }
+  ],
+  "upcoming": [
+    { "name": "Phase 3", "focus": "Build", "when": "Jan-Mar 2027", "note": "Threshold + strength. Plan in December." },
+    { "name": "Phase 4", "focus": "Specific", "when": "Apr-May 2027", "note": "VO2 + anaerobic block. Plan in March." },
+    { "name": "Cannes camp", "focus": "Camp", "when": "End of June 2027", "note": "Heat-adapted this time." },
+    { "name": "Phase 5", "focus": "Peak", "when": "Jul-Aug 15, 2027", "note": "Final taper + PR." }
+  ]
+}
