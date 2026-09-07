@@ -236,5 +236,73 @@
     "tss": 0,
     "avg_power": 290,
     "blocks": []
+  },
+  {
+    "id": "ANAER_6x1",
+    "name": "Anaerobic 6×1",
+    "type": "vo2",
+    "duration_min": 60,
+    "description": "6 × 60s @ 450-480W (hard but even, no fade), 4min easy. Seated start, big gear, cadence 90-100. Builds the anaerobic capacity behind a 50s sprint.",
+    "tss": 75,
+    "avg_power": 225,
+    "notes": "Anaerobic capacity work for the 700W/50s goal. Rest 4min so every rep is full quality. Stop the session if power drops more than 10% rep to rep.",
+    "blocks": [
+      { "dur": 900, "power": 160, "label": "Warm-up", "kind": "warm" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "repeat": 6, "blocks": [
+        { "dur": 60, "power": 470, "label": "1min MAX", "kind": "work" },
+        { "dur": 240, "power": 140, "label": "Recovery", "kind": "rec" }
+      ] },
+      { "dur": 600, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "SPRINT_50S",
+    "name": "50s Sprint Reps",
+    "type": "vo2",
+    "duration_min": 70,
+    "description": "Sprint-specific: 4 × 50s ALL-OUT from a rolling start (target 620-680W avg, build to it), 8min full recovery. Then 2 × 10s peak sprints. Outdoors on a safe flat road, or trainer with ERG off.",
+    "tss": 65,
+    "avg_power": 205,
+    "notes": "The specific session for 700W/50s. On-bike max efforts are what transfer; the gym builds the ceiling, this session spends it. Full recovery matters more than rep count.",
+    "blocks": [
+      { "dur": 900, "power": 160, "label": "Warm-up", "kind": "warm" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "dur": 30, "power": 305, "label": "Opener", "kind": "work" },
+      { "dur": 60, "power": 145, "label": "Easy", "kind": "rec" },
+      { "repeat": 4, "blocks": [
+        { "dur": 50, "power": 650, "label": "50s MAX", "kind": "work" },
+        { "dur": 480, "power": 140, "label": "Recovery", "kind": "rec" }
+      ] },
+      { "repeat": 2, "blocks": [
+        { "dur": 10, "power": 900, "label": "Peak 10s", "kind": "work" },
+        { "dur": 230, "power": 140, "label": "Recovery", "kind": "rec" }
+      ] },
+      { "dur": 480, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
+  },
+  {
+    "id": "TEST_SPRINT",
+    "name": "Sprint Test 50s",
+    "type": "vo2",
+    "duration_min": 50,
+    "description": "Test day, fresh legs: 20min build, 2 × 10s peak sprints (5min easy), then 1 × 50s ALL-OUT from a rolling ~30km/h start. Record 50s average watts. Same road or same trainer every time.",
+    "tss": 50,
+    "avg_power": null,
+    "notes": "Benchmark for the 700W/50s goal. Historical best 743W (Aug 2022), 626W in 2026. Compare like with like: outdoor to outdoor.",
+    "blocks": [
+      { "dur": 1200, "power": 175, "label": "Build", "kind": "warm" },
+      { "repeat": 2, "blocks": [
+        { "dur": 10, "power": 900, "label": "Peak 10s", "kind": "work" },
+        { "dur": 290, "power": 140, "label": "Easy", "kind": "rec" }
+      ] },
+      { "dur": 300, "power": 145, "label": "Recovery", "kind": "rec" },
+      { "dur": 50, "power": 700, "label": "50s TEST", "kind": "work" },
+      { "dur": 600, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
   }
 ]

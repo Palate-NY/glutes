@@ -43,7 +43,7 @@ describe('app boot', () => {
     expect(document.getElementById('wdates').textContent).toBe('Sep 7 — Sep 13');
     expect(document.querySelectorAll('#days .day')).toHaveLength(7);
     expect(document.querySelector('#day-2').classList.contains('today')).toBe(true);
-    expect(document.querySelectorAll('#blocks .block')).toHaveLength(2);
+    expect(document.querySelectorAll('#blocks .block')).toHaveLength(7);
     expect(document.getElementById('stat-ftp').textContent).toBe('280W');
     expect(document.getElementById('stat-hrmax').textContent).toBe('192bpm');
     expect(document.getElementById('stat-lthr').textContent).toBe('174bpm');

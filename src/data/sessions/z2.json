@@ -127,5 +127,25 @@
       { "dur": 90, "power": 280, "label": "Opener", "kind": "work" },
       { "dur": 180, "power": 130, "label": "Cool-down", "kind": "cool" }
     ]
+  },
+  {
+    "id": "LONG_Z2_SS",
+    "name": "Long Z2 + SS",
+    "type": "ss",
+    "duration_min": 150,
+    "description": "2.5hr: 45min Z2 (160-175W), then 2 × 15min @ 240-255W (SS) with 5min easy, then 40min Z2. Fuel 60-80g/hr. Sweet spot inside the long ride, the cheapest threshold hour in the week.",
+    "tss": 150,
+    "avg_power": 190,
+    "notes": "Evidence: for 7-9 hr/week riders a pyramidal distribution beats pure polarized; putting the moderate work inside the long ride keeps the other days truly easy.",
+    "blocks": [
+      { "dur": 900, "power": 160, "label": "Warm-up", "kind": "warm" },
+      { "dur": 2700, "power": 165, "label": "Z2", "kind": "easy" },
+      { "repeat": 2, "blocks": [
+        { "dur": 900, "power": 248, "label": "Sweet Spot", "kind": "work" },
+        { "dur": 300, "power": 145, "label": "Recovery", "kind": "rec" }
+      ] },
+      { "dur": 2400, "power": 165, "label": "Z2", "kind": "easy" },
+      { "dur": 600, "power": 130, "label": "Cool-down", "kind": "cool" }
+    ]
   }
 ]

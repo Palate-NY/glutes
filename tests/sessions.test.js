@@ -7,8 +7,8 @@ describe('session library', () => {
     expect(validateSessionLibrary()).toEqual([]);
   });
 
-  it('contains exactly the sessions from the single-file app (v47)', () => {
-    expect(Object.keys(SESSIONS).sort()).toEqual(Object.keys(golden.sessions).sort());
+  it('still contains every session from the single-file app (v47); new sessions may be added', () => {
+    for (const id of Object.keys(golden.sessions)) expect(SESSIONS[id], id).toBeDefined();
   });
 
   it('matches the original definitions field by field, blocks fully expanded', () => {

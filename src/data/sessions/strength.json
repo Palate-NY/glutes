@@ -18,5 +18,25 @@
     "tss": 0,
     "avg_power": null,
     "blocks": []
+  },
+  {
+    "id": "STR_MAINT",
+    "name": "Strength (maintenance)",
+    "type": "strength",
+    "duration_min": 30,
+    "description": "Maintenance, once a week: Back sq 3×4 @ 85% 1RM, Barbell hip thrust 3×5 heavy, Bulgarian split sq 2×6/side. Full recovery. Keep the load, drop the volume.",
+    "tss": 0,
+    "avg_power": null,
+    "blocks": []
+  },
+  {
+    "id": "STR_POWER",
+    "name": "Strength (power)",
+    "type": "strength",
+    "duration_min": 35,
+    "description": "Race-season power: Back sq 3×3 @ 85-90% 1RM, Trap-bar jumps 4×5 (light bar, max speed), Box jumps 3×5, Explosive step-ups 3×5/side, Hip thrust 2×5 heavy. Full recovery. Quality over volume, never to failure.",
+    "tss": 0,
+    "avg_power": null,
+    "blocks": []
   }
 ]

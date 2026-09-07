@@ -1,20 +1,18 @@
 import { describe, it, expect } from 'vitest';
-import golden47 from './fixtures/golden-v47.json';
 import golden26 from './fixtures/golden-2026-deployed.json';
 import { RAW_PLANS, PLANS, planById, planForDate, detectCurrentWeek, dateForDay, validatePlan, loadPlan } from '../src/lib/plan.js';
 import { toISODate } from '../src/lib/dates.js';
 
-const idsOf = (plan) => plan.weeks.map((w) => ({ week: w.week, label: w.label, blockId: w.blockId, days: w.days.map((d) => d.map((s) => s.id)) }));
 const goldenIds = (g) => g.plan.map((w) => ({ week: w.week, label: w.label, blockId: w.blockId, days: w.days }));
+const idsOf = (plan) => plan.weeks.map((w) => ({ week: w.week, label: w.label, blockId: w.blockId, days: w.days.map((d) => d.map((s) => s.id)) }));
 
 describe('plan JSON', () => {
   it('all plans validate', () => {
     for (const raw of RAW_PLANS) expect(validatePlan(raw), raw.id).toEqual([]);
   });
 
-  it('2027 season matches the v47 PLAN array', () => {
-    expect(idsOf(planById('2027-season'))).toEqual(goldenIds(golden47));
-  });
+  // The 2027 season was rebuilt from scratch in Sep 2026 (50 weeks), so it no longer
+  // mirrors the v47 PLAN array. golden-v47 stays the migration snapshot for sessions and ZWO.
 
   it('2026 climb PR matches the PLAN array of the deployed single-file app (what the 2026 log was made against)', () => {
     expect(idsOf(planById('2026-climb-pr'))).toEqual(goldenIds(golden26));
@@ -33,12 +31,12 @@ describe('plan JSON', () => {
     expect(golden26.BLOCKS[0].dateRange).toBe('May 4 – May 31');
   });
 
-  it('2027 season starts Mon Sep 7 2026 and ends after 16 weeks', () => {
+  it('2027 season starts Mon Sep 7 2026 and ends after 50 weeks', () => {
     const p = planById('2027-season');
     expect(toISODate(p.start)).toBe('2026-09-07');
-    expect(p.weeks).toHaveLength(16);
-    expect(toISODate(dateForDay(p, 16, 6))).toBe('2026-12-27');
-    expect(p.blocks.map((b) => b.weeks)).toEqual(['W1–W3', 'W4–W16']);
+    expect(p.weeks).toHaveLength(50);
+    expect(toISODate(dateForDay(p, 50, 6))).toBe('2027-08-22');
+    expect(p.blocks.map((b) => b.weeks)).toEqual(['W1–W3', 'W4–W16', 'W17–W28', 'W29–W36', 'W37–W42', 'W43', 'W44–W50']);
   });
 });
 
@@ -58,7 +56,9 @@ describe('plan selection and week detection', () => {
     expect(detectCurrentWeek(p, new Date(2026, 8, 13, 23))).toBe(1);
     expect(detectCurrentWeek(p, new Date(2026, 8, 14))).toBe(2);
     expect(detectCurrentWeek(p, new Date(2026, 11, 27))).toBe(16);
-    expect(detectCurrentWeek(p, new Date(2027, 2, 1))).toBe(16);
+    expect(detectCurrentWeek(p, new Date(2027, 2, 1))).toBe(26);
+    expect(detectCurrentWeek(p, new Date(2027, 7, 22))).toBe(50);
+    expect(detectCurrentWeek(p, new Date(2027, 11, 1))).toBe(50);
   });
 });
 
