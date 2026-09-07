@@ -3,6 +3,7 @@
 // localStorage blob and check it renders and migrates.
 import { describe, it, expect, beforeAll, vi } from 'vitest';
 import fs from 'node:fs';
+import { planById } from '../src/lib/plan.js';
 import path from 'node:path';
 
 const html = fs.readFileSync(path.resolve(process.cwd(), 'index.html'), 'utf8');
@@ -38,12 +39,14 @@ describe('app boot', () => {
     expect(saved.actuals['2026-05-07/0']).toEqual(v1.actuals.W1D3S0);
     expect(JSON.parse(localStorage.getItem('climb-tracker-state.v1-backup'))).toEqual(v1);
 
+    // The 2027 plan is edited from chat; assert against its data, not literals.
+    const season = planById('2027-season');
     expect(document.getElementById('plan-select').value).toBe('2027-season');
-    expect(document.getElementById('wname').textContent).toBe('Week 1 — W1 Prep');
+    expect(document.getElementById('wname').textContent).toBe(`Week 1 — ${season.weeks[0].label.split(' ').slice(1).join(' ')}`);
     expect(document.getElementById('wdates').textContent).toBe('Sep 7 — Sep 13');
     expect(document.querySelectorAll('#days .day')).toHaveLength(7);
     expect(document.querySelector('#day-2').classList.contains('today')).toBe(true);
-    expect(document.querySelectorAll('#blocks .block')).toHaveLength(7);
+    expect(document.querySelectorAll('#blocks .block')).toHaveLength(season.blocks.length);
     expect(document.getElementById('stat-ftp').textContent).toBe('280W');
     expect(document.getElementById('stat-hrmax').textContent).toBe('192bpm');
     expect(document.getElementById('stat-lthr').textContent).toBe('174bpm');
