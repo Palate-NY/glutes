@@ -14,9 +14,26 @@ Goal: FTP 300W + 700W sprint by August 2027.
 
 ## Editing from chat
 
-Claude.ai's built-in "GitHub Integration" (Customize, Connectors) is read-only from chat: it attaches files and syncs a Project, it cannot commit. Committing from chat needs a custom connector to GitHub's remote MCP server, authorized through a GitHub App installed on this repo only. Setup is being verified; this section will carry the exact steps once it is.
+Claude.ai's built-in "GitHub Integration" is read-only from chat (attach files, sync a Project). Committing from chat uses a custom connector to GitHub's official remote MCP server, authorized through a GitHub App that is installed on this repo only. Set up on 2026-09-06 and working; here is how it was done, in case it ever needs redoing.
 
-Project instructions to use once the connector works:
+**1. GitHub App** (github.com, Settings, Developer settings, GitHub Apps, New)
+
+- Name `Glutes Claude`, homepage `https://palate-ny.github.io/glutes/`
+- Callback URL `https://claude.ai/api/mcp/auth_callback`
+- "Request user authorization (OAuth) during installation" on; "Expire user authorization tokens" off; Webhook off
+- Repository permissions: Contents read and write, Actions read, Commit statuses read (Metadata read is automatic)
+- Where can it be installed: only this account
+- After creating: **Generate a new client secret** and copy it. Then Install App, "Only select repositories", pick `glutes`.
+
+**2. Claude.ai** (Customize, Connectors, Add, Add custom connector)
+
+- Name `Glutes GitHub`, URL `https://api.githubcopilot.com/mcp/`, Continue
+- Claude detects the OAuth flow and selects "Use your own OAuth client": paste the app's Client ID and the client secret. The secret is required; without it the connect step fails with `mcp_token_exchange_failed_missing_token`.
+- Add, then Connect, then approve on GitHub. A connector cannot be edited afterwards; to change credentials, Remove it and add again.
+
+The user token Claude holds is limited to the repos where the app is installed, so this connector can only see and write Palate-NY/glutes.
+
+**3. Claude Project.** Create a Project called Glutes with these instructions:
 
    > You maintain the training data in the GitHub repo Palate-NY/glutes. Before any change, read CLAUDE.md and docs/EDITING.md from the repo. Edit only files under src/data/. Validate against schema/. Commit directly to main with a message describing the training change. After committing, check the commit status and report whether Deploy passed. If it failed, read the run output, fix, and commit again.
 
