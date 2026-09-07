@@ -14,14 +14,11 @@ Goal: FTP 300W + 700W sprint by August 2027.
 
 ## Editing from chat
 
-One-time setup in Claude.ai:
+Claude.ai's built-in "GitHub Integration" (Customize, Connectors) is read-only from chat: it attaches files and syncs a Project, it cannot commit. Committing from chat needs a custom connector to GitHub's remote MCP server, authorized through a GitHub App installed on this repo only. Setup is being verified; this section will carry the exact steps once it is.
 
-1. Settings, then Connectors, then GitHub, then Connect. GitHub asks where to install the Claude app: choose **Only select repositories** and pick `Palate-NY/glutes`. That is the whole scope; Claude sees nothing else.
-2. Create a Claude Project called Glutes and paste this into its instructions:
+Project instructions to use once the connector works:
 
    > You maintain the training data in the GitHub repo Palate-NY/glutes. Before any change, read CLAUDE.md and docs/EDITING.md from the repo. Edit only files under src/data/. Validate against schema/. Commit directly to main with a message describing the training change. After committing, check the commit status and report whether Deploy passed. If it failed, read the run output, fix, and commit again.
-
-3. In a chat: "Read the current 2027 plan, then move next week's VO2 session to Wednesday and add heavy strength on Friday." Claude reads the JSON, commits, and the site updates in about a minute.
 
 Where to look when something goes wrong:
 
