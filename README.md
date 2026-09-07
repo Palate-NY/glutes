@@ -129,6 +129,8 @@ Old plans stay in the repo (`2026-climb-pr.json`) and can be viewed with the pla
 Everything lives in `localStorage` under the key `climb-tracker-state`, same as before.
 Logged sessions are keyed by date (`2026-09-10/0`), not by plan position, so editing the plan never re-attaches a log to the wrong workout.
 
+Drag a day's date tile onto another day to swap the two workouts. That is a per-browser override (`state.overrides`), shown with a "moved" chip and a "Reset to plan" link under the week. The JSON plan stays the source of truth; days with a logged status can't be moved.
+
 The first load of the new app converts the old position keys (`W3D1S0`) to dates and keeps the untouched original under `climb-tracker-state.v1-backup`.
 
 `localStorage` is per origin: the GitHub Pages site and `localhost:5173` do not share data. Use the Data section at the bottom of the page (Export log / Import log) to copy your log to the dev server, or to back it up.

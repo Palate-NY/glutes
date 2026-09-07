@@ -77,6 +77,42 @@ describe('app boot', () => {
     expect(JSON.parse(localStorage.getItem('climb-tracker-state')).actuals[key].status).toBeNull();
   });
 
+  it('shows day and week durations', () => {
+    window.G.goToWeek(1); // 2026 plan W1: Thu SS_2x15 (60) ...
+    expect(document.getElementById('day-3').querySelector('.dur-chip').textContent).toBe('1h');
+    expect(document.getElementById('planned-time').textContent).toMatch(/^\d+h/);
+    expect(document.getElementById('ride-time').textContent).toMatch(/^\d+h/);
+  });
+
+  it('swapping two days stores a per-browser override and keeps the plan file semantics', () => {
+    window.G.goToWeek(2);
+    const title = (d) => document.getElementById(`day-${d}`).querySelector('.dmeta .session').textContent;
+    const before = [title(3), title(5)];
+    window.G.swapDays(3, 5);
+    expect([title(3), title(5)]).toEqual([before[1], before[0]]);
+    expect(document.getElementById('day-3').classList.contains('moved')).toBe(true);
+    expect(document.getElementById('week-note').hidden).toBe(false);
+    const saved = JSON.parse(localStorage.getItem('climb-tracker-state'));
+    expect(Object.keys(saved.overrides['2026-climb-pr']).sort()).toEqual(['2026-05-14', '2026-05-16']);
+    // Upcoming reflects the override, Trends still renders
+    document.getElementById('tab-upcoming').click();
+    expect(document.querySelectorAll('#upcoming-list .day')).toHaveLength(14);
+    document.getElementById('tab-week').click();
+    window.G.resetWeek();
+    expect([title(3), title(5)]).toEqual(before);
+    expect(document.getElementById('week-note').hidden).toBe(true);
+    expect(JSON.parse(localStorage.getItem('climb-tracker-state')).overrides['2026-climb-pr']).toEqual({});
+  });
+
+  it('refuses to move a day that has a log', () => {
+    window.G.goToWeek(1);
+    const title = (d) => document.getElementById(`day-${d}`).querySelector('.dmeta .session').textContent;
+    const before = [title(3), title(4)];
+    window.G.swapDays(3, 4); // Thu W1 is logged (done)
+    expect([title(3), title(4)]).toEqual(before);
+    expect(document.querySelector('.toast').textContent).toBe('Logged days stay put');
+  });
+
   it('next/prev week is bounded by the plan length', () => {
     window.G.goToWeek(14);
     document.getElementById('nextwk').click();

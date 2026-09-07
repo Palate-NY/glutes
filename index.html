@@ -35,8 +35,6 @@
     <button class="tab active" data-tab="week" id="tab-week">This Week</button>
     <button class="tab" data-tab="trends" id="tab-trends">Trends</button>
     <button class="tab" data-tab="upcoming" id="tab-upcoming">Upcoming</button>
-    <span class="spacer"></span>
-    <select class="plan-select" id="plan-select" aria-label="Training plan"></select>
   </div>
   <div id="weekview">
     <div class="strain">
@@ -45,6 +43,10 @@
         <span class="val"><span id="actual-tss">0</span><span class="planned"> / <span id="planned-tss">0</span> planned</span></span>
       </div>
       <div class="bar"><div class="fill" id="strain-bar" style="width:0%"></div></div>
+      <div class="row sub">
+        <span class="label">Time</span>
+        <span class="time"><span id="planned-time">0m</span> planned<span class="planned"> · <span id="ride-time">0m</span> riding</span></span>
+      </div>
     </div>
 
     <div class="weeknav">
@@ -57,6 +59,7 @@
         </svg>
       </button>
       <div class="wlabel">
+        <select class="plan-select" id="plan-select" aria-label="Training plan"></select>
         <div class="wname" id="wname">Week 1</div>
         <div class="wdates" id="wdates"></div>
       </div>
@@ -64,6 +67,7 @@
     </div>
 
     <div class="days" id="days"></div>
+    <div class="week-note" id="week-note" hidden></div>
   </div>
 
   <div id="trendsview" style="display:none"></div>

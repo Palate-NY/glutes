@@ -91,6 +91,7 @@ Rules:
 - Every id in `days` must exist in a session file.
 - Each `weeks[].block` must be a `blocks[].id`. Week ranges and dates on the block tiles are computed.
 - Logged sessions are stored by date, so moving a workout to another day does not carry its log with it. That is intended: the log records what was done on that date.
+- Dragging a day's calendar tile onto another day in the app swaps the two workouts for that browser only (a per-date override in localStorage, shown with a "moved" chip and a "Reset to plan" link). The plan file is not touched. If a swap should be permanent, make it here in the JSON.
 
 ## Common edits
 

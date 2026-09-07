@@ -1,6 +1,8 @@
 // "This Week" view: week nav, day cards, session forms, training block tiles.
 
-import { app, save, keyFor, ensureActual } from '../app.js';
+import { app, save, keyFor, ensureActual, daySessions, swapDays, resetWeek, weekHasOverrides, dayIsOverridden, dayHasLog } from '../app.js';
+import { fmtDuration, strengthChipLabel } from '../lib/format.js';
+import { toast } from './data.js';
 import { dateForDay, detectCurrentWeek } from '../lib/plan.js';
 import { fmtDate, fmtDayName, isToday, toISODate } from '../lib/dates.js';
 import { isHardType } from '../lib/sessions.js';
@@ -38,12 +40,12 @@ export function expandBlock(id) {
   const weeksInBlock = app.plan.weeks.filter((w) => w.blockId === id);
   let plannedTSS = 0, actualTSS = 0;
   weeksInBlock.forEach((w) => {
-    w.days.forEach((sessions, di) => {
-      sessions.forEach((s, si) => {
+    for (let di = 0; di < 7; di++) {
+      daySessions(w.week, di).forEach((s, si) => {
         plannedTSS += s.tss || 0;
         actualTSS += creditedTSS(app.state.actuals[keyFor(w.week, di, si)], s.tss);
       });
-    });
+    }
   });
   el.classList.add('show');
   el.innerHTML = `
@@ -70,20 +72,27 @@ export function renderWeek() {
   document.getElementById('wdates').textContent = `${fmtDate(start)} — ${fmtDate(end)}`;
   updateTodayButton();
 
-  let plannedTSS = 0, actualTSS = 0;
-  w.days.forEach((sessions, di) => {
+  let plannedTSS = 0, actualTSS = 0, plannedMin = 0, rideMin = 0;
+  const days = [];
+  for (let di = 0; di < 7; di++) {
+    const sessions = daySessions(w.week, di);
+    days.push(sessions);
     sessions.forEach((s, si) => {
       plannedTSS += s.tss || 0;
+      plannedMin += s.dur || 0;
+      if (s.type !== 'strength' && s.type !== 'rest') rideMin += s.dur || 0;
       actualTSS += creditedTSS(app.state.actuals[keyFor(w.week, di, si)], s.tss);
     });
-  });
+  }
   document.getElementById('planned-tss').textContent = plannedTSS;
   document.getElementById('actual-tss').textContent = actualTSS;
+  document.getElementById('planned-time').textContent = fmtDuration(plannedMin);
+  document.getElementById('ride-time').textContent = fmtDuration(rideMin);
   const pct = plannedTSS > 0 ? Math.min(150, (actualTSS / plannedTSS) * 100) : 0;
   document.getElementById('strain-bar').style.width = pct + '%';
 
   const daysEl = document.getElementById('days');
-  daysEl.innerHTML = w.days.map((sessions, di) => {
+  daysEl.innerHTML = days.map((sessions, di) => {
     const d = dateForDay(app.plan, w.week, di);
     const todayCls = isToday(d) ? 'today' : '';
     const primarySess = sessions[0];
@@ -102,25 +111,29 @@ export function renderWeek() {
     else if (badge === 'done' && isHardDay) badgeClass = 'done hard-done';
     const dayClasses = [todayCls, isRestDay ? 'is-rest' : '', isHardDay ? 'is-hard' : '', isZ2Day ? 'is-z2' : ''].filter(Boolean).join(' ');
     const dayTSS = sessions.reduce((sum, s) => sum + (s.tss || 0), 0);
-    const hasStrength = sessions.some((s) => s.type === 'strength');
+    const dayMin = sessions.reduce((sum, s) => sum + (s.dur || 0), 0);
+    const strength = sessions.filter((s) => s.type === 'strength');
+    const moved = dayIsOverridden(w.week, di);
 
     // Compact one-line title. Strength shows as a chip, parens like "(heavy)" stripped.
     const bikeSessions = sessions.filter((s) => s.type !== 'strength');
     const titleSessions = bikeSessions.length > 0 ? bikeSessions : sessions;
     const sessionLineCompact = titleSessions.map((s) => s.name.replace(/\s*\([^)]*\)\s*/g, '').trim()).join(' + ');
     return `
-      <div class="day ${dayClasses}" id="day-${di}">
+      <div class="day ${dayClasses} ${moved ? 'moved' : ''}" id="day-${di}" data-day="${di}">
         <div class="day-head" onclick="G.toggleDay(${di})">
           <div class="dleft">
-            <div class="cal-tile">
+            <div class="cal-tile" title="Drag to swap with another day">
               <div class="ct-dow">${fmtDayName(di)}</div>
               <div class="ct-day">${d.getDate()}</div>
             </div>
             <div class="dmeta">
               <div class="session">${sessionLineCompact}</div>
               <div>
+                ${dayMin > 0 ? `<span class="tss-chip dur-chip">${fmtDuration(dayMin)}</span>` : ''}
                 ${dayTSS > 0 ? `<span class="tss-chip">${dayTSS} TSS</span>` : ''}
-                ${hasStrength ? '<span class="tss-chip wrk-chip">+ WRK</span>' : ''}
+                ${strength.map((s) => `<span class="tss-chip wrk-chip">+ ${strengthChipLabel(s.name)}</span>`).join('')}
+                ${moved ? '<span class="tss-chip moved-chip">moved</span>' : ''}
               </div>
             </div>
           </div>
@@ -134,6 +147,14 @@ export function renderWeek() {
         </div>
       </div>`;
   }).join('');
+
+  const note = document.getElementById('week-note');
+  if (note) {
+    note.hidden = !weekHasOverrides(w.week);
+    note.innerHTML = weekHasOverrides(w.week)
+      ? 'Week rearranged in this browser. The plan file is unchanged. <button class="link-btn" onclick="G.resetWeek()">Reset to plan</button>'
+      : '';
+  }
 }
 
 export function renderSessionForm(weekN, dayIdx, sessIdx, sess) {
@@ -259,7 +280,7 @@ export function parseAndFill(key, dayIdx) {
 }
 
 export function downloadZwo(weekN, dayIdx, sessIdx) {
-  const sess = app.plan.weeks[weekN - 1].days[dayIdx][sessIdx];
+  const sess = daySessions(weekN, dayIdx)[sessIdx];
   if (!sess) return;
   const xml = buildZwoFile(sess, app.ftp);
   if (!xml) return;
@@ -315,6 +336,98 @@ function stepWeek(delta) {
   app.currentWeek = next;
   renderBlocks();
   renderWeek();
+}
+
+export function resetCurrentWeek() {
+  resetWeek(app.currentWeek);
+  renderWeek();
+  toast('Week reset to plan');
+}
+
+/** Swap two days of the current week (also used by the drag handler). */
+export function swapCurrentWeekDays(a, b) {
+  if (a === b) return;
+  if (dayHasLog(app.currentWeek, a) || dayHasLog(app.currentWeek, b)) {
+    toast('Logged days stay put');
+    return;
+  }
+  swapDays(app.currentWeek, a, b);
+  renderWeek();
+}
+
+// Drag a day's calendar tile onto another day to swap the two workouts.
+// Pointer events so it works with mouse and touch; the tile has
+// touch-action:none so a drag does not scroll the page.
+export function initDayDrag() {
+  const daysEl = document.getElementById('days');
+  if (!daysEl) return;
+  const THRESHOLD = 8;
+  let drag = null; // { from, x, y, active, ghost, over }
+
+  const dayAt = (x, y) => {
+    const el = document.elementFromPoint(x, y);
+    const day = el && el.closest('#days .day');
+    return day ? Number(day.dataset.day) : null;
+  };
+  const clearOver = () => {
+    daysEl.querySelectorAll('.day.drag-over').forEach((d) => d.classList.remove('drag-over'));
+  };
+  const endDrag = () => {
+    if (!drag) return;
+    const { from, active, ghost, over } = drag;
+    drag = null;
+    clearOver();
+    daysEl.querySelectorAll('.day.dragging').forEach((d) => d.classList.remove('dragging'));
+    document.body.classList.remove('is-dragging');
+    if (ghost) ghost.remove();
+    if (active) {
+      suppressClick = true;
+      setTimeout(() => { suppressClick = false; }, 0);
+      if (over != null && over !== from) swapCurrentWeekDays(from, over);
+    }
+  };
+
+  let suppressClick = false;
+  daysEl.addEventListener('click', (e) => {
+    if (suppressClick) { e.stopPropagation(); e.preventDefault(); }
+  }, true);
+
+  daysEl.addEventListener('pointerdown', (e) => {
+    const tile = e.target.closest('.cal-tile');
+    if (!tile || e.button !== 0) return;
+    const day = tile.closest('.day');
+    drag = { from: Number(day.dataset.day), x: e.clientX, y: e.clientY, active: false, ghost: null, over: null, pointerId: e.pointerId };
+    tile.setPointerCapture(e.pointerId);
+  });
+
+  daysEl.addEventListener('pointermove', (e) => {
+    if (!drag || e.pointerId !== drag.pointerId) return;
+    if (!drag.active) {
+      if (Math.hypot(e.clientX - drag.x, e.clientY - drag.y) < THRESHOLD) return;
+      drag.active = true;
+      const src = daysEl.querySelector(`.day[data-day="${drag.from}"]`);
+      src.classList.add('dragging');
+      document.body.classList.add('is-dragging');
+      const ghost = document.createElement('div');
+      ghost.className = 'drag-ghost';
+      ghost.textContent = src.querySelector('.dmeta .session').textContent;
+      document.body.appendChild(ghost);
+      drag.ghost = ghost;
+    }
+    drag.ghost.style.transform = `translate(${e.clientX + 14}px, ${e.clientY - 18}px)`;
+    const over = dayAt(e.clientX, e.clientY);
+    if (over !== drag.over) {
+      clearOver();
+      drag.over = over;
+      if (over != null && over !== drag.from) {
+        daysEl.querySelector(`.day[data-day="${over}"]`).classList.add('drag-over');
+      }
+    }
+    e.preventDefault();
+  });
+
+  daysEl.addEventListener('pointerup', (e) => { if (drag && e.pointerId === drag.pointerId) endDrag(); });
+  daysEl.addEventListener('pointercancel', (e) => { if (drag && e.pointerId === drag.pointerId) { drag.over = null; endDrag(); } });
 }
 
 export function initWeekNav() {

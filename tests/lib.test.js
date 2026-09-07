@@ -3,6 +3,7 @@ import { parseSessionLog } from '../src/lib/session-log.js';
 import { estimateHRFromFTP, computeTSS, creditedTSS } from '../src/lib/metrics.js';
 import { parseLocalDate, toISODate, addDays, fmtDate, isToday } from '../src/lib/dates.js';
 import { exportJson, parseImport } from '../src/lib/storage.js';
+import { fmtDuration, strengthChipLabel } from '../src/lib/format.js';
 
 describe('parseSessionLog', () => {
   it('ignores text without a SESSION LOG marker', () => {
@@ -64,5 +65,20 @@ describe('export / import', () => {
     expect(parseImport(exportJson(state))).toEqual(state);
     expect(parseImport(JSON.stringify(state))).toEqual(state);
     expect(() => parseImport('{"foo":1}')).toThrow(/Not a Glutes/);
+  });
+});
+
+describe('format', () => {
+  it('fmtDuration', () => {
+    expect(fmtDuration(0)).toBe('0m');
+    expect(fmtDuration(45)).toBe('45m');
+    expect(fmtDuration(60)).toBe('1h');
+    expect(fmtDuration(80)).toBe('1h20');
+    expect(fmtDuration(425)).toBe('7h05');
+  });
+  it('strengthChipLabel', () => {
+    expect(strengthChipLabel('Strength (heavy)')).toBe('STR heavy');
+    expect(strengthChipLabel('Strength (bodyweight)')).toBe('STR bodyweight');
+    expect(strengthChipLabel('Core (short)')).toBe('Core');
   });
 });

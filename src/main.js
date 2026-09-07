@@ -23,6 +23,8 @@ window.G = {
   expandBlock: week.expandBlock,
   goToWeek: week.goToWeek,
   jumpToToday: week.jumpToToday,
+  resetWeek: week.resetCurrentWeek,
+  swapDays: week.swapCurrentWeekDays,
   handleVizHover: viz.handleVizHover,
   handleVizTap: viz.handleVizTap,
   hideVizTooltip: viz.hideVizTooltip,
@@ -125,6 +127,7 @@ export function init() {
   initPlanSelect();
   initTabs();
   week.initWeekNav();
+  week.initDayDrag();
   setPlan(planById(app.state.activePlan) || planForDate(new Date()), { persist: false });
   app.lastSeenDate = new Date().toDateString();
   renderAll();

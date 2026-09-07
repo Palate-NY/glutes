@@ -1,6 +1,6 @@
 // Trends view: weekly load bars and HR/W efficiency per session type.
 
-import { app, keyFor } from '../app.js';
+import { app, keyFor, daySessions } from '../app.js';
 import { dateForDay } from '../lib/plan.js';
 import { fmtDate } from '../lib/dates.js';
 import { creditedTSS } from '../lib/metrics.js';
@@ -12,8 +12,8 @@ export function renderTrends() {
 
   app.plan.weeks.forEach((w) => {
     let p = 0, a = 0;
-    w.days.forEach((sessions, di) => {
-      sessions.forEach((s, si) => {
+    for (let di = 0; di < 7; di++) {
+      daySessions(w.week, di).forEach((s, si) => {
         p += s.tss || 0;
         const ac = app.state.actuals[keyFor(w.week, di, si)];
         a += creditedTSS(ac, s.tss);
@@ -31,13 +31,13 @@ export function renderTrends() {
           else if (s.type === 'vo2') vo2Eff.push(point);
         }
       });
-    });
+    }
     weekTSS.push({ week: w.week, planned: p, actual: a, label: w.label });
   });
 
   el.innerHTML = `
     <div class="chart">
-      <h4>Weekly Load (TSS) <span class="sub">planned vs done</span></h4>
+      <h4>Weekly Load (TSS) <span class="sub">grey planned · lime done</span></h4>
       ${renderBarChart(weekTSS)}
     </div>
     ${renderEfficiencyChart('Z2 Endurance Efficiency', z2Eff, 'lower = aerobic engine improving')}
@@ -56,13 +56,13 @@ export function renderBarChart(data) {
     const x = P + i * bw;
     const ph = (d.planned || 0) / maxV * (H - 2 * P);
     const ah = (d.actual || 0) / maxV * (H - 2 * P);
-    bars += `<rect x="${x + bw * 0.1}" y="${H - P - ph}" width="${bw * 0.35}" height="${ph}" fill="#3a3f48" rx="2"/>`;
-    bars += `<rect x="${x + bw * 0.5}" y="${H - P - ah}" width="${bw * 0.35}" height="${ah}" fill="#7c9cff" rx="2"/>`;
-    bars += `<text x="${x + bw * 0.5}" y="${H - 10}" fill="#6c7280" font-size="9" text-anchor="middle">W${d.week}</text>`;
+    bars += `<rect x="${x + bw * 0.1}" y="${H - P - ph}" width="${bw * 0.35}" height="${ph}" fill="#2a2a2a" rx="2"/>`;
+    bars += `<rect x="${x + bw * 0.5}" y="${H - P - ah}" width="${bw * 0.35}" height="${ah}" fill="#c6ff3d" rx="2"/>`;
+    bars += `<text x="${x + bw * 0.5}" y="${H - 10}" fill="#666" font-size="9" text-anchor="middle">W${d.week}</text>`;
   });
   return `<svg class="sparkline" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
     ${bars}
-    <text x="${P}" y="${P - 8}" fill="#6c7280" font-size="10">${maxV} TSS</text>
+    <text x="${P}" y="${P - 8}" fill="#666" font-size="10">${maxV} TSS</text>
   </svg>`;
 }
 
@@ -85,9 +85,9 @@ export function renderEfficiencyChart(title, data, sub) {
     const x = P + i * stepX;
     const y = H - P - ((d.ratio - minR) / range) * (H - 2 * P);
     path += (i === 0 ? `M${x},${y}` : ` L${x},${y}`);
-    dots += `<circle cx="${x}" cy="${y}" r="3.5" fill="#7c9cff" stroke="#0e0f12" stroke-width="1.5"/>`;
+    dots += `<circle cx="${x}" cy="${y}" r="3.5" fill="#c6ff3d" stroke="#000" stroke-width="1.5"/>`;
     if (i === 0 || i === data.length - 1 || i === Math.floor(data.length / 2)) {
-      labels += `<text x="${x}" y="${H - 10}" fill="#6c7280" font-size="9" text-anchor="middle">${fmtDate(d.date)}</text>`;
+      labels += `<text x="${x}" y="${H - 10}" fill="#666" font-size="9" text-anchor="middle">${fmtDate(d.date)}</text>`;
     }
   });
   const first = data[0].ratio, last = data[data.length - 1].ratio;
@@ -102,10 +102,10 @@ export function renderEfficiencyChart(title, data, sub) {
         </span>
       </h4>
       <svg class="sparkline" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
-        <path d="${path}" stroke="#7c9cff" stroke-width="2" fill="none"/>
+        <path d="${path}" stroke="#c6ff3d" stroke-width="2" fill="none"/>
         ${dots}
         ${labels}
-        <text x="${P}" y="${P - 8}" fill="#6c7280" font-size="10">HR/W ratio · ${data.length} sessions</text>
+        <text x="${P}" y="${P - 8}" fill="#666" font-size="10">HR/W ratio · ${data.length} sessions</text>
       </svg>
     </div>`;
 }
