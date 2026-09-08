@@ -64,6 +64,10 @@ if (DRY) {
   process.exit(0);
 }
 if (diff.create.length) await call('POST', `/athlete/${ATHLETE}/events/bulk`, diff.create);
-for (const e of diff.update) await call('PUT', `/athlete/${ATHLETE}/events/${e.id}`, e);
+for (const e of diff.update) {
+  const { _changed, ...body } = e;
+  console.log(`  update ${body.external_id}: ${_changed.map((c) => c.slice(0, 120)).join(' | ')}`);
+  await call('PUT', `/athlete/${ATHLETE}/events/${e.id}`, body);
+}
 if (diff.delete.length) await call('PUT', `/athlete/${ATHLETE}/events/bulk-delete`, diff.delete.map((e) => ({ id: e.id })));
 console.log('Done.');

@@ -107,6 +107,12 @@ export function plannedEvents(plan, rawById, fromISO, toISO) {
   return out;
 }
 
+function fieldEqual(k, a, b) {
+  if (k === 'start_date_local') return String(a).slice(0, 10) === String(b).slice(0, 10);
+  if (k === 'description') return String(a ?? '').replace(/\r\n/g, '\n').trim() === String(b ?? '').replace(/\r\n/g, '\n').trim();
+  return (a ?? null) === (b ?? null);
+}
+
 const COMPARE = ['name', 'description', 'type', 'start_date_local', 'moving_time', 'icu_training_load', 'category'];
 
 /** Diff wanted events against existing ones (matched on external_id). */
@@ -117,8 +123,8 @@ export function diffEvents(existing, wanted) {
     const e = byId.get(w.external_id);
     if (!e) { create.push(w); continue; }
     byId.delete(w.external_id);
-    const same = COMPARE.every((k) => (e[k] ?? null) === (w[k] ?? null) || (k === 'start_date_local' && String(e[k]).slice(0, 10) === String(w[k]).slice(0, 10)));
-    if (same) keep.push(e); else update.push({ ...w, id: e.id });
+    const changed = COMPARE.filter((k) => !fieldEqual(k, e[k], w[k]));
+    if (!changed.length) keep.push(e); else update.push({ ...w, id: e.id, _changed: changed.map((k) => `${k}: ${JSON.stringify(e[k])} -> ${JSON.stringify(w[k])}`) });
   }
   return { create, update, keep, delete: [...byId.values()] };
 }
