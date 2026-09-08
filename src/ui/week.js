@@ -9,6 +9,10 @@ import { isHardType } from '../lib/sessions.js';
 import { creditedTSS } from '../lib/metrics.js';
 import { parseSessionLog } from '../lib/session-log.js';
 import { buildZwoFile, zwoFilename } from '../lib/zwo.js';
+import { eventFor } from '../lib/intervals.js';
+import { sendEvent, hasKey, setKey } from '../lib/intervals-client.js';
+import { RAW_SESSIONS } from '../lib/sessions.js';
+import { isoFor } from '../app.js';
 import { renderWorkoutViz, renderMiniViz } from './viz.js';
 
 // ---- Training blocks ----------------------------------------------------
@@ -181,10 +185,16 @@ export function renderSessionForm(weekN, dayIdx, sessIdx, sess) {
       <div>${sess.prescribed}</div>
     </div>
     ${sess.blocks && sess.blocks.length > 0 ? renderWorkoutViz(sess) : ''}
-    ${sess.blocks && sess.blocks.length > 0 ? `
-      <button class="zwo-btn" onclick="G.downloadZwo(${weekN}, ${dayIdx}, ${sessIdx})">
-        <span class="zwo-icon">⬇</span> Export .zwo for TrainingPeaks
+    <div class="send-row">
+      <button class="zwo-btn send-btn" onclick="G.sendToBolt(${weekN}, ${dayIdx}, ${sessIdx})">
+        <span class="zwo-icon">↑</span> Send to Bolt
+      </button>
+      ${sess.blocks && sess.blocks.length > 0 ? `
+      <button class="zwo-btn ghost" onclick="G.downloadZwo(${weekN}, ${dayIdx}, ${sessIdx})" title="Download .zwo (Zwift, SYSTM, TrainingPeaks)">
+        <span class="zwo-icon">⬇</span> .zwo
       </button>` : ''}
+      <span class="send-status" id="send-status-${key}"></span>
+    </div>
     <div class="status-row" style="margin-top:14px">
       <button class="status-btn ${sessIsHard ? 'hard-done' : ''} ${status === 'done' ? 'active done' : ''}" onclick="G.setStatus('${key}','done',${dayIdx})">Done</button>
       <button class="status-btn ${status === 'partial' ? 'active partial' : ''}" onclick="G.setStatus('${key}','partial',${dayIdx})">Partial</button>
@@ -294,6 +304,52 @@ export function downloadZwo(weekN, dayIdx, sessIdx) {
   a.click();
   document.body.removeChild(a);
   setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+const RAW_BY_ID = Object.fromEntries(RAW_SESSIONS.map((r) => [r.id, r]));
+
+function setSendStatus(key, text, cls = '') {
+  const el = document.getElementById(`send-status-${key}`);
+  if (!el) return;
+  el.textContent = text;
+  el.className = `send-status ${cls}`.trim();
+}
+
+/** Push one session slot to intervals.icu (which forwards it to Wahoo). */
+export async function sendToBolt(weekN, dayIdx, sessIdx) {
+  const sess = daySessions(weekN, dayIdx)[sessIdx];
+  if (!sess || sess.type === 'rest') return;
+  const key = keyFor(weekN, dayIdx, sessIdx);
+  if (!hasKey()) {
+    const entered = window.prompt('intervals.icu API key (Settings, Developer Settings). Stored on this device only.');
+    if (!entered) { setSendStatus(key, 'No API key', 'err'); return; }
+    setKey(entered);
+    syncKeyField();
+  }
+  const event = eventFor(RAW_BY_ID[sess.id], sess, app.plan.id, isoFor(weekN, dayIdx), sessIdx);
+  setSendStatus(key, 'Sending…');
+  try {
+    const r = await sendEvent(event);
+    setSendStatus(key, `On intervals.icu · ${r.action}`, 'ok');
+    toast('Sent. The Bolt gets it on the next Wahoo sync.');
+  } catch (e) {
+    setSendStatus(key, e.message, 'err');
+  }
+}
+
+export function syncKeyField() {
+  const input = document.getElementById('intervals-key');
+  if (input) input.placeholder = hasKey() ? 'intervals.icu key saved on this device' : 'intervals.icu API key';
+  if (input) input.value = '';
+}
+
+export function saveIntervalsKey() {
+  const input = document.getElementById('intervals-key');
+  if (!input) return;
+  const v = input.value.trim();
+  setKey(v);
+  syncKeyField();
+  toast(v ? 'intervals.icu key saved on this device' : 'intervals.icu key removed');
 }
 
 export function goToWeek(w) {

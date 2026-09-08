@@ -116,6 +116,32 @@ describe('app boot', () => {
     expect(document.querySelector('.toast').textContent).toBe('Logged days stay put');
   });
 
+  it('Send to Bolt asks for a key first, then posts the workout for that date', async () => {
+    window.G.goToWeek(2);
+    const card = document.getElementById('day-2');
+    expect(card.querySelector('.send-btn')).not.toBeNull();
+    expect(card.querySelector('.zwo-btn.ghost').textContent).toContain('.zwo');
+    localStorage.removeItem('glutes.intervals-key');
+    window.prompt = () => null;
+    await window.G.sendToBolt(2, 2, 0);
+    expect(card.querySelector('.send-status').textContent).toBe('No API key');
+
+    window.prompt = () => 'test-key';
+    const calls = [];
+    globalThis.fetch = async (url, init) => {
+      calls.push({ url, method: init.method, body: init.body ? JSON.parse(init.body) : null });
+      if (init.method === 'GET') return { ok: true, status: 200, text: async () => '[]' };
+      return { ok: true, status: 200, text: async () => '{"id":9}' };
+    };
+    await window.G.sendToBolt(2, 2, 0);
+    expect(localStorage.getItem('glutes.intervals-key')).toBe('test-key');
+    expect(calls.map((c) => c.method)).toEqual(['GET', 'POST']);
+    expect(calls[1].body).toMatchObject({ external_id: 'glutes:2026-climb-pr:2026-05-13:0', name: 'Z2 endurance', type: 'Ride', start_date_local: '2026-05-13T00:00:00' });
+    expect(calls[1].body.description).toContain('- ');
+    expect(card.querySelector('.send-status').textContent).toBe('On intervals.icu · created');
+    localStorage.removeItem('glutes.intervals-key');
+  });
+
   it('next/prev week is bounded by the plan length', () => {
     window.G.goToWeek(14);
     document.getElementById('nextwk').click();

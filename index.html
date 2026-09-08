@@ -106,6 +106,10 @@
     <button class="zwo-btn" onclick="G.importData()"><span class="zwo-icon">⬆</span> Import log</button>
     <input type="file" id="import-file" accept="application/json,.json" style="display:none"/>
   </div>
+  <div class="data-row key-row">
+    <input type="password" id="intervals-key" class="key-input" placeholder="intervals.icu API key" autocomplete="off" spellcheck="false"/>
+    <button class="zwo-btn ghost" onclick="G.saveIntervalsKey()">Save key</button>
+  </div>
   <div class="data-note" id="data-note"></div>
 </div>
 <script type="module" src="/src/main.js"></script>

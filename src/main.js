@@ -20,6 +20,8 @@ window.G = {
   refreshParseButton: week.refreshParseButton,
   parseAndFill: week.parseAndFill,
   downloadZwo: week.downloadZwo,
+  sendToBolt: week.sendToBolt,
+  saveIntervalsKey: week.saveIntervalsKey,
   expandBlock: week.expandBlock,
   goToWeek: week.goToWeek,
   jumpToToday: week.jumpToToday,
@@ -128,6 +130,7 @@ export function init() {
   initTabs();
   week.initWeekNav();
   week.initDayDrag();
+  week.syncKeyField();
   setPlan(planById(app.state.activePlan) || planForDate(new Date()), { persist: false });
   app.lastSeenDate = new Date().toDateString();
   renderAll();

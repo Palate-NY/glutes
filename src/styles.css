@@ -1160,3 +1160,32 @@ body.is-dragging .day-head{cursor:grabbing}
   .day-head .dright{flex-direction:column;align-items:flex-end;gap:5px}
   .drag-ghost{font-size:12px}
 }
+
+/* ===== SEND TO BOLT ===== */
+.send-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:10px}
+.send-row .zwo-btn{margin-top:0}
+.zwo-btn.ghost{background:transparent;border:1px solid var(--line-2);color:var(--ink-2)}
+.zwo-btn.ghost:hover{border-color:var(--ink-2);color:var(--ink)}
+.send-status{
+  font-family:var(--mono);
+  font-size:10px;
+  color:var(--ink-3);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.send-status.ok{color:var(--lime)}
+.send-status.err{color:var(--bad)}
+.key-row{margin-top:8px}
+.key-input{
+  flex:1;
+  min-width:200px;
+  background:#000;
+  border:1px solid var(--line);
+  border-radius:var(--rp);
+  color:var(--ink);
+  font-family:var(--mono);
+  font-size:12px;
+  padding:10px 12px;
+  outline:none;
+}
+.key-input:focus{border-color:var(--line-2)}

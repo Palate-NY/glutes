@@ -150,7 +150,7 @@ One-time setup:
 
 Events are tagged `glutes:<plan>:<date>:<n>`, so re-runs update in place and remove workouts that no longer exist in the plan for that window. Anything else on the calendar is left alone. Rest days create no event; strength sessions become WeightTraining entries with the prescription as text.
 
-Drag-swaps made in the browser are not pushed: they live only in that browser. Make the change in the plan JSON if the Bolt should follow it.
+Drag-swaps made in the browser are not picked up by the nightly sync. For those, or to push a workout right now, open the day card and tap **Send to Bolt**: the app creates or updates that date's planned workout on intervals.icu directly. The first tap asks for your intervals.icu API key, which is stored on that device only (also settable in the Data section, and never included in the exported log). The **.zwo** button next to it still downloads the file for Zwift, SYSTM or a manual TrainingPeaks import.
 
 Preview what would be sent without an API key:
 
