@@ -74,8 +74,8 @@ export function eventFor(raw, sess, planId, iso, idx) {
     name: sess.name,
     external_id,
     moving_time: Math.round((sess.dur || 0) * 60),
-    icu_training_load: Math.round(sess.tss || 0),
   };
+  if (sess.tss > 0) base.icu_training_load = Math.round(sess.tss);
   if (sess.type === 'strength') {
     return { ...base, type: 'WeightTraining', description: safeHeader(sess.prescribed) };
   }
@@ -108,6 +108,7 @@ export function plannedEvents(plan, rawById, fromISO, toISO) {
 }
 
 function fieldEqual(k, a, b) {
+  if (k === 'icu_training_load' || k === 'moving_time') return (a || 0) === (b || 0);
   if (k === 'start_date_local') return String(a).slice(0, 10) === String(b).slice(0, 10);
   if (k === 'description') return String(a ?? '').replace(/\r\n/g, '\n').trim() === String(b ?? '').replace(/\r\n/g, '\n').trim();
   return (a ?? null) === (b ?? null);

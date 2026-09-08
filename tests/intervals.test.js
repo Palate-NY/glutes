@@ -48,6 +48,7 @@ describe('events', () => {
     const str = eventFor(rawById.STR_BW, SESSIONS.STR_BW, 'p', '2026-09-08', 1);
     expect(str).toMatchObject({ type: 'WeightTraining', external_id: 'glutes:p:2026-09-08:1', category: 'WORKOUT', start_date_local: '2026-09-08T00:00:00' });
     expect(str.description).not.toMatch(/^- /m);
+    expect(str.icu_training_load).toBeUndefined();
     const ride = eventFor(rawById.SS_2x15, SESSIONS.SS_2x15, 'p', '2026-09-08', 0);
     expect(ride).toMatchObject({ type: 'Ride', name: 'Sweet Spot 2×15', moving_time: 3600, icu_training_load: 75 });
     expect(ride.description.startsWith('2 × 15min @ 240-258W (SS), 5min recovery\n\n- Warm-up 15m 160w')).toBe(true);
