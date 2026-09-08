@@ -66,6 +66,8 @@ src/lib/sessions.js         JSON loader, validation, repeat-group expansion
 src/lib/plan.js             plan loader, validation, date math, current-week detection
 src/lib/zwo.js              .zwo writer (byte-identical to the old app, golden-tested)
 src/lib/session-log.js      "SESSION LOG" paste parser
+src/lib/intervals.js        intervals.icu planned-workout builder (pure)
+scripts/sync-intervals.mjs  pushes the coming days to intervals.icu (GitHub Action)
 src/lib/migrate.js          storage migrations (v1 position keys -> v2 date keys)
 src/lib/storage.js          localStorage wrapper, export/import
 src/lib/metrics.js          HR estimate, TSS helpers
@@ -134,6 +136,27 @@ Drag a day's date tile onto another day to swap the two workouts. That is a per-
 The first load of the new app converts the old position keys (`W3D1S0`) to dates and keeps the untouched original under `climb-tracker-state.v1-backup`.
 
 `localStorage` is per origin: the GitHub Pages site and `localhost:5173` do not share data. Use the Data section at the bottom of the page (Export log / Import log) to copy your log to the dev server, or to back it up.
+
+## Workouts on the Wahoo Bolt (intervals.icu)
+
+The `Sync to intervals.icu` workflow pushes the next 14 days of the active plan to your intervals.icu calendar as planned workouts, in absolute watts, after every plan edit and every night at 03:00 UTC. intervals.icu forwards the next 7 days to Wahoo, so they show up on the Bolt without TrainingPeaks.
+
+One-time setup:
+
+1. intervals.icu, Settings, Developer Settings: create an API key.
+2. GitHub repo, Settings, Secrets and variables, Actions: new repository secret `INTERVALS_API_KEY` with that key. Until it exists the workflow logs a notice and does nothing.
+3. intervals.icu, Settings, Wahoo: connect your Wahoo account and tick "upload workouts".
+4. Actions, "Sync to intervals.icu", Run workflow. Check your intervals.icu calendar.
+
+Events are tagged `glutes:<plan>:<date>:<n>`, so re-runs update in place and remove workouts that no longer exist in the plan for that window. Anything else on the calendar is left alone. Rest days create no event; strength sessions become WeightTraining entries with the prescription as text.
+
+Drag-swaps made in the browser are not pushed: they live only in that browser. Make the change in the plan JSON if the Bolt should follow it.
+
+Preview what would be sent without an API key:
+
+```bash
+node scripts/sync-intervals.mjs --dry-run --days 7
+```
 
 ## Deploying
 

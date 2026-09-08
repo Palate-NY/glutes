@@ -1,0 +1,38 @@
+# Push the next 14 days of the active plan to intervals.icu (which forwards the
+# next 7 days to Wahoo). Runs after plan edits and every night.
+# One-time setup: repository secret INTERVALS_API_KEY (intervals.icu, Settings,
+# Developer Settings, API key). Until it exists the job logs a notice and exits 0.
+name: Sync to intervals.icu
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/data/**'
+      - 'src/lib/**'
+      - 'scripts/sync-intervals.mjs'
+      - '.github/workflows/sync-intervals.yml'
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+    inputs:
+      days:
+        description: Days ahead to sync
+        default: '14'
+
+concurrency:
+  group: intervals
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: node scripts/sync-intervals.mjs --days ${{ github.event.inputs.days || '14' }}
+        env:
+          INTERVALS_API_KEY: ${{ secrets.INTERVALS_API_KEY }}
+          TZ: Europe/Paris

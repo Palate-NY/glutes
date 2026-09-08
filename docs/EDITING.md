@@ -23,6 +23,8 @@ Current session files: `rest.json`, `z2.json`, `threshold.json` (sweet spot, thr
 
 There is no PR flow. A broken commit never takes the site down, it just does not deploy.
 
+A second workflow, `Sync to intervals.icu`, runs on the same push and sends the next 14 days of the active plan to intervals.icu (then to the Wahoo Bolt). It only touches events it created (`external_id` starting with `glutes:`).
+
 ## Session shape
 
 ```json
