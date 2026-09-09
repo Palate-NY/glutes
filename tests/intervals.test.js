@@ -46,7 +46,7 @@ describe('events', () => {
   it('rest -> null, strength -> WeightTraining without steps, ride -> Ride with steps', () => {
     expect(eventFor(rawById.REST, SESSIONS.REST, 'p', '2026-09-08', 0)).toBeNull();
     const str = eventFor(rawById.STR_BW, SESSIONS.STR_BW, 'p', '2026-09-08', 1);
-    expect(str).toMatchObject({ type: 'WeightTraining', external_id: 'glutes:p:2026-09-08:1', category: 'WORKOUT', start_date_local: '2026-09-08T00:00:00' });
+    expect(str).toMatchObject({ type: 'WeightTraining', external_id: 'glutes:p:2026-09-08:1', category: 'WORKOUT', start_date_local: '2026-09-08T07:00:00' });
     expect(str.description).not.toMatch(/^- /m);
     expect(str.icu_training_load).toBeUndefined();
     const ride = eventFor(rawById.SS_2x15, SESSIONS.SS_2x15, 'p', '2026-09-08', 0);
@@ -70,7 +70,7 @@ describe('events', () => {
       { external_id: 'glutes:p:2026-09-09:0', name: 'B', description: 'y', type: 'Ride', start_date_local: '2026-09-09T00:00:00', moving_time: 60, icu_training_load: 1, category: 'WORKOUT' },
     ];
     const existing = [
-      { id: 1, ...wanted[0], start_date_local: '2026-09-08T00:00:00' },                 // unchanged
+      { id: 1, ...wanted[0], start_date_local: '2026-09-08T07:00:00' },                 // unchanged
       { id: 2, ...wanted[1], description: 'old' },                                        // changed
       { id: 3, external_id: 'glutes:p:2026-09-10:0', name: 'stale', category: 'WORKOUT' }, // stale
       { id: 4, external_id: 'other-app:1', name: 'not ours', category: 'WORKOUT' },

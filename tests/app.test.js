@@ -136,7 +136,7 @@ describe('app boot', () => {
     await window.G.sendToBolt(2, 2, 0);
     expect(localStorage.getItem('glutes.intervals-key')).toBe('test-key');
     expect(calls.map((c) => c.method)).toEqual(['GET', 'POST']);
-    expect(calls[1].body).toMatchObject({ external_id: 'glutes:2026-climb-pr:2026-05-13:0', name: 'Z2 endurance', type: 'Ride', start_date_local: '2026-05-13T00:00:00' });
+    expect(calls[1].body).toMatchObject({ external_id: 'glutes:2026-climb-pr:2026-05-13:0', name: 'Z2 endurance', type: 'Ride', start_date_local: '2026-05-13T07:00:00' });
     expect(calls[1].body.description).toContain('- ');
     expect(card.querySelector('.send-status').textContent).toBe('On intervals.icu · created');
     localStorage.removeItem('glutes.intervals-key');

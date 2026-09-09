@@ -11,6 +11,10 @@
 // does not depend on the FTP set on intervals.icu.
 
 export const EXTERNAL_ID_PREFIX = 'glutes:';
+// Planned workouts are scheduled at this local time. Midnight sat on the day
+// boundary and Wahoo showed everything one day late; a mid-morning time keeps
+// the date stable across the intervals.icu -> Wahoo hand-off.
+export const WORKOUT_START_TIME = '07:00:00';
 
 export function fmtStepDuration(sec) {
   const h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60), s = sec % 60;
@@ -70,7 +74,7 @@ export function eventFor(raw, sess, planId, iso, idx) {
   const external_id = `${EXTERNAL_ID_PREFIX}${planId}:${iso}:${idx}`;
   const base = {
     category: 'WORKOUT',
-    start_date_local: `${iso}T00:00:00`,
+    start_date_local: `${iso}T${WORKOUT_START_TIME}`,
     name: sess.name,
     external_id,
     moving_time: Math.round((sess.dur || 0) * 60),
@@ -109,7 +113,7 @@ export function plannedEvents(plan, rawById, fromISO, toISO) {
 
 function fieldEqual(k, a, b) {
   if (k === 'icu_training_load' || k === 'moving_time') return (a || 0) === (b || 0);
-  if (k === 'start_date_local') return String(a).slice(0, 10) === String(b).slice(0, 10);
+  if (k === 'start_date_local') return String(a).slice(0, 16) === String(b).slice(0, 16);
   if (k === 'description') return String(a ?? '').replace(/\r\n/g, '\n').trim() === String(b ?? '').replace(/\r\n/g, '\n').trim();
   return (a ?? null) === (b ?? null);
 }
