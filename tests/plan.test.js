@@ -36,7 +36,7 @@ describe('plan JSON', () => {
     expect(toISODate(p.start)).toBe('2026-09-07');
     expect(p.weeks).toHaveLength(50);
     expect(toISODate(dateForDay(p, 50, 6))).toBe('2027-08-22');
-    expect(p.blocks.map((b) => b.weeks)).toEqual(['W1–W3', 'W4–W16', 'W17–W28', 'W29–W36', 'W37–W42', 'W43', 'W44–W50']);
+    expect(p.blocks.map((b) => b.weeks)).toEqual(['W1', 'W2–W8', 'W9–W20', 'W21–W28', 'W29–W36', 'W37–W42', 'W43', 'W44–W50']);
   });
 });
 

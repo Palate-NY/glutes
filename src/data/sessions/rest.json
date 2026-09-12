@@ -8,5 +8,15 @@
     "tss": 0,
     "avg_power": null,
     "blocks": []
+  },
+  {
+    "id": "FREE",
+    "name": "Free ride",
+    "type": "rest",
+    "duration_min": 0,
+    "description": "Transition: ride for fun, no targets, no plan. Group ride, coffee ride, or nothing. The only rule is to enjoy it.",
+    "tss": 0,
+    "avg_power": null,
+    "blocks": []
   }
 ]
